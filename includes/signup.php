@@ -1,15 +1,14 @@
 <?php
 
 include '../db/dbh.php';
+include_once '../quexf-1.18.1/functions/functions.database.php';
 
 $uid = $_POST['uid'];
-$firstName = $_POST['firstName'];
-$lastName = $_POST['lastName'];
-$gender = $_POST['gender'];
 $email = $_POST['email'];
 $pwd = $_POST['pwd'];
 $pwd2 = $_POST['pwd2'];
 //$admin = $_POST['admin'];
+
 //TODO additional checks for the htpasswd file for example no ":" in username or password
 
 //check password miss match
@@ -26,21 +25,6 @@ if (empty($uid)){
 //check email
 if (empty($email)){
     header("Location: ../index.php?error=emailempty");
-    exit();
-}
-
-if (empty($firstName)){
-    header("Location: ../index.php?error=otherempty");
-    exit();
-}
-
-if (empty($lastName)){
-    header("Location: ../index.php?error=otherempty");
-    exit();
-}
-
-if (empty($gender)){
-    header("Location: ../index.php?error=otherempty");
     exit();
 }
 
@@ -78,15 +62,27 @@ else {
 
     else{
 
+        //create new operator in quexf database
+        echo "creating the verifiers";
+        $sql = "INSERT INTO verifiers (vid, description, currentfid, http_username) VALUES ( NULL, '$uid', NULL, '$uid')";
 
+        $verifier_set = $db->Execute($sql);
+        echo $verifier_set ? "success<br>" : "failed<br>";
+
+        $vid = mysql_insert_id ();
+        echo "vid ".$vid;
+
+        //insert new row in htpasswd for apache access
         $hash = base64_encode(sha1($pwd, true));
         $contents = $uid . ':{SHA}' . $hash.PHP_EOL;
         echo exec("pwd");
         file_put_contents('../passwrd/.htpasswd', $contents, FILE_APPEND);
 
+        //TODO set as the current user : this should be in the login page
+        //$_SERVER['PHP_AUTH_USER'] = $vid;
 
-        $sql = "INSERT INTO users ( uid, email, pwd, firstName, lastName, gender) VALUES 
-( '$uid','$email', '$hash', '$firstName', '$lastName', $gender)";
+
+        $sql = "INSERT INTO users ( uid, email, pwd, admin, vid) VALUES ( '$uid','$email', '$hash', '0', $vid)";
 
         $result = mysqli_query($conn, $sql);
 
@@ -95,4 +91,3 @@ else {
 }
 
 ?>
-
