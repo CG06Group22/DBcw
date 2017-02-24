@@ -42,7 +42,7 @@ if (empty($pwd)){
 
 else {
 
-    $sql1 = "SELECT uid FROM users WHERE email='$email'";
+    $sql1 = "SELECT email FROM users WHERE email='$email'";
     $result1 = mysqli_query($conn, $sql1);
     $emailcheck = mysqli_num_rows($result1);
 
