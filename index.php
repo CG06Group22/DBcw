@@ -306,9 +306,8 @@ session_start();
 
         </div>
     </div>
-
-    <div class="container">
 </section>
+    
 <!-- Footer -->
 <footer>
     <div class="container-fluid">
@@ -317,21 +316,6 @@ session_start();
         </p>
     </div>
 </footer>
-
-
-<?php
-//$url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
-//if (strpos($url,'error=empty') !==false){
-//}
-//else if (strpos($url,'error=username') !==false){
-//   echo "Username already exists!";
-//}
-//else if (strpos($url,'error=notsame') !==false){
-//   echo "You have entered different password !";
-//}
-
-
-?>
 
 </body>
 
