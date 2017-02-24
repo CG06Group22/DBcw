@@ -281,11 +281,11 @@ session_start();
                         </div>
                         <div class="modal-body">
                             <form action="includes/signup.php" method="POST">
-<!--                                <input type="text" name="uid" placeholder="Username"><br>-->
+                                <!--                                <input type="text" name="uid" placeholder="Username"><br>-->
                                 <input type="text" name="email" placeholder="Email"><br>
                                 <input type="text" name="firstName" placeholder="Firstname"><br>
                                 <input type="text" name="lastName" placeholder="Lastname"><br>
-                                <select>
+                                <select id="classList" name="classList">
                                     <option value="Male">Male</option>
                                     <option value="Female">Female</option>
                                     <option value="Other">Other</option>
