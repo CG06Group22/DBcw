@@ -7,11 +7,11 @@ $uid = $_POST['email'];
 $pwd = $_POST['pwd'];
 $hash = base64_encode(sha1($pwd, true));
 
-$sql = "SELECT * FROM users WHERE email = '$uid' AND password = '$hash'";
+$sql = "SELECT * FROM users WHERE email = '$uid' AND pwd = '$hash'";
 $result = mysqli_query($conn, $sql);
 
 if (!$row = mysqli_fetch_assoc($result)){
-    echo "Your username or password is incorrect!";
+    echo "Your email or password is incorrect!";
     header("Location: ../index.php?error=incorrect");
 } else{
 //    $_SESSION['vid'] = $row['vid'];
