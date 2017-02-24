@@ -319,34 +319,6 @@ session_start();
 </footer>
 
 
-
-
-
-
-
-
-
-
-
-
-<div class="container-fluid">
-    <div class="row-fluid">
-
-        <div class="col-xs-6 span3">
-
-
-
-            <br>
-            <br>
-
-
-
-
-
-        </div>
-    </div>
-</div>
-
 <?php
 //$url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 //if (strpos($url,'error=empty') !==false){
