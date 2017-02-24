@@ -7,7 +7,7 @@ $uid = $_POST['email'];
 $pwd = $_POST['pwd'];
 $hash = base64_encode(sha1($pwd, true));
 
-$sql = "SELECT * FROM users WHERE email = '$uid' AND pwd = '$hash'";
+$sql = "SELECT * FROM users WHERE email = '$uid' AND password = '$hash'";
 $result = mysqli_query($conn, $sql);
 
 if (!$row = mysqli_fetch_assoc($result)){
