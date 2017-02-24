@@ -1,9 +1,10 @@
 <?php
 
 include '../db/dbh.php';
-include_once '../quexf-1.18.1/functions/functions.database.php';
 
-$uid = $_POST['uid'];
+//$uid = $_POST['uid'];
+$firstname = $_POST['firstName'];
+$lastname = $_POST['lastName'];
 $email = $_POST['email'];
 $pwd = $_POST['pwd'];
 $pwd2 = $_POST['pwd2'];
@@ -16,8 +17,12 @@ if ($pwd !== $pwd2) {
     header("Location: ../index.php?error=notsame");
     exit();
 }
-//check username
-if (empty($uid)){
+//check name
+if (empty($firstname)){
+    header("Location: ../index.php?error=userempty");
+    exit();
+}
+if (empty($lastname)){
     header("Location: ../index.php?error=userempty");
     exit();
 }
@@ -37,21 +42,10 @@ if (empty($pwd)){
 
 else {
 
-    $sql = "SELECT uid FROM users WHERE uid='$uid'";
-    $result = mysqli_query($conn, $sql);
-    $uidcheck = mysqli_num_rows($result);
-
     $sql1 = "SELECT uid FROM users WHERE email='$email'";
     $result1 = mysqli_query($conn, $sql1);
     $emailcheck = mysqli_num_rows($result1);
 
-
-    //check if name is taken
-    if($uidcheck > 0){
-        header("Location: ../index.php?error=username");
-        exit();
-
-    }
 
     //check if email is taken
     if($emailcheck > 0) {
@@ -62,27 +56,15 @@ else {
 
     else{
 
-        //create new operator in quexf database
-        echo "creating the verifiers";
-        $sql = "INSERT INTO verifiers (vid, description, currentfid, http_username) VALUES ( NULL, '$uid', NULL, '$uid')";
-
-        $verifier_set = $db->Execute($sql);
-        echo $verifier_set ? "success<br>" : "failed<br>";
-
-        $vid = mysql_insert_id ();
-        echo "vid ".$vid;
 
         //insert new row in htpasswd for apache access
         $hash = base64_encode(sha1($pwd, true));
-        $contents = $uid . ':{SHA}' . $hash.PHP_EOL;
-        echo exec("pwd");
-        file_put_contents('../passwrd/.htpasswd', $contents, FILE_APPEND);
+
 
         //TODO set as the current user : this should be in the login page
-        //$_SERVER['PHP_AUTH_USER'] = $vid;
 
 
-        $sql = "INSERT INTO users ( uid, email, pwd, admin, vid) VALUES ( '$uid','$email', '$hash', '0', $vid)";
+        $sql = "INSERT INTO users ( firstName, lastName, email, password,) VALUES ( '$firstname','$lastname','$email', '$hash',)";
 
         $result = mysqli_query($conn, $sql);
 
