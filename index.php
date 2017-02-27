@@ -1,25 +1,17 @@
 <?php
-/*
- *---------------------------------------------------------------
- * LANDING PAGE
- *---------------------------------------------------------------
- *
- */
-
 session_start();
 ?>
 <!DOCTYPE html>
 <html>
 
 <head>
-    <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
-    <script type="text/javascript" src="js/jquery-ui.js"></script>
-    <link href="css/bootstrap-combined.min.css" rel="stylesheet" media="screen">
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/style.css" rel="stylesheet" media="screen">
     <link rel="icon" type="image/png" href="img/ucl-icon.gif" />
+    <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.fix.js"></script>
 
-
-    <title>Login</title>
+    <title>Fakebook login</title>
 </head>
 <body>
 
@@ -45,18 +37,14 @@ session_start();
 
 
 
-
             <form action="includes/loginverify.php" method="post">
-                <div class="control-group">
-                    <label class="control-label" for="email">Email address</label>
-                    <div class="controls">
-                        <input id="email" type="text" name="email" placeholder="Email"/>
-                    </div>
+                <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input class="form-control" id="email" type="text" name="email" placeholder="Email"/>
                 </div>
-                <div class="control-group">
-                    <label class="control-label" for="inputPassword">Password</label>
-                    <div class="controls">
-                        <input id="inputPassword" type="password" name="pwd" placeholder="Password"/><br>
+                <div class="form-group">
+                    <label for="inputPassword">Password</label>
+                        <input class="form-control" id="inputPassword" type="password" name="pwd" placeholder="Password"/><br>
                         <?php
                         $url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
                         if (strpos($url,'error=incorrect') !==false){
@@ -70,12 +58,9 @@ session_start();
                         if (strpos($url,'changesuc') !==false){
                             echo "Password change successful, please login again";}
                         ?>
-                    </div>
                 </div>
-                <div class="control-group">
-                    <div class="controls">
-                        <button class="btn" type="submit">Login</button>
-                    </div>
+
+                        <button class="btn btn-default" type="submit">Login</button>
                 </div>
 
             </form>
@@ -124,11 +109,15 @@ session_start();
                                 <?php ;}
                             ?>
                             <form action="includes/sendemail.php" method="post">
-                                Please enter your email address
-                                <input type="text" name="email" placeholder="Email"><br>
-                                <br>
+
+                                <div class="form-group">
+                                    <label> Please enter your email address</label>
+                                <input class="form-control" type="text" name="email" placeholder="Email"><br>
+                                </div>
+
                                 <button type="submit" class="btn btn-primary" name="forgotPass" value="Request Password">Send message</button> &#160&#160&#160&#160
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Back</button>
+
                             </form>
                         </div>
                     </div><!-- /.modal-content -->
@@ -231,20 +220,21 @@ session_start();
                         <div class="modal-body">
                             <form action="includes/signup.php" method="POST">
                                 <!--                                <input type="text" name="uid" placeholder="Username"><br>-->
-                                <input type="text" name="email" placeholder="Email"><br>
-                                <input type="text" name="firstName" placeholder="Firstname"><br>
-                                <input type="text" name="lastName" placeholder="Lastname"><br>
-                                <select id="classList" name="classList">
+                                <div class="form-group">
+                                <input  class="form-control" type="text" name="email" placeholder="Email"><br>
+                                <input class="form-control" type="text" name="firstName" placeholder="Firstname"><br>
+                                <input class="form-control" type="text" name="lastName" placeholder="Lastname"><br>
+                                <select class="form-control" id="classList" name="classList">
                                     <option value="Male">Male</option>
                                     <option value="Female">Female</option>
                                     <option value="Other">Other</option>
                                 </select>
                                 <br>
-                                <input type="password" name="pwd" placeholder="Password"><br>
-                                <input type="password" name="pwd2" placeholder="Confirm Password"><br>
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Back</button>
-                                <button type="submit" class="btn btn-primary">Sign up</button>
-
+                                <input class="form-control" type="password" name="pwd" placeholder="Password"><br>
+                                <input  class="form-control" type="password" name="pwd2" placeholder="Confirm Password"><br>
+                                <button  type="button" class="btn btn-default" data-dismiss="modal">Back</button>
+                                <button  type="submit" class="btn btn-primary">Sign up</button>
+                                </div>
                             </form>
                         </div>
                     </div><!-- /.modal-content -->
@@ -267,48 +257,6 @@ session_start();
     </div>
 </footer>
 
-
-
-
-
-
-
-
-
-
-
-
-<div class="container-fluid">
-    <div class="row-fluid">
-
-        <div class="col-xs-6 span3">
-
-
-
-            <br>
-            <br>
-
-
-
-
-
-        </div>
-    </div>
-</div>
-
-<?php
-//$url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
-//if (strpos($url,'error=empty') !==false){
-//}
-//else if (strpos($url,'error=username') !==false){
-//   echo "Username already exists!";
-//}
-//else if (strpos($url,'error=notsame') !==false){
-//   echo "You have entered different password !";
-//}
-
-
-?>
 
 </body>
 
