@@ -22,9 +22,6 @@ session_start();
         <div class="navbar-header">
             <a class="navbar-brand" href="#">FakeBook</a>
         </div>
-        <ul class="nav navbar-nav navbar-right">
-            <li><a href="login.html">Login</a></li>
-        </ul>
     </div>
 </nav>
 <!-- Jumbotron -->
