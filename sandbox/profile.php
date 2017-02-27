@@ -22,18 +22,28 @@
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="search.html">Search</a></li>
 				<li><a href="chat.html">Chat</a></li>
-				<li id="login-user"><a href="profile.html">User</a></li>
-				<li><a href="../login.html">Login</a></li> 
+				
+				
+				
+				<div class="clearfix">
+                <p style="color:#65bdff; font-size:20px; font-weight:bold; text-align:right; margin-top:5px;
+								   margin-right: 50px;">Welcome, <?php
+                    if (isset($_SESSION['first'])){
+                        echo $_SESSION['first'];
+                        echo $_SESSION['last'];
+                    } else {
+//                        echo "User ". $_SESSION['firstName'];
+                    }?>! </i> </p>
+            </div>
+            <li><a href="../includes/logout.php">Logout</a></li>
 			</ul>
 		</div>
 	</nav>
-	
 	<section id="user">
 		<div class="container">
 			<a href="profile.html"><h1 class="page-header">User</h1></a>
 		</div>
 	</section>
-
 	<section id="profile">
 		<div class="container">
 			<h2 class="text-primary">Profile</h2>
