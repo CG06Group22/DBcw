@@ -27,23 +27,22 @@ session_start();
 				
 				
 				
-				<div class="clearfix">
-                <p style="color:#65bdff; font-size:20px; font-weight:bold; text-align:right; margin-top:5px;
-								   margin-right: 50px;">Welcome, <?php
+				<li><a href="profile.php">
+               Welcome, <?php
                     if (isset($_SESSION['first'])){
                         echo $_SESSION['first'];
                         echo $_SESSION['last'];
                     } else {
 //                        echo "User ". $_SESSION['firstName'];
-                    }?>! </i> </p>
-            </div>
+		    }?>! </a></li>
+           
             <li><a href="../includes/logout.php">Logout</a></li>
 			</ul>
 		</div>
 	</nav>
 	<section id="user">
 		<div class="container">
-			<a href="profile.html"><h1 class="page-header">User</h1></a>
+			<a href="profile.php"><h1 class="page-header">User</h1></a>
 		</div>
 	</section>
 	<section id="profile">
