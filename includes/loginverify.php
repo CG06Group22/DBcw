@@ -14,11 +14,10 @@ if (!$row = mysqli_fetch_assoc($result)){
     echo "Your email or password is incorrect!";
     header("Location: ../index.php?error=incorrect");
 } else{
-//    $_SESSION['vid'] = $row['vid'];
-//    $_SESSION['uid'] = $row['uid'];
-//    $_SESSION['admin'] = $row['admin'];
-//    $_SESSION['uid'] = $row['uid'];
-    header("Location: ../dashboard.php");
+
+    $_SESSION['first'] = $row['firstName'];
+    $_SESSION['last'] = $row['lastName'];
+    header("Location: ../sandbox/profile.php");
 }
 
 ?>
