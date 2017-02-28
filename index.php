@@ -57,7 +57,7 @@ session_start();
                         ?>
                 </div>
 
-                        <button class="btn btn-default" type="submit">Login</button>
+                        <button class="btn btn-default btn-lg" type="submit">Login</button>
                 </div>
 
             </form>
