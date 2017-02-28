@@ -51,19 +51,35 @@ session_start();
 			<table class="table table-condensed table-striped">
 				<tbody>
 					<tr>
-						<th>Firstname</th>
+						<th>Firstname: <?php
+                            if (isset($_SESSION['first'])){
+                                echo $_SESSION['first'];
+                            } ?></th>
+
 						<td></td>
 					</tr>
 					<tr>
-						<th>Lastname: </th>
+						<th>Lastname: <?php
+                            if (isset($_SESSION['first'])){
+                                echo $_SESSION['last'];
+                            } ?></th>
+
 						<td></td>
 					</tr>
 					<tr>
-						<th>Gender: </th>
+						<th>Gender: <?php
+                            if (isset($_SESSION['first'])){
+                                echo $_SESSION['gender'];
+                            } ?></th>
+
 						<td></td>
 					</tr>
 					<tr>
-						<th>Email: </th>
+						<th>Email: <?php
+                            if (isset($_SESSION['first'])){
+                                echo $_SESSION['email'];
+                            } ?></th>
+
 						<td></td>
 					</tr>
 				</tbody>
