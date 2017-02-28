@@ -62,7 +62,7 @@ session_start();
 
             </form>
 
-
+            <br>
             <a data-toggle="modal" data-target="#myModal2">
                 Forgot password?
             </a>
@@ -128,7 +128,7 @@ session_start();
 
 
             <br>
-            <br>
+
 
             <!--            <input type="image" src="img/signup.png" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" width="320" height="191"/>-->
             <p>Not registered yet? Sign up now!</p>
