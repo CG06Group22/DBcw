@@ -17,6 +17,14 @@ if (!$row = mysqli_fetch_assoc($result)){
 
     $_SESSION['first'] = $row['firstName'];
     $_SESSION['last'] = $row['lastName'];
+    $_SESSION['gender'] = $row['gender'];
+    $_SESSION['email'] = $row['email'];
+
+    $result = mysqli_query("SELECT * FROM users");
+
+
+
+
     header("Location: ../sandbox/profile.php");
 }
 
