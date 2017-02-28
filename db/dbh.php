@@ -1,6 +1,6 @@
 <?php
 
-$conn = mysqli_connect("ap-cdbr-azure-east-a.cloudapp.net", "ba5dd3c4a788eb", "5028ccf3", "acsm_9d973147c13749b");
+$conn = mysqli_connect("us-cdbr-azure-southcentral-f.cloudapp.net", "bd72ffa33d6f5c", "20d59076", "gc06group22database");
 
 if (!$conn){
     die("Connection failed: ".mysqli_connect_error());
