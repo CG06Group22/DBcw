@@ -11,7 +11,7 @@ session_start();
     <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.fix.js"></script>
 
-    <title>Fakebook login</title>
+    <title>FakeBook | Login</title>
 </head>
 <body>
 
@@ -237,13 +237,8 @@ session_start();
                     </div><!-- /.modal-content -->
                 </div><!-- /.modal -->
             </div>
-
-
-
         </div>
     </div>
-
-    <div class="container">
 </section>
 <!-- Footer -->
 <footer>
@@ -253,8 +248,6 @@ session_start();
         </p>
     </div>
 </footer>
-
-
+<script type="text/javascript" src="js/main.js"></script>
 </body>
-
 </html>
