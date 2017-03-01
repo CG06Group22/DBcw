@@ -61,7 +61,6 @@ include '../db/dbh.php';
 			</form>
 				<?php 
 				  if(isset($_POST['search'])){ 
-
 					  $target=$_POST['search']; 
 					  //-query  the database table 
 					  $sql="SELECT * FROM users WHERE firstName LIKE '%$target%' OR lastName LIKE '%$target%'"; 
@@ -76,8 +75,9 @@ include '../db/dbh.php';
 						  echo "<li>" .$FirstName. " " .$LastName. "</li>\n"; 
 						  echo "</ul>"; 
 					  }
-
-				  } 
+				  } else {
+				  	echo "Please provide a search text";
+				  }
 				?> 
 			<hr>
 		</div>
