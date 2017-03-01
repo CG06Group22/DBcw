@@ -70,7 +70,7 @@ session_start();
 				if(!$count>0){
 					echo "no result for $target";
 				}else{
-					while($row=mysql_fetch_array){ 
+					while($row=mysql_fetch_array($result)){ 
 						$firstName = $row['firstName']; 
 						$lastName = $row['lastName'];
 						echo $firstName ." ".$lastName;
