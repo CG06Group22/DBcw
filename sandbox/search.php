@@ -4,7 +4,7 @@ session_start();
 include '../db/dbh.php';
 
 //搜索框输入的文字
-$searchs = $_POST['search'];
+$search = $_POST['search'];
 //勾选的 checkbox
 $checkbox_select = $_POST['checkbox'];
 
