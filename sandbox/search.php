@@ -59,9 +59,9 @@ session_start();
 				<button class="btn btn-primary" type="submit" name="submit">Search</button>
 			</form>
 				<?php 
-					  //include '../db/dbh.php';
+					  include '../db/dbh.php';
 			
-					  if(isset($_POST['submit'])){ 
+					  if(isset($_POST[])){ 
 						  if(isset($_GET['go'])){ 
 							  $target=$_POST['search']; 
 							  //-query  the database table 
@@ -76,11 +76,8 @@ session_start();
 								  echo "<ul>\n"; 
 								  echo "<li>" $FirstName " " $LastName "</li>\n"; 
 								  echo "</ul>"; 
-							  } 
-						  } 
-						  else{ 
-						  	echo  "<p>Please enter a search query</p>"; 
-						  } 
+							  }
+						  }
 					  } 
 				?> 
 			<hr>
