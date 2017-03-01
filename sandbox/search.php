@@ -61,9 +61,7 @@ session_start();
 
 		<section id="searchlist">
 			<div class="container">
-				<?php 
-				echo $result;
-				?>
+				
 			<!-- <div id="friends-results">
 				<h3>Friends Results</h3>
 				<div class="list-group">
