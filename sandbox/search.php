@@ -48,37 +48,15 @@ session_start();
 
 	<section>
 		<div class="container">
-			<form method="post" action="search.php" class="form-inline">
+			<form class="form-inline">
 				<div class="form-group">
 					<input type="text" name="search" class="form-control" placeholder="Search for friends/blogs">
 				</div>			
 				<div class="form-group">
-					<input type="radio" name="checkbox[]" value="friends"> Friends 
-					<input type="radio" name="checkbox[]" value="articles"> Articles 
+					<input type="radio"> Friends 
+					<input type="radio"> Articles 
 				</div>
 				<button class="btn btn-primary" type="submit">Search</button>
-				<?php
-						include '../db/dbh.php';
-						if(isset($_POST['submit'])){
-						//搜索框输入的文字
-						$search = $_POST['search'];
-						//勾选的 checkbox
-						$checkbox_select[0] = $_POST['checkbox'];
-
-						if ($checkbox_select[0] == "friends"){
-						//当 checkbox 勾选的是 friends 时
-							$sql="SELECT * FROM blog
-							WHERE title like ‘%$search%’
-							";
-							$result = mysqli_query($conn, $sql);
-						} else ($checkbox_select =="articles"){
-						//当 checkbox 勾选的是  articles 时
-							$sql="SELECT * FROM users WHERE firstName OR lastName LIKE '%$search%'
-							";
-							$result = mysqli_query($conn, $sql);
-						}
-					}
-				?>
 			</form>
 			<hr>
 		</div>
