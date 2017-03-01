@@ -70,6 +70,7 @@ include '../db/dbh.php';
 					  //-create  while loop and loop through result set 
 					  if(!$count>0){
 						  echo "no result";
+						  echo $target;
 					  }else{
 						  while($row=mysql_fetch_array($result)){ 
 							  $firstName = $row['firstName']; 
