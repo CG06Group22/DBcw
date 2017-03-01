@@ -1,4 +1,26 @@
+<?php
+session_start();
 
+include '../db/dbh.php';
+
+//搜索框输入的文字
+$searchs = $_POST['search'];
+//勾选的 checkbox
+$checkbox_select = $_POST['checkbox'];
+
+if ($checkbox_select == "friends"){
+//当 checkbox 勾选的是 friends 时
+	$sql="SELECT * FROM blog
+	WHERE title like ‘%$search%’
+	";
+	$result = mysqli_query($conn, $sql);
+} else ($checkbox_select =="articles"){
+//当 checkbox 勾选的是  articles 时
+	$sql="SELECT * FROM users WHERE firstName OR lastName LIKE '%$search%'
+	";
+	$result = mysqli_query($conn, $sql);
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,37 +44,47 @@
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="search.html">Search</a></li>
 				<li><a href="chat.html">Chat</a></li>
-				<li id="login-user"><a href="profile.php">User</a></li>
-				<li><a href="../index.php">Login</a></li> 
-			</ul>
-		</div>
-	</nav>
-	
-	<section>
-		<div class="container">
-			<h1 class="page-header">Search</h1>
-		</div>
-	</section>
+				<li><a href="profile.php">
+					Welcome, <?php
+					if (isset($_SESSION['first'])){
+						echo $_SESSION['first'];
+						echo “ ”；
+						echo $_SESSION['last'];
+					};
+					?>! </a></li>
+					<li><a href="../includes/logout.php">Logout</a></li> 
+				</ul>
+			</div>
+		</nav>
 
-	<section>
-		<div class="container">
-			<form class="form-inline">
-				<div class="form-group">
-					<input type="text" class="form-control" placeholder="Search for friends/blogs">
-				</div>			
-				<div class="form-group">
-					<input type="radio" name="search" value="friends"> Friends 
-					<input type="radio" name="search" value="articles"> Articles 
-				</div>
-				<button class="btn btn-primary" type="submit">Search</button>
-			</form>
-			<hr>
-		</div>
-	</section>	
+		<section>
+			<div class="container">
+				<h1 class="page-header">Search</h1>
+			</div>
+		</section>
 
-	<section id="searchlist">
-		<div class="container">
-			<div id="friends-results">
+		<section>
+			<div class="container">
+				<form method="post" action="search.php" class="form-inline">
+					<div class="form-group">
+						<input type="text" name="search" class="form-control" placeholder="Search for friends/articles">
+					</div>			
+					<div class="form-group">
+						<input type="radio" name="checkbox" value="friends"> Friends 
+						<input type="radio" name="checkbox" value="articles"> Articles 
+					</div>
+					<button class="btn btn-primary" type="submit">Search</button>
+				</form>
+				<hr>
+			</div>
+		</section>	
+
+		<section id="searchlist">
+			<div class="container">
+				<?php 
+				echo $result;
+				?>
+			<!-- <div id="friends-results">
 				<h3>Friends Results</h3>
 				<div class="list-group">
 					<li class="list-group-item">
@@ -70,7 +102,7 @@
 						<a href="#">Item 1</a> 
 					</li>
 				</div>
-			</div>
+			</div> -->
 		</div>
 	</section>
 	
