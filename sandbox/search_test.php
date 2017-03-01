@@ -72,7 +72,7 @@ session_start();
 					  //-query  the database table 
 				$sql="SELECT * FROM users WHERE firstName OR lastName LIKE '%$target%'"; 
 					  //-run  the query against the mysql query function 
-				$result = mysql_query($sql) or die("can not search!"); 
+				$result = mysql_query($sql, $conn) or die(mysql_error()); 
 				$count = mysql_num_rows($result);
 					  //-create  while loop and loop through result set 
 				if(!$count>0){
