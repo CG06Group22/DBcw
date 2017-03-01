@@ -73,7 +73,7 @@ session_start();
 			if(isset($_POST['submit'])){
 				$target=$_POST['search']; 
 				//-run  the query against the mysql query function 
-				$result = mysql_query("SELECT * FROM users WHERE firstName or lastName LIKE '%$target%'") or die("cannot search"); 
+				$result = mysql_query("SELECT * FROM users WHERE firstName OR lastName LIKE '%$target%'") or die("cannot search"); 
 				$count = mysql_num_rows($result);
 				echo $count;
 				//-create  while loop and loop through result set 
