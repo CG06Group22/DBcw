@@ -53,8 +53,8 @@ session_start();
 					<input type="text" name="search" class="form-control" placeholder="Search for friends/blogs">
 				</div>			
 				<div class="form-group">
-					<input type="radio" name="checkbox" value="friends"> Friends 
-					<input type="radio" name="checkbox" value="articles"> Articles 
+					<input type="radio" name="checkbox[]" value="friends"> Friends 
+					<input type="radio" name="checkbox[]" value="articles"> Articles 
 				</div>
 				<button class="btn btn-primary" type="submit">Search</button>
 				<?php
@@ -63,9 +63,9 @@ session_start();
 						//搜索框输入的文字
 						$search = $_POST['search'];
 						//勾选的 checkbox
-						$checkbox_select = $_POST['checkbox'];
+						$checkbox_select[0] = $_POST['checkbox'];
 
-						if ($checkbox_select == "friends"){
+						if ($checkbox_select[0] == "friends"){
 						//当 checkbox 勾选的是 friends 时
 							$sql="SELECT * FROM blog
 							WHERE title like ‘%$search%’
@@ -87,9 +87,6 @@ session_start();
 	<section id="searchlist">
 		<div class="container">
 			<div id="friends-results">
-				<?php
-					echo $result;
-				?>
 				<h3>Friends Results</h3>
 				<div class="list-group">
 					<li class="list-group-item">
