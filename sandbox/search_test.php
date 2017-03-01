@@ -57,39 +57,30 @@ session_start();
 					<input type="radio" name="checkbox" value="friends"> Friends 
 					<input type="radio" name="checkbox" value="articles"> Articles 
 				</div>
-				<button class="btn btn-primary" type="submit" name="submit">Search</button>
-				<?php
-				if(! $conn ){
-					echo"Could not connect";
-				}
-				mysql_select_db('gc06group22database', $conn);
-				if(isset($_POST['submit'])){
-					$target=$_POST['search']; 
-					$sql = "SELECT * FROM users WHERE firstName LIKE '%$target%' OR lastName LIKE '%$target%'";
-					//-run  the query against the mysql query function 
-					$result = mysql_query($sql);
-					if(! $result ) {
-						echo "Could not get data";
-					}
-					$count = mysql_num_rows($result);
-					//-create  while loop and loop through result set 
-					if(!$count>0){
-						echo "no result for $target";
-					}else{
-						while($row=mysql_fetch_array($result)){ 
-							$firstName = $row['firstName']; 
-							$lastName = $row['lastName'];
-							echo $firstName ." ".$lastName;
-							echo "<hr>";
-
-						}
-					}
-				} else {
-					echo "Please provide a search text";
-				}
-				?>
+				<button class="btn btn-primary" type="submit" name="submit">Search</button>				
 			</form>
 			<hr>
+			<?php
+			mysql_select_db('gc06group22database', $conn);
+			if(isset($_POST['submit'])){
+				$target=$_POST['search']; 
+				$sql = "SELECT * FROM users WHERE firstName LIKE '%$target%' OR lastName LIKE '%$target%'";
+				$result = mysql_query($sql);
+				$count = mysql_num_rows($result);
+				if(!$count>0){
+					echo "no result for $target";
+				}else{
+					while($row=mysql_fetch_array($result)){ 
+						$firstName = $row['firstName']; 
+						$lastName = $row['lastName'];
+						echo $firstName ." ".$lastName;
+						echo "<hr>";
+					}
+				}
+			} else {
+				echo "Please provide a search text";
+			}
+			?>
 		</div>
 	</section>	
 
