@@ -67,7 +67,7 @@ session_start();
 		<div class="container">
 			<?php
 			if(! $conn ){
-      				die('Could not connect: ' . mysql_error());
+      				echo"Could not connect";
     			}
 			mysql_select_db('gc06group22database', $conn);
 			if(isset($_POST['submit'])){
@@ -76,7 +76,7 @@ session_start();
 				//-run  the query against the mysql query function 
 				$result = mysql_query($sql);
 				if(! $result ) {
-      					die('Could not get data: ' . mysql_error());
+      					echo "Could not get data";
     				}
 				$count = mysql_num_rows($result);
 				echo $count;
