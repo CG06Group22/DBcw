@@ -67,7 +67,7 @@ session_start();
 		<div class="container">
 			<?php
 			mysql_select_db("gc06group22database", $conn);		
-			if(isset($_POST['submit'])){
+			if(isset($_POST['search'])){
 // 				$target=$_POST['search']; 
 				//-run  the query against the mysql query function 
 				$result = mysql_query("SELECT * FROM users");
