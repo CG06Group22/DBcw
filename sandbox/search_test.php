@@ -64,15 +64,31 @@ session_start();
 
 	<section id="searchlist">
 		<div class="container">
-			<?php
-			if (isset($_POST['submit'])){
-			
-			echo $_POST['search'];
-			
-			echo $_POST['checkbox'];
-			
-			}	
-			?>
+			<?php 
+			include '../db/dbh.php';
+			if(isset($_POST['submit'])){
+				$target=$_POST['search']; 
+					  //-query  the database table 
+				$sql="SELECT * FROM users WHERE firstName OR lastName LIKE '%$target%'"; 
+					  //-run  the query against the mysql query function 
+				$result = mysql_query($conn,$sql) or die("can not search!"); 
+				$count = mysql_num_rows($result);
+					  //-create  while loop and loop through result set 
+				if(!$count>0){
+					echo "no result for $target";
+				}else{
+					while($row=mysql_fetch_array($result)){ 
+						$firstName = $row['firstName']; 
+						$lastName = $row['lastName'];  
+						echo $firstName;
+					}
+					echo $count;
+				}
+				
+			} else {
+				echo "Please provide a search text";
+			}
+			?> 
 			<!-- <div id="friends-results">
 				<h3>Friends Results</h3>
 				<div class="list-group">
