@@ -79,7 +79,6 @@ session_start();
       					echo "Could not get data";
     				}
 				$count = mysql_num_rows($result);
-				echo $count;
 				//-create  while loop and loop through result set 
 				if(!$count>0){
 					echo "no result for $target";
@@ -90,7 +89,6 @@ session_start();
 						echo $firstName ." ".$lastName;
 						echo "<hr>";
 					}
-					echo $count;
 				}
 			} else {
 				echo "Please provide a search text";
