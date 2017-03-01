@@ -1,10 +1,5 @@
 <?php
 $conn = mysqli_connect("us-cdbr-azure-southcentral-f.cloudapp.net", "bd72ffa33d6f5c", "20d59076");
-if (!$conn)
-  {
-  die('Could not connect: ' . mysql_error());
-  }
-
 session_start();
 ?>
 <!DOCTYPE html>
@@ -70,7 +65,10 @@ session_start();
 
 	<section id="searchlist">
 		<div class="container">
-			<?php 
+			<?php
+			if (!$conn){
+  				echo "Cannot connect database!";
+  			}
 			mysql_select_db("gc06group22database", $conn);
 			if(isset($_POST['submit'])){
 				$target=$_POST['search']; 
