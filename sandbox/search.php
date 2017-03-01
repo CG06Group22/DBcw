@@ -1,5 +1,6 @@
 <?php
 session_start();
+include '../db/dbh.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -59,26 +60,24 @@ session_start();
 				<button class="btn btn-primary" type="submit" name="submit">Search</button>
 			</form>
 				<?php 
-					  include '../db/dbh.php';
-			
-					  if(isset($_POST['search'])){ 
-						  
-							  $target=$_POST['search']; 
-							  //-query  the database table 
-							  $sql="SELECT * FROM users WHERE firstName OR lastName LIKE '%$target%'"; 
-							  //-run  the query against the mysql query function 
-							  $result = mysqli_query($conn, $sql); 
-							  //-create  while loop and loop through result set 
-							  while($row=mysql_fetch_array($result)){ 
-								  $FirstName = $row['firstName']; 
-								  $LastName = $row['lastName'];  
-								  //-display the result of the array 
-								  echo "<ul>\n"; 
-								  echo "<li>" $FirstName " " $LastName "</li>\n"; 
-								  echo "</ul>"; 
-							  }
-						  
-					  } 
+				  if(isset($_POST['search'])){ 
+
+					  $target=$_POST['search']; 
+					  //-query  the database table 
+					  $sql="SELECT * FROM users WHERE firstName LIKE '%$target%' OR lastName LIKE '%$target%'"; 
+					  //-run  the query against the mysql query function 
+					  $result = mysqli_query($conn, $sql); 
+					  //-create  while loop and loop through result set 
+					  while($row=mysql_fetch_array($result)){ 
+						  $FirstName = $row['firstName']; 
+						  $LastName = $row['lastName'];  
+						  //-display the result of the array 
+						  echo "<ul>\n"; 
+						  echo "<li>" .$FirstName. " " .$LastName. "</li>\n"; 
+						  echo "</ul>"; 
+					  }
+
+				  } 
 				?> 
 			<hr>
 		</div>
