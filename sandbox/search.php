@@ -61,8 +61,8 @@ session_start();
 				<?php 
 					  include '../db/dbh.php';
 			
-					  if(isset($_POST[])){ 
-						  if(isset($_GET['go'])){ 
+					  if(isset($_POST['search'])){ 
+						  
 							  $target=$_POST['search']; 
 							  //-query  the database table 
 							  $sql="SELECT * FROM users WHERE firstName OR lastName LIKE '%$target%'"; 
@@ -77,7 +77,7 @@ session_start();
 								  echo "<li>" $FirstName " " $LastName "</li>\n"; 
 								  echo "</ul>"; 
 							  }
-						  }
+						  
 					  } 
 				?> 
 			<hr>
