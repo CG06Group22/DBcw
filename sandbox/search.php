@@ -67,14 +67,18 @@ include '../db/dbh.php';
 					  //-run  the query against the mysql query function 
 					  $result = mysqli_query($conn, $sql); 
 					  //-create  while loop and loop through result set 
-					  while($row=mysql_fetch_array($result)){ 
-						  $FirstName = $row['firstName']; 
-						  $LastName = $row['lastName'];  
-						  //-display the result of the array 
-						  echo "<ul>\n"; 
-						  echo "<li>" .$FirstName. " " .$LastName. "</li>\n"; 
-						  echo "</ul>"; 
-					  }
+// 					  while($row=mysql_fetch_array($result)){ 
+// 						  $FirstName = $row['firstName']; 
+// 						  $LastName = $row['lastName'];  
+// 						  //-display the result of the array 
+// 						  echo "<ul>\n"; 
+// 						  echo "<li>" .$FirstName. " " .$LastName. "</li>\n"; 
+// 						  echo "</ul>"; 
+// 					  }
+					  
+					  echo "<pre>";
+					  print_r($result);
+					  echo "</pre>";
 				  } else {
 				  	echo "Please provide a search text";
 				  }
