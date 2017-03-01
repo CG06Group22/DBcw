@@ -70,15 +70,12 @@ session_start();
 				if(!$count>0){
 					echo "no result for $target";
 				}else{
-					for($i=0;$row=mysql_fetch_array($result);i++){ 
+					while($row=mysql_fetch_array){ 
 						$firstName = $row['firstName']; 
 						$lastName = $row['lastName'];
-						$name = $firstName ." ".$lastName;
-						$array= array(i => $name);
+						echo $firstName ." ".$lastName;
+						echo "<hr>";
 					}
-					echo"<pre>";
-					print_r($array);
-					echo"</pre>";
 				}
 			} else {
 				echo "Please provide a search text";
