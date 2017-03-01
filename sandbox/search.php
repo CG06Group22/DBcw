@@ -71,10 +71,11 @@ include '../db/dbh.php';
 						  $firstName = $row['firstName']; 
 						  $lastName = $row['lastName'];  
 						  //-display the result of the array 
- 						  $output .= "<div>" .$firstName ." " .$lastName ."</div>";
+ 						  //$output .= "<div>" .$firstName ." " .$lastName ."</div>";
+						  echo $firstName;
 					  }
 					  
-					  print($output);
+					  //print($output);
 					  
 // 					  echo "<pre>";
 // 					  print_r($result);
