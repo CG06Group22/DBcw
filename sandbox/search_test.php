@@ -1,5 +1,10 @@
 <?php
 $conn = mysqli_connect("us-cdbr-azure-southcentral-f.cloudapp.net", "bd72ffa33d6f5c", "20d59076");
+if (!$conn)
+  {
+  die('Could not connect: ' . mysql_error());
+  }
+
 session_start();
 ?>
 <!DOCTYPE html>
@@ -68,21 +73,23 @@ session_start();
 			<?php 
 			mysql_select_db("gc06group22database", $conn);
 			if(isset($_POST['submit'])){
-				
+				$target=$_POST['search']; 
 				//-run  the query against the mysql query function 
-				$result = mysql_query("SELECT * FROM users WHERE firstName LIKE '%e%'", $conn) or die("cannot search"); 
+				$result = mysql_query("SELECT * FROM users WHERE firstName or lastName LIKE '%$target%'") or die("cannot search"); 
 				$count = mysql_num_rows($result);
 				echo $count;
 				//-create  while loop and loop through result set 
 				if(!$count>0){
-					echo "no result";
+					echo "no result for $target";
 				}else{
-					$row=mysql_fetch_array($result);
-					echo "<pre>";
-					print_r($row);
-					echo "</pre>";
+					while($row=mysql_fetch_array($result)){ 
+						$firstName = $row['firstName']; 
+						$lastName = $row['lastName'];  
+						echo $firstName;
+						echo "<hr>";
+					}
+					echo $count;
 				}
-				
 			} else {
 				echo "Please provide a search text";
 			}
