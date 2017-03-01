@@ -1,5 +1,4 @@
 <?php
-header("Content-type: text/html; charset=utf-8"); 
 $conn = mysqli_connect("us-cdbr-azure-southcentral-f.cloudapp.net", "bd72ffa33d6f5c", "20d59076");
 session_start();
 ?>
@@ -67,32 +66,33 @@ session_start();
 	<section id="searchlist">
 		<div class="container">
 			<?php
-			if (!$conn){
-  				echo "Cannot connect database!";
-  			}
-			mysql_select_db("gc06group22database", $conn);
-			mysql_query("SET NAMES utf8");
+			mysql_select_db("gc06group22database", $conn);		
 			if(isset($_POST['submit'])){
-				$target=$_POST['search']; 
+// 				$target=$_POST['search']; 
 				//-run  the query against the mysql query function 
-				$result = mysql_query("SELECT * FROM users WHERE firstName OR lastName LIKE '%$target%'") or die("cannot search"); 
-				$count = mysql_num_rows($result);
-				echo $count;
-				//-create  while loop and loop through result set 
-				if(!$count>0){
-					echo "no result for $target";
-				}else{
-					while($row=mysql_fetch_array($result)){ 
-						$firstName = $row['firstName']; 
-						$lastName = $row['lastName'];  
-						echo $firstName;
-						echo "<hr>";
-					}
-					echo $count;
-				}
-			} else {
-				echo "Please provide a search text";
-			}
+				$result = mysql_query("SELECT * FROM users");
+				while($row = mysql_fetch_array($result)){
+  				echo $row['firstName'] . " " . $row['lastName'];
+  				echo "<br />";
+  				}
+// 				$result = mysql_query("SELECT * FROM users WHERE firstName OR lastName LIKE '%$target%'") or die("cannot search"); 
+// 				$count = mysql_num_rows($result);
+// 				echo $count;
+// 				//-create  while loop and loop through result set 
+// 				if(!$count>0){
+// 					echo "no result for $target";
+// 				}else{
+// 					while($row=mysql_fetch_array($result)){ 
+// 						$firstName = $row['firstName']; 
+// 						$lastName = $row['lastName'];  
+// 						echo $firstName;
+// 						echo "<hr>";
+// 					}
+// 					echo $count;
+// 				}
+// 			} else {
+// 				echo "Please provide a search text";
+// 			}
 			?> 
 			<!-- <div id="friends-results">
 				<h3>Friends Results</h3>
