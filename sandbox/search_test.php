@@ -66,14 +66,18 @@ session_start();
 	<section id="searchlist">
 		<div class="container">
 			<?php
-			if(!$conn){
-			echo "Cannot connect to database!";
-			}
-			mysql_select_db("gc06group22database", $conn);		
+			if(! $conn ){
+      				die('Could not connect: ' . mysql_error());
+    			}
+			mysql_select_db('gc06group22database', $conn);
 			if(isset($_POST['submit'])){
 				$target=$_POST['search']; 
+				$sql = "SELECT * FROM users WHERE firstName OR lastName LIKE '%$target%'";
 				//-run  the query against the mysql query function 
-				$result = $mysql_query("SELECT * FROM users WHERE firstName OR lastName LIKE '%$target%'") or die("cannot search"); 
+				$result = mysql_query($sql);
+				if(! $result ) {
+      					die('Could not get data: ' . mysql_error());
+    				}
 				$count = mysql_num_rows($result);
 				echo $count;
 				//-create  while loop and loop through result set 
