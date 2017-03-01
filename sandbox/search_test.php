@@ -1,5 +1,5 @@
 <?php
-$conn = mysqli_connect("us-cdbr-azure-southcentral-f.cloudapp.net", "bd72ffa33d6f5c", "20d59076");
+$conn = mysql_connect("us-cdbr-azure-southcentral-f.cloudapp.net", "bd72ffa33d6f5c", "20d59076");
 session_start();
 ?>
 <!DOCTYPE html>
@@ -66,11 +66,14 @@ session_start();
 	<section id="searchlist">
 		<div class="container">
 			<?php
+			if(!$conn){
+			echo "Cannot connect to database!";
+			}
 			mysql_select_db("gc06group22database", $conn);		
 			if(isset($_POST['submit'])){
 				$target=$_POST['search']; 
 				//-run  the query against the mysql query function 
-				$result = mysql_query("SELECT * FROM users WHERE firstName OR lastName LIKE '%$target%'") or die("cannot search"); 
+				$result = $mysql_query("SELECT * FROM users WHERE firstName OR lastName LIKE '%$target%'") or die("cannot search"); 
 				$count = mysql_num_rows($result);
 				echo $count;
 				//-create  while loop and loop through result set 
