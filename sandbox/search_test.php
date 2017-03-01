@@ -58,63 +58,62 @@ session_start();
 					<input type="radio" name="checkbox" value="articles"> Articles 
 				</div>
 				<button class="btn btn-primary" type="submit" name="submit">Search</button>
+				<?php
+				if(! $conn ){
+					echo"Could not connect";
+				}
+				mysql_select_db('gc06group22database', $conn);
+				if(isset($_POST['submit'])){
+					$target=$_POST['search']; 
+					$sql = "SELECT * FROM users WHERE firstName LIKE '%$target%' OR lastName LIKE '%$target%'";
+					//-run  the query against the mysql query function 
+					$result = mysql_query($sql);
+					if(! $result ) {
+						echo "Could not get data";
+					}
+					$count = mysql_num_rows($result);
+					//-create  while loop and loop through result set 
+					if(!$count>0){
+						echo "no result for $target";
+					}else{
+						while($row=mysql_fetch_array($result)){ 
+							$firstName = $row['firstName']; 
+							$lastName = $row['lastName'];
+							echo $firstName ." ".$lastName;
+							echo "<hr>";
+
+						}
+					}
+				} else {
+					echo "Please provide a search text";
+				}
+				?>
 			</form>
 			<hr>
 		</div>
 	</section>	
 
-	<section id="searchlist">
+<!-- 	<section id="searchlist">
 		<div class="container"> 
 			<div id="friends-results">
 				<h3>Friends Results</h3>
 				<div class="list-group">
-					<?php
-						if(! $conn ){
-							echo"Could not connect";
-						}
-						mysql_select_db('gc06group22database', $conn);
-						if(isset($_POST['submit'])){
-							$target=$_POST['search']; 
-							$sql = "SELECT * FROM users WHERE firstName LIKE '%$target%' OR lastName LIKE '%$target%'";
-							//-run  the query against the mysql query function 
-							$result = mysql_query($sql);
-							if(! $result ) {
-								echo "Could not get data";
-							}
-							$count = mysql_num_rows($result);
-							//-create  while loop and loop through result set 
-							if(!$count>0){
-								echo "no result for $target";
-							}else{
-								while($row=mysql_fetch_array($result)){ 
-									$firstName = $row['firstName']; 
-									$lastName = $row['lastName'];
-									echo "<li class="list-group-item">";
-									echo"<a href="#">";
-									echo $firstName ." ".$lastName;
-									echo"</a>";
-									echo "</li>"
-									echo"<button class="btn btn-primary" type="submit">Apply</button>";
-
-								}
-							}
-						} else {
-							echo "Please provide a search text";
-						}
-					?>
+					<li class="list-group-item">
+						<a href="#">Item 1</a> 
+					</li>
 				</div>
 			</div>
 			<hr>
-			<!-- <div id="articles-results">
+			<div id="articles-results">
 				<h3>Articles Results</h3>
 				<div class="list-group">
 					<li class="list-group-item">
 						<a href="#">Item 1</a> 
 					</li>
 				</div>
-			</div> -->
+			</div>
 		</div>
-	</section>
+	</section> -->
 	
 	<footer>
 		<div class="container-fluid">
