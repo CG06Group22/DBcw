@@ -1,4 +1,6 @@
-
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +24,17 @@
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="search.html">Search</a></li>
 				<li><a href="chat.html">Chat</a></li>
-				<li id="login-user"><a href="profile.php">User</a></li>
+				<li id="login-user">
+					<a href="profile.php">
+					<?php
+						if(isset($_SESSION['first'])){
+							echo $_SESSION['first'];
+							echo " ";
+							echo $_SESSION['last'];
+						}
+					?>
+					</a>
+				</li>
 				<li><a href="../index.php">Login</a></li> 
 			</ul>
 		</div>
