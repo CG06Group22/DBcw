@@ -65,12 +65,11 @@ include '../db/dbh.php';
 					  //-query  the database table 
 					  $sql="SELECT * FROM users WHERE firstName LIKE '%$target%' OR lastName LIKE '%$target%'"; 
 					  //-run  the query against the mysql query function 
-					  $result = mysql_query($sql); 
+					  $result = mysql_query($sql, $conn) or die("can not search!"); 
 					  $count = mysql_num_rows($result);
 					  //-create  while loop and loop through result set 
 					  if(!$count>0){
-						  echo "no result";
-						  echo $target;
+						  echo "no result for $target";
 					  }else{
 						  while($row=mysql_fetch_array($result)){ 
 							  $firstName = $row['firstName']; 
