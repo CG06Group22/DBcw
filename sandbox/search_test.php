@@ -66,6 +66,7 @@ session_start();
 		<div class="container">
 			<?php 
 			include '../db/dbh.php';
+			mysql_select_db("gc06group22database", $conn);
 			if(isset($_POST['submit'])){
 				$target=$_POST['search']; 
 					  //-query  the database table 
