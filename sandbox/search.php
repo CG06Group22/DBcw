@@ -59,7 +59,7 @@ session_start();
 				<button class="btn btn-primary" type="submit" name="submit">Search</button>
 			</form>
 				<?php 
-					  include '../db/dbh.php';
+					  //include '../db/dbh.php';
 			
 					  if(isset($_POST['submit'])){ 
 						  if(isset($_GET['go'])){ 
