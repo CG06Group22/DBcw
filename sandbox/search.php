@@ -1,6 +1,5 @@
 <?php
 session_start();
-include '../db/dbh.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -60,7 +59,8 @@ include '../db/dbh.php';
 				<button class="btn btn-primary" type="submit" name="submit">Search</button>
 			</form>
 				<?php 
-				  if(isset($_POST['search'])){ 
+				  include '../db/dbh.php';
+				  if(isset($_POST['search'])){
 					  $target=$_POST['search']; 
 					  //-query  the database table 
 					  $sql="SELECT * FROM `users` WHERE firstName = '%$target%'"; 
@@ -74,19 +74,10 @@ include '../db/dbh.php';
 						  while($row=mysql_fetch_array($result)){ 
 							  $firstName = $row['firstName']; 
 							  $lastName = $row['lastName'];  
-							  //-display the result of the array 
-							  //$output .= "<div>" .$firstName ." " .$lastName ."</div>";
 							  echo $firstName;
 						  }
 					  }
 					  echo $count;
-					  
-					  
-					  //print($output);
-					  
-// 					  echo "<pre>";
-// 					  print_r($result);
-// 					  echo "</pre>";
 				  } else {
 				  	echo "Please provide a search text";
 				  }
