@@ -65,14 +65,14 @@ session_start();
 	<section id="searchlist">
 		<div class="container">
 			<?php 
-			include '../db/dbh.php';
+			$conn = mysqli_connect("us-cdbr-azure-southcentral-f.cloudapp.net", "bd72ffa33d6f5c", "20d59076", "gc06group22database");
 			mysql_select_db("gc06group22database", $conn);
 			if(isset($_POST['submit'])){
 				$target=$_POST['search']; 
 					  //-query  the database table 
 				$sql="SELECT * FROM users WHERE firstName OR lastName LIKE '%$target%'"; 
 					  //-run  the query against the mysql query function 
-				$result = mysql_query($sql, $conn) or die(mysql_error()); 
+				$result = mysql_query($sql, $conn) or die("cannot search"); 
 				$count = mysql_num_rows($result);
 					  //-create  while loop and loop through result set 
 				if(!$count>0){
