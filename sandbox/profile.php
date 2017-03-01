@@ -22,19 +22,19 @@ session_start();
 				<a class="navbar-brand" href="#">FakeBook</a>
 			</div>			
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="search.php">Search</a></li>
+				<li><a href="search.html">Search</a></li>
 				<li><a href="chat.html">Chat</a></li>
 				
 				
 				
 				<li><a href="profile.php">
                Welcome, <?php
-                    if (isset($_SESSION['first'])){
-                        echo $_SESSION['first'];
-                        echo $_SESSION['last'];
-                    } else {
-//                        echo "User ". $_SESSION['firstName'];
-		    }?>! </a></li>
+                    	if (isset($_SESSION['first'])){
+                        	echo $_SESSION['first'];
+				echo " ";    
+                        	echo $_SESSION['last'];
+                   	 };
+			?>! </a></li>
            
             <li><a href="../includes/logout.php">Logout</a></li>
 			</ul>
@@ -42,7 +42,15 @@ session_start();
 	</nav>
 	<section id="user">
 		<div class="container">
-			<a href="profile.php"><h1 class="page-header">User</h1></a>
+			<a href="profile.php"><h1 class="page-header">
+			<?php
+                    	if (isset($_SESSION['first'])){
+                        	echo $_SESSION['first'];
+				echo " ";    
+                        	echo $_SESSION['last'];
+                   	 };
+			?>
+			</h1></a>
 		</div>
 	</section>
 	<section id="profile">
