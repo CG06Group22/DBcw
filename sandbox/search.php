@@ -68,17 +68,13 @@ include '../db/dbh.php';
 					  $result = mysqli_query($conn, $sql); 
 					  //-create  while loop and loop through result set 
 					  while($row=mysql_fetch_array($result)){ 
-						  $FirstName = $row['firstName']; 
-						  $LastName = $row['lastName'];  
+						  $firstName = $row['firstName']; 
+						  $lastName = $row['lastName'];  
 						  //-display the result of the array 
- 						  echo "<pre>";
-						  print_r($FirstName);
-						  echo "</pre>";
-						  echo " ";
-						  echo "<pre>";
-						  print_r($LastName);
-						  echo "</pre>";
+ 						  $output .= "<div>" .$firstName ." " .$lastName ."</div>";
 					  }
+					  
+					  print($output);
 					  
 // 					  echo "<pre>";
 // 					  print_r($result);
