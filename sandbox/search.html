@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>FakeBook | Profile</title>
+	<title>FakeBook | Search</title>
 
 	<!-- Bootstrap core CSS -->
 	<link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -23,66 +23,57 @@
 				<li><a href="search.html">Search</a></li>
 				<li><a href="chat.html">Chat</a></li>
 				<li id="login-user"><a href="profile.php">User</a></li>
-				<li><a href="../login.html">Login</a></li> 
+				<li><a href="../index.php">Login</a></li> 
 			</ul>
 		</div>
 	</nav>
 	
-	<section id="user">
+	<section>
 		<div class="container">
-			<a href="others-profile.html"><h1 class="page-header">User</h1></a>
-		</div>
-	</section>
-
-	<section id="profile">
-		<div class="container">
-			<h2 class="text-primary">Profile</h2>
-			<table class="table table-condensed table-striped">
-				<tbody>
-					<tr>
-						<th>Firstname</th>
-						<td></td>
-					</tr>
-					<tr>
-						<th>Lastname: </th>
-						<td></td>
-					</tr>
-					<tr>
-						<th>Gender: </th>
-						<td></td>
-					</tr>
-					<tr>
-						<th>Email: </th>
-						<td></td>
-					</tr>
-				</tbody>
-			</table>
-			<hr>
+			<h1 class="page-header">Search</h1>
 		</div>
 	</section>
 
 	<section>
 		<div class="container">
-			<a class="btn btn-primary" href="others-blog.html">Blog</a>
-			<a class="btn btn-primary" href="others-photo.html">Photo</a>
+			<form class="form-inline">
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="Search for friends/blogs">
+				</div>			
+				<div class="form-group">
+					<input type="radio" name="search" value="friends"> Friends 
+					<input type="radio" name="search" value="articles"> Articles 
+				</div>
+				<button class="btn btn-primary" type="submit">Search</button>
+			</form>
 			<hr>
 		</div>
-	</section>
+	</section>	
 
-	<section id="relationship">
+	<section id="searchlist">
 		<div class="container">
-			<h2 class="text-primary">Relationship</h2>
-			<div id="friend">
-				<h3>Friends</h3>
+			<div id="friends-results">
+				<h3>Friends Results</h3>
 				<div class="list-group">
 					<li class="list-group-item">
-						<a href="others-profile.html">Item 1</a> 
+						<a href="#">Item 1</a> 
+						<button class="btn btn-primary" type="submit">Apply</button>
+					</li>
+					
+				</div>
+			</div>
+			<hr>
+			<div id="articles-results">
+				<h3>Articles Results</h3>
+				<div class="list-group">
+					<li class="list-group-item">
+						<a href="#">Item 1</a> 
 					</li>
 				</div>
 			</div>
-			
 		</div>
 	</section>
+	
 	<footer>
 		<div class="container-fluid">
 			<hr>
