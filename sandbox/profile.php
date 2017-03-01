@@ -31,6 +31,7 @@ session_start();
                Welcome, <?php
                     if (isset($_SESSION['first'])){
                         echo $_SESSION['first'];
+			echo " ";
                         echo $_SESSION['last'];
                     } else {
 		    }?>! </a></li>
@@ -46,6 +47,7 @@ session_start();
 				<?php
                     			if (isset($_SESSION['first'])){
                         		echo $_SESSION['first'];
+					echo " ";	
                        			echo $_SESSION['last'];
                     			} else {}
 				?>
