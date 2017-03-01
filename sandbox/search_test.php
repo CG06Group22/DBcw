@@ -67,32 +67,27 @@ session_start();
 		<div class="container">
 			<?php
 			mysql_select_db("gc06group22database", $conn);		
-			if(isset($_POST['search'])){
-// 				$target=$_POST['search']; 
+			if(isset($_POST['submit'])){
+				$target=$_POST['search']; 
 				//-run  the query against the mysql query function 
-				$result = mysql_query("SELECT * FROM users");
-				while($row = mysql_fetch_array($result)){
-  				echo $row['firstName'] . " " . $row['lastName'];
-  				echo "<br />";
-  				}
-// 				$result = mysql_query("SELECT * FROM users WHERE firstName OR lastName LIKE '%$target%'") or die("cannot search"); 
-// 				$count = mysql_num_rows($result);
-// 				echo $count;
-// 				//-create  while loop and loop through result set 
-// 				if(!$count>0){
-// 					echo "no result for $target";
-// 				}else{
-// 					while($row=mysql_fetch_array($result)){ 
-// 						$firstName = $row['firstName']; 
-// 						$lastName = $row['lastName'];  
-// 						echo $firstName;
-// 						echo "<hr>";
-// 					}
-// 					echo $count;
-// 				}
-// 			} else {
-// 				echo "Please provide a search text";
-// 			}
+				$result = mysql_query("SELECT * FROM users WHERE firstName OR lastName LIKE '%$target%'") or die("cannot search"); 
+				$count = mysql_num_rows($result);
+				echo $count;
+				//-create  while loop and loop through result set 
+				if(!$count>0){
+					echo "no result for $target";
+				}else{
+					while($row=mysql_fetch_array($result)){ 
+						$firstName = $row['firstName']; 
+						$lastName = $row['lastName'];  
+						echo $firstName ." ".$lastName;
+						echo "<hr>";
+					}
+					echo $count;
+				}
+			} else {
+				echo "Please provide a search text";
+			}
 			?> 
 			<!-- <div id="friends-results">
 				<h3>Friends Results</h3>
