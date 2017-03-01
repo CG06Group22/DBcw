@@ -48,7 +48,7 @@ session_start();
 
 	<section>
 		<div class="container">
-			<form class="form-inline">
+			<form method="post" action="search.php?go" class="form-inline">
 				<div class="form-group">
 					<input type="text" name="search" class="form-control" placeholder="Search for friends/blogs">
 				</div>			
@@ -58,6 +58,31 @@ session_start();
 				</div>
 				<button class="btn btn-primary" type="submit">Search</button>
 			</form>
+				<?php 
+					  include '../db/dbh.php';
+			
+					  if(isset($_POST['submit'])){ 
+						  if(isset($_GET['go'])){ 
+							  $target=$_POST['search']; 
+							  //-query  the database table 
+							  $sql="SELECT * FROM users WHERE firstName OR lastName LIKE '%$target%'"; 
+							  //-run  the query against the mysql query function 
+							  $result = mysqli_query($conn, $sql); 
+							  //-create  while loop and loop through result set 
+							  while($row=mysql_fetch_array($result)){ 
+								  $FirstName = $row['firstName']; 
+								  $LastName = $row['lastName'];  
+								  //-display the result of the array 
+								  echo "<ul>\n"; 
+								  echo "<li>" $FirstName " " $LastName "</li>\n"; 
+								  echo "</ul>"; 
+							  } 
+						  } 
+						  else{ 
+						  	echo  "<p>Please enter a search query</p>"; 
+						  } 
+					  } 
+				?> 
 			<hr>
 		</div>
 	</section>	
