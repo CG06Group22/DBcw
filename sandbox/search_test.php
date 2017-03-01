@@ -71,6 +71,7 @@ session_start();
   				echo "Cannot connect database!";
   			}
 			mysql_select_db("gc06group22database", $conn);
+			mysql_query("SET NAMES utf8");
 			if(isset($_POST['submit'])){
 				$target=$_POST['search']; 
 				//-run  the query against the mysql query function 
