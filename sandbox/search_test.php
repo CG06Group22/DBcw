@@ -66,12 +66,11 @@ session_start();
 		<div class="container">
 			<?php
 			if (isset($_POST['submit'])){
-			//搜索框输入的文字
-			$search = $_POST['search'];
-			//勾选的 checkbox
-			$checkbox_select = $_POST['checkbox'];
-			echo $search;
-			echo $checkbox_select
+			
+			echo $_POST['search'];
+			
+			echo $_POST['checkbox'];
+			
 			}	
 			?>
 			<!-- <div id="friends-results">
