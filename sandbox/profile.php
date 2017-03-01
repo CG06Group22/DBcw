@@ -22,7 +22,7 @@ session_start();
 				<a class="navbar-brand" href="#">FakeBook</a>
 			</div>			
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="search.php">Search</a></li>
+				<li><a href="search.html">Search</a></li>
 				<li><a href="chat.html">Chat</a></li>
 				
 				
