@@ -49,7 +49,7 @@ include '../db/dbh.php';
 
 	<section>
 		<div class="container">
-			<form method="post" action="search.php?go" class="form-inline">
+			<form method="post" action="search.php" class="form-inline">
 				<div class="form-group">
 					<input type="text" name="search" class="form-control" placeholder="Search for friends/blogs">
 				</div>			
