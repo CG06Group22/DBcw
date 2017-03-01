@@ -68,15 +68,14 @@ session_start();
 			<?php 
 			mysql_select_db("gc06group22database", $conn);
 			if(isset($_POST['submit'])){
-				$target=$_POST['search'];
-				echo $target;
+				
 				//-run  the query against the mysql query function 
-				$result = mysql_query("SELECT * FROM users WHERE firstName OR lastName LIKE '%$target%'") or die("cannot search"); 
+				$result = mysql_query("SELECT * FROM users WHERE firstName LIKE '%e%'", $conn) or die("cannot search"); 
 				$count = mysql_num_rows($result);
 				echo $count;
 				//-create  while loop and loop through result set 
 				if(!$count>0){
-					echo "no result for $target";
+					echo "no result";
 				}else{
 					$row=mysql_fetch_array($result);
 					echo "<pre>";
