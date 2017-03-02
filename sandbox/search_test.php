@@ -66,9 +66,7 @@ session_start();
 				$target=$_POST['search']; 
 				$sql = "SELECT * FROM users WHERE firstName LIKE '%$target%' OR lastName LIKE '%$target%'";
 				$result = mysql_query($sql);
-			} else {
-				echo "Please provide a search text";
-			}
+			} 
 			?>
 		</div>
 	</section>	
@@ -77,6 +75,7 @@ session_start();
 		<div class="container"> 
 			<div id="friends-results">
 				<h3>Friends Results</h3>
+				<div class="list-group">
 				<?php
 				$count = mysql_num_rows($result);
 				if(!$count>0){
@@ -86,11 +85,11 @@ session_start();
 						$firstName = $row['firstName']; 
 						$lastName = $row['lastName'];
 						$fullName = $firstName ." ".$lastName;
-						echo $fullName;
-						echo "<hr>";
+						echo "<li class='list-group-item'><a href='others-profile.html'>$fullName</a></li>"
 					}
 				}
 				?>
+				</div>
 			</div>
 <!-- 			<hr>
 			<div id="articles-results">
