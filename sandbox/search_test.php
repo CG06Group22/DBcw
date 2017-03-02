@@ -87,7 +87,9 @@ session_start();
 						$fullName = $firstName ." ".$lastName;
 						echo "<li class='list-group-item'><a href='others-profile.html'>";
 						echo $fullName;
-						echo "</a><button class='btn btn-primary' type='submit'>Apply</button></li>";
+						echo "</a><button class='btn btn-primary' type='submit' onclick='applyFriend(";
+						echo $firstName .", ".$lastName;
+						echo")'>Apply</button></li>";
 					}
 				}
 				?>
