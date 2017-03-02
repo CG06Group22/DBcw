@@ -73,7 +73,7 @@ session_start();
 					while($row=mysql_fetch_array($result)){ 
 						$firstName = $row['firstName']; 
 						$lastName = $row['lastName'];
-						$fullNmae = $firstName ." ".$lastName;
+						$fullNmae .= $firstName ." ".$lastName;
 						echo $fullName;
 						echo "<hr>";
 					}
