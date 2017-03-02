@@ -1,4 +1,5 @@
 <?php
+$conn = mysql_connect("us-cdbr-azure-southcentral-f.cloudapp.net", "bd72ffa33d6f5c", "20d59076");
 session_start();
 ?>
 <!DOCTYPE html>
@@ -26,13 +27,13 @@ session_start();
 				<li><a href="chat.html">Chat</a></li>
 				<li id="login-user">
 					<a href="profile.php">
-					<?php
+						<?php
 						if(isset($_SESSION['first'])){
 							echo $_SESSION['first'];
 							echo " ";
 							echo $_SESSION['last'];
 						}
-					?>
+						?>
 					</a>
 				</li>
 				<li><a href="../index.php">Login</a></li> 
@@ -48,54 +49,50 @@ session_start();
 
 	<section>
 		<div class="container">
-			<form method="post" action="search.php" class="form-inline">
+			<form method="post" action="search_test.php" class="form-inline">
 				<div class="form-group">
 					<input type="text" name="search" class="form-control" placeholder="Search for friends/blogs">
 				</div>			
 				<div class="form-group">
-					<input type="radio"> Friends 
-					<input type="radio"> Articles 
+					<input type="radio" name="checkbox" value="friends"> Friends 
+					<input type="radio" name="checkbox" value="articles"> Articles 
 				</div>
-				<button class="btn btn-primary" type="submit" name="submit">Search</button>
+				<button class="btn btn-primary" type="submit" name="submit">Search</button>				
 			</form>
-				<?php 
-				  include '../db/dbh.php';
-				  if(isset($_POST['search'])){
-					  $target=$_POST['search']; 
-					  //-query  the database table 
-					  $sql="SELECT * FROM `users` WHERE firstName = '%$target%'"; 
-					  //-run  the query against the mysql query function 
-					  $result = mysql_query($sql, $conn) or die("can not search!"); 
-					  $count = mysql_num_rows($result);
-					  //-create  while loop and loop through result set 
-					  if(!$count>0){
-						  echo "no result for $target";
-					  }else{
-						  while($row=mysql_fetch_array($result)){ 
-							  $firstName = $row['firstName']; 
-							  $lastName = $row['lastName'];  
-							  echo $firstName;
-						  }
-					  }
-					  echo $count;
-				  } else {
-				  	echo "Please provide a search text";
-				  }
-				?> 
 			<hr>
+			<?php
+			mysql_select_db('gc06group22database', $conn);
+			if(isset($_POST['submit'])){
+				$target=$_POST['search']; 
+				$sql = "SELECT * FROM users WHERE firstName LIKE '%$target%' OR lastName LIKE '%$target%'";
+				$result = mysql_query($sql);
+				$count = mysql_num_rows($result);
+				if(!$count>0){
+					echo "no result for $target";
+				}else{
+					while($row=mysql_fetch_array($result)){ 
+						$firstName = $row['firstName']; 
+						$lastName = $row['lastName'];
+						$fullName = $firstName ." ".$lastName;
+						echo $fullName;
+						echo "<hr>";
+					}
+				}
+			} else {
+				echo "Please provide a search text";
+			}
+			?>
 		</div>
 	</section>	
 
-	<section id="searchlist">
-		<div class="container">
+<!-- 	<section id="searchlist">
+		<div class="container"> 
 			<div id="friends-results">
 				<h3>Friends Results</h3>
 				<div class="list-group">
 					<li class="list-group-item">
 						<a href="#">Item 1</a> 
-						<button class="btn btn-primary" type="submit">Apply</button>
 					</li>
-					
 				</div>
 			</div>
 			<hr>
@@ -108,7 +105,7 @@ session_start();
 				</div>
 			</div>
 		</div>
-	</section>
+	</section> -->
 	
 	<footer>
 		<div class="container-fluid">
