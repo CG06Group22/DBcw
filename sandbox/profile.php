@@ -28,14 +28,14 @@ session_start();
 				
 				
 				<li><a href="profile.php">
-               Welcome, <?php
-                    	if (isset($_SESSION['first'])){
-                        	echo $_SESSION['first'];
-				echo " ";    
-                        	echo $_SESSION['last'];
-                   	 };
-			?>! </a></li>
-           
+				<?php
+				if (isset($_SESSION['first'])){
+					echo $_SESSION['first'];
+					echo " ";    
+					echo $_SESSION['last'];
+				 };
+				?>
+				</a></li>
             <li><a href="../includes/logout.php">Logout</a></li>
 			</ul>
 		</div>
