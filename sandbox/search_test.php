@@ -85,7 +85,7 @@ session_start();
 						$firstName = $row['firstName']; 
 						$lastName = $row['lastName'];
 						$fullName = $firstName ." ".$lastName;
-						echo "<li class='list-group-item'><a href='others-profile.html'>$fullName</a></li>"
+						echo "<li class='list-group-item'><a href='others-profile.html'>".$fullName"</a></li>";
 					}
 				}
 				?>
