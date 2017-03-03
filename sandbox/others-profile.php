@@ -7,12 +7,18 @@ session_start();
 			$other=$_SERVER['QUERY_STRING'];
 			$sql = "SELECT * FROM users WHERE email = '$other'";
 			$result = mysql_query($sql);
-			$row=mysql_fetch_array($result);
-			$_SESSION['otherlast'] = $row['lastName'];
-			$_SESSION['otherfirst'] = $row['firstName'];
-			$_SESSION['othergender'] = $row['gender'];
-			$_SESSION['otheremail'] = $row['email'];
-			$_SESSION['otheruid'] = $row['uid'];
+			if (!$row = mysqli_fetch_assoc($result)){
+				
+			} else{
+				$_SESSION['otherlast'] = $row['lastName'];
+				$_SESSION['otherfirst'] = $row['firstName'];
+				$_SESSION['othergender'] = $row['gender'];
+				$_SESSION['otheremail'] = $row['email'];
+				$_SESSION['otheruid'] = $row['uid'];
+				$_SESSION['otherfullname'] = $_SESSION['otherfirst'] ." ".$_SESSION['otherlast'];
+			}
+			//$row=mysqli_fetch_assoc($result);
+			
 	//                if (strpos($url,'error=incorrect') !==false){
 	//                    echo "Your username or password is incorrect!";
 	//                }
@@ -56,8 +62,7 @@ session_start();
 			?>
 			<h1 class="page-header">
 			<?php
-                    	if (isset($_SESSION['otherfirst'])){
-				$_SESSION['otherfullname'] = $_SESSION['otherfirst'] ." ".$_SESSION['otherlast'];
+                    	if (isset($_SESSION['otherfullname'])){
                         	echo $_SESSION['otherfullname'];
                    	 };
 			?>
