@@ -160,7 +160,16 @@ include '../db/dbh.php';
 							}else{
 							while($row=mysqli_fetch_array($result)){
 								$guestUserID = $row['guestUserID'];
-								echo "<li class='list-group-item'><a href='others-profile.php?$guestUserID'>$guestUserID</a>";
+								$sql2 = "SELECT firstName, lastName FROM users WHERE email = '$guestUserID'";
+								$result2 = mysqli_query($conn, $sql2);
+								if (!$row = mysqli_fetch_assoc($result2)){
+								    echo "Can't find user.";
+								} else{
+									$firstName = $row['firstName'];
+									$lastName = $row['lastName'];
+								}
+								$fullName = $firstName ." ".$lastName;
+								echo "<li class='list-group-item'><a href='others-profile.php?$guestUserID'>$fullName</a>";
 								}
 							}
 
@@ -185,8 +194,17 @@ include '../db/dbh.php';
 					}else{
 						while($row=mysqli_fetch_array($result)){
 							$guestUserID = $row['guestUserID'];
+							$sql2 = "SELECT firstName, lastName FROM users WHERE email = '$guestUserID'";
+							$result2 = mysqli_query($conn, $sql2);
+							if (!$row = mysqli_fetch_assoc($result2)){
+							    echo "Can't find user.";
+							} else{
+								$firstName = $row['firstName'];
+								$lastName = $row['lastName'];
+							}
+							$fullName = $firstName ." ".$lastName;
 							echo "<li class='list-group-item'><a href='others-profile.php?$guestUserID'>";
-							echo $guestUserID;
+							echo $fullName;
 							echo "<a href='../includes/accept.php?$guestUserID'>Accept</a>";
 							echo "<a href='../includes/refuse.php?$guestUserID'>Refuse</a>";
 						}
