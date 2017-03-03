@@ -1,29 +1,5 @@
 <?php
 session_start();
-
-			$_SERVER['QUERY_STRING'];
-			$conn = mysql_connect("us-cdbr-azure-southcentral-f.cloudapp.net", "bd72ffa33d6f5c", "20d59076");
-			mysql_select_db('gc06group22database', $conn);
-			$other=$_SERVER['QUERY_STRING'];
-			$sql = "SELECT * FROM users WHERE email = '$other'";
-			$result = mysql_query($sql);
-			if (!$row = mysqli_fetch_assoc($result)){
-				
-			} else{
-				$_SESSION['otherlast'] = $row['lastName'];
-				$_SESSION['otherfirst'] = $row['firstName'];
-				$_SESSION['othergender'] = $row['gender'];
-				$_SESSION['otheremail'] = $row['email'];
-				$_SESSION['otheruid'] = $row['uid'];
-				$_SESSION['otherfullname'] = $_SESSION['otherfirst'] ." ".$_SESSION['otherlast'];
-			}
-			//$row=mysqli_fetch_assoc($result);
-			
-	//                if (strpos($url,'error=incorrect') !==false){
-	//                    echo "Your username or password is incorrect!";
-	//                }
-
-        	
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -53,7 +29,31 @@ session_start();
 			</ul>
 		</div>
 	</nav>
-	
+	<?php
+			$_SERVER['QUERY_STRING'];
+			$conn = mysql_connect("us-cdbr-azure-southcentral-f.cloudapp.net", "bd72ffa33d6f5c", "20d59076");
+			mysql_select_db('gc06group22database', $conn);
+			$other=$_SERVER['QUERY_STRING'];
+			$sql = "SELECT * FROM users WHERE email = '$other'";
+			$result = mysql_query($sql);
+			if (!$row = mysqli_fetch_assoc($result)){
+				
+			} else{
+				$_SESSION['otherlast'] = $row['lastName'];
+				$_SESSION['otherfirst'] = $row['firstName'];
+				$_SESSION['othergender'] = $row['gender'];
+				$_SESSION['otheremail'] = $row['email'];
+				$_SESSION['otheruid'] = $row['uid'];
+				$_SESSION['otherfullname'] = $_SESSION['otherfirst'] ." ".$_SESSION['otherlast'];
+			}
+			//$row=mysqli_fetch_assoc($result);
+			
+	//                if (strpos($url,'error=incorrect') !==false){
+	//                    echo "Your username or password is incorrect!";
+	//                }
+
+        	
+	?>
 	
 	<section id="user">
 		<div class="container">
