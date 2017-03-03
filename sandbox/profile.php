@@ -1,5 +1,6 @@
 <?php
 session_start();
+include '../db/dbh.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,14 +29,14 @@ session_start();
 				
 				
 				<li><a href="profile.php">
-				<?php
-				if (isset($_SESSION['first'])){
-					echo $_SESSION['first'];
-					echo " ";    
-					echo $_SESSION['last'];
-				 };
-				?>
-				</a></li>
+               Welcome, <?php
+                    	if (isset($_SESSION['first'])){
+                        	echo $_SESSION['first'];
+				echo " ";    
+                        	echo $_SESSION['last'];
+                   	 };
+			?>! </a></li>
+           
             <li><a href="../includes/logout.php">Logout</a></li>
 			</ul>
 		</div>
@@ -110,32 +111,85 @@ session_start();
 			<div id="friend">
 				<h3>Friends</h3>
 				<div class="list-group">
-					<li class="list-group-item">
-						<a href="others-profile.html">Item 1</a> 
-						<button class="btn btn-danger">Delete</button>
-					</li>
+
+
+						<?php
+						$target=$_SESSION['email'];
+						$friend = "friend";
+						$sql = "SELECT * FROM relationship WHERE relationship = '$friend' AND hostUserID LIKE '%$target%'";
+						$result = mysqli_query($conn, $sql);
+						$count = mysqli_num_rows($result);
+						if(!$count>0){
+							echo "Your friend list is empty";
+						}else{
+							while($row=mysqli_fetch_array($result)){
+								$guestUserID = $row['guestUserID'];
+								echo "<li class='list-group-item'><a href='others-profile.php?$guestUserID'>";
+								echo $guestUserID;
+								echo "<a href='../includes/deleteF.php?$guestUserID'>Delete</a>";
+							}
+						}
+						?>
+
 				</div>
 			</div>
+
 			<div id="applying">
 				<h3>Applying</h3>
 				<div class="list-group">
-					<li class="list-group-item">
-						<a href="#">Item 1</a>
+<!--					<li class="list-group-item">-->
+<!--						<a href="#">Item 1</a>-->
+
+						<?php
+							$target=$_SESSION['email'];
+							$apply = "apply";
+							$sql = "SELECT * FROM relationship WHERE relationship = '$apply' AND hostUserID LIKE '%$target%'";
+							$result = mysqli_query($conn, $sql);
+							$count = mysqli_num_rows($result);
+							if(!$count>0){
+							echo "no result for $target";
+							}else{
+							while($row=mysqli_fetch_array($result)){
+								$guestUserID = $row['guestUserID'];
+								echo "<li class='list-group-item'><a href='others-profile.php?$guestUserID'>$guestUserID</a>";
+								}
+							}
+
+						?>
+
+
 					</li>
 				</div>
 			</div>
+
 			<div id="requested">
 				<h3>Requested</h3>
 				<div class="list-group">
-					<li class="list-group-item">
-						<a href="#">Item 1</a> 
-						<button class="btn btn-primary">Accept</button>
-						<button class="btn btn-danger">Refuse</button>
+					<?php
+					$target=$_SESSION['email'];
+					$request = "request";
+					$sql = "SELECT * FROM relationship WHERE relationship = '$request' AND hostUserID LIKE '%$target%'";
+					$result = mysqli_query($conn, $sql);
+					$count = mysqli_num_rows($result);
+					if(!$count>0){
+						echo "No request";
+					}else{
+						while($row=mysqli_fetch_array($result)){
+							$guestUserID = $row['guestUserID'];
+							echo "<li class='list-group-item'><a href='others-profile.php?$guestUserID'>";
+							echo $guestUserID;
+							echo "<a href='../includes/accept.php?$guestUserID'>Accept</a>";
+							echo "<a href='../includes/refuse.php?$guestUserID'>Refuse</a>";
+						}
+					}
+					?>
 					</li>
 				</div>
 			</div>
 		</div>
 	</section>
+
+
 	<footer>
 		<div class="container-fluid">
 			<hr>
