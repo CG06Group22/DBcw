@@ -19,6 +19,7 @@ if (!$row = mysqli_fetch_assoc($result)){
     $_SESSION['last'] = $row['lastName'];
     $_SESSION['gender'] = $row['gender'];
     $_SESSION['email'] = $row['email'];
+    $_SESSION['uid'] = $row['uid'];
 
     $result = mysqli_query("SELECT * FROM users");
 
