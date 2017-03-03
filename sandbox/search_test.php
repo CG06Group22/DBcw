@@ -65,7 +65,7 @@ session_start();
         mysql_select_db('gc06group22database', $conn);
         if(isset($_POST['submit'])){
             $target=$_POST['search'];
-            $sql = "SELECT * FROM users WHERE firstName LIKE '%$target%' OR lastName LIKE '%$target%'";
+            $sql = "SELECT * FROM users WHERE (firstName LIKE '%$target%' OR lastName LIKE '%$target%') AND uid != '$_SESSION['uid']'";
             $result = mysql_query($sql);
         }
         ?>
