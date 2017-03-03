@@ -1,0 +1,39 @@
+body{
+	font:16px/1.5 Arial, Helvetica, sans-serif;
+	height: 100%;
+	padding: 0;
+	margin:auto;
+	background-color: #f4f4f4;
+}
+
+hr{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.navbar{
+	margin-bottom: 0;
+	border-radius: 0;
+}
+.list-group-item{
+	border-radius: 2px;
+}
+
+.list-group-item:first-child{
+	border-radius: 2px;
+}
+.list-group-item:last-child{
+	border-radius: 2px;
+}
+
+.list-group-item a{
+	padding-top: 6px;
+	padding-right: 12px;
+	padding-bottom: 6px;
+	padding-left: 12px;
+}
+.btn{
+	border-radius: 2px;
+	margin-right: 5px;
+}
+
