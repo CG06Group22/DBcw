@@ -29,19 +29,7 @@ session_start();
 			</ul>
 		</div>
 	</nav>
-	
-	<section id="user">
-		<div class="container">
-			<a href="others-profile.php"><h1 class="page-header">User</h1></a>
-		</div>
-	</section>
-
-	<section id="profile">
-		<div class="container">
-			<h2 class="text-primary">Profile</h2>
-			<table class="table table-condensed table-striped">
-                <tbody>
-                <?php
+	<?php
                 $_SERVER['QUERY_STRING'];
                 $conn = mysql_connect("us-cdbr-azure-southcentral-f.cloudapp.net", "bd72ffa33d6f5c", "20d59076");
                 mysql_select_db('gc06group22database', $conn);
@@ -58,7 +46,28 @@ session_start();
 //                    echo "Your username or password is incorrect!";
 //                }
 
-                ?>
+        ?>
+	
+	<section id="user">
+		<div class="container">
+			<a href="others-profile.php?$_SESSION['otheremail']"><h1 class="page-header">
+			<?php
+                    	if (isset($_SESSION['otherfirst'])){
+                        	echo $_SESSION['otherfirst'];
+				echo " ";    
+                        	echo $_SESSION['otherlast'];
+                   	 };
+			?>
+			</h1></a>
+		</div>
+	</section>
+
+	<section id="profile">
+		<div class="container">
+			<h2 class="text-primary">Profile</h2>
+			<table class="table table-condensed table-striped">
+                <tbody>
+                
 
 
                 <tr>
