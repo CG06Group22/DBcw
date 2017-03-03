@@ -62,9 +62,9 @@ session_start();
                    	 };
 			?>
 			</h1>
-			<?php
-				echo "</a>"
-			?>
+			
+			</a>
+			
 		</div>
 	</section>
 
@@ -132,12 +132,12 @@ session_start();
 						$result = mysqli_query($conn, $sql);
 						$count = mysqli_num_rows($result);
 						if(!$count>0){
-							echo "Your friend list is empty";
+							echo "This friend list is empty";
 						}else{
 							while($row=mysqli_fetch_array($result)){
 								$guestUserID = $row['guestUserID'];
 								$sql2 = "SELECT firstName, lastName FROM users WHERE email = '$guestUserID'";
-								$result2 = mysqli_query($conn, $sql);
+								$result2 = mysqli_query($conn, $sql2);
 								if (!$row = mysqli_fetch_assoc($result2)){
 								    echo "Can't find user.";
 								} else{
