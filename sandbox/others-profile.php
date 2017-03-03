@@ -37,7 +37,7 @@ session_start();
                 $sql = "SELECT * FROM users WHERE email = '$other'";
                 $result = mysql_query($sql);
                 $row=mysql_fetch_array($result);
-                $_SESSION['othrtlast'] = $row['lastName'];
+                $_SESSION['otherlast'] = $row['lastName'];
                 $_SESSION['otherfirst'] = $row['firstName'];
                 $_SESSION['othergender'] = $row['gender'];
                 $_SESSION['otheremail'] = $row['email'];
@@ -50,7 +50,10 @@ session_start();
 	
 	<section id="user">
 		<div class="container">
-			<a href="others-profile.php?$_SESSION['otheremail']"><h1 class="page-header">
+			<?php
+				echo "<a href='others-profile.php?$_SESSION['otheremail']'>"
+			?>
+			<h1 class="page-header">
 			<?php
                     	if (isset($_SESSION['otherfirst'])){
                         	echo $_SESSION['otherfirst'];
@@ -58,7 +61,10 @@ session_start();
                         	echo $_SESSION['otherlast'];
                    	 };
 			?>
-			</h1></a>
+			</h1>
+			<?php
+				echo "</a>"
+			?>
 		</div>
 	</section>
 
