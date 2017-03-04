@@ -114,7 +114,7 @@ include '../db/dbh.php';
 								$fullName = $firstName ." ".$lastName;
 								echo "<li class='list-group-item'><a href='others-profile.php?$guestUserID'>";
 								echo $fullName;
-								echo "<a href='../includes/deleteF.php?$guestUserID'>Delete</a>";
+								echo "<a class="btn btn-danger" href='../includes/deleteF.php?$guestUserID'>Delete</a>";
 							}
 						}
 						?>
@@ -184,8 +184,8 @@ include '../db/dbh.php';
 							$fullName = $firstName ." ".$lastName;
 							echo "<li class='list-group-item'><a href='others-profile.php?$guestUserID'>";
 							echo $fullName;
-							echo "<a href='../includes/accept.php?$guestUserID'>Accept</a>";
-							echo "<a href='../includes/refuse.php?$guestUserID'>Refuse</a>";
+							echo "<a class="btn btn-primay" href='../includes/accept.php?$guestUserID'>Accept</a>";
+							echo "<a class="btn btn-danger" href='../includes/refuse.php?$guestUserID'>Refuse</a>";
 						}
 					}
 					?>
