@@ -120,7 +120,6 @@ session_start();
 			<div id="friend">
 				<h3>Friends</h3>
 				<div class="list-group">
-					<li class="list-group-item">
 						<?php
 						$thisemail=$_SESSION['otheremail'];
 						$friend = "friend";
