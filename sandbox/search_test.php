@@ -17,7 +17,10 @@ session_start();
 </head>
 
 <body>
-<?php include("../header.php"); ?>
+<!-- navbar -->
+<?php
+    include ("../header.php");
+    ?>
 
 <section>
     <div class="container">
@@ -41,9 +44,12 @@ session_start();
         <?php
         mysql_select_db('gc06group22database', $conn);
         if(isset($_POST['submit'])){
+            if(isset($_SESSION['uid'])){
+            $selfid=$_SESSION['uid'];
             $target=$_POST['search'];
-            $sql = "SELECT * FROM users WHERE firstName LIKE '%$target%' OR lastName LIKE '%$target%'";
+            $sql = "SELECT * FROM users WHERE (firstName LIKE '%$target%' OR lastName LIKE '%$target%') AND uid != '$selfid'";
             $result = mysql_query($sql);
+            }
         }
         ?>
     </div>
