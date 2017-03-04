@@ -29,46 +29,22 @@ session_start();
 			</ul>
 		</div>
 	</nav>
-	<?php
-			$_SERVER['QUERY_STRING'];
-			$conn = mysql_connect("us-cdbr-azure-southcentral-f.cloudapp.net", "bd72ffa33d6f5c", "20d59076");
-			mysql_select_db('gc06group22database', $conn);
-			$other=$_SERVER['QUERY_STRING'];
-			$sql = "SELECT * FROM users WHERE email = '$other'";
-			$result = mysql_query($sql);
-			if (!$row = mysqli_fetch_assoc($result)){
-				
-			} else{
-				$_SESSION['otherlast'] = $row['lastName'];
-				$_SESSION['otherfirst'] = $row['firstName'];
-				$_SESSION['othergender'] = $row['gender'];
-				$_SESSION['otheremail'] = $row['email'];
-				$_SESSION['otheruid'] = $row['uid'];
-				$_SESSION['otherfullname'] = $_SESSION['otherfirst'] ." ".$_SESSION['otherlast'];
-			}
-			//$row=mysqli_fetch_assoc($result);
-			
-	//                if (strpos($url,'error=incorrect') !==false){
-	//                    echo "Your username or password is incorrect!";
-	//                }
-
-        	
-	?>
 	
 	<section id="user">
 		<div class="container">
 			<?php
-				echo "<a href='others-profile.php?$_SESSION['otheremail']'>"
+				if (isset($_SESSION['otheremail'])){
+					$otheremail=$_SESSION['otheremail'];
+					echo "<a href='others-profile.php?$otheremail'>"
+				}
 			?>
 			<h1 class="page-header">
 			<?php
-                    	if (isset($_SESSION['otherfullname'])){
-                        	echo $_SESSION['otherfullname'];
-                   	 };
+				if (isset($_SESSION['otherfullname'])){
+					echo $_SESSION['otherfullname'];
+				 };
 			?>
-			</h1>
-			
-			</a>
+			</h1></a>
 			
 		</div>
 	</section>
@@ -78,6 +54,24 @@ session_start();
 			<h2 class="text-primary">Profile</h2>
 			<table class="table table-condensed table-striped">
                 <tbody>
+			<?php
+				$_SERVER['QUERY_STRING'];
+				$conn = mysql_connect("us-cdbr-azure-southcentral-f.cloudapp.net", "bd72ffa33d6f5c", "20d59076");
+				mysql_select_db('gc06group22database', $conn);
+				$other=$_SERVER['QUERY_STRING'];
+				$sql = "SELECT * FROM users WHERE email = '$other'";
+				$result = mysql_query($sql);
+				$row=mysql_fetch_array($result);
+				$_SESSION['otherlast'] = $row['lastName'];
+				$_SESSION['otherfirst'] = $row['firstName'];
+				$_SESSION['othergender'] = $row['gender'];
+				$_SESSION['otheremail'] = $row['email'];
+				$_SESSION['otheruid'] = $row['uid'];
+				$_SESSION['otherfullname'] = $_SESSION['otherfirst'] ." ".$_SESSION['otherlast'];				
+//                if (strpos($url,'error=incorrect') !==false){
+//                    echo "Your username or password is incorrect!";
+//                }
+				?>
                 
                 <tr>
                     <th>Firstname: <?php
