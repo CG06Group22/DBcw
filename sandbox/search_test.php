@@ -13,7 +13,7 @@ session_start();
 
 
 
-    <title>FakeBook | Login</title>
+    <title>FakeBook | Search</title>
 </head>
 
 <body>
