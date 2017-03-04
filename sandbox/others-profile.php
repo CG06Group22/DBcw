@@ -24,8 +24,19 @@ session_start();
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="search_test.php">Search</a></li>
 				<li><a href="chat.html">Chat</a></li>
-				<li id="login-user"><a href="profile.php">User</a></li>
-				<li><a href="../login.html">Login</a></li> 
+				
+				
+				
+				<li><a href="profile.php">
+               Welcome, <?php
+                    	if (isset($_SESSION['first'])){
+                        	echo $_SESSION['first'];
+				echo " ";    
+                        	echo $_SESSION['last'];
+                   	 };
+			?>! </a></li>
+           
+            <li><a href="../includes/logout.php">Logout</a></li>
 			</ul>
 		</div>
 	</nav>
@@ -111,9 +122,9 @@ session_start();
 				<div class="list-group">
 					<li class="list-group-item">
 						<?php
-						$target=$_SESSION['otheremail'];
+						$thisemail=$_SESSION['otheremail'];
 						$friend = "friend";
-						$sql = "SELECT * FROM relationship WHERE relationship = '$friend' AND hostUserID LIKE '%$target%'";
+						$sql = "SELECT * FROM relationship WHERE relationship = '$friend' AND hostUserID = '$thisemail'";
 						$result = mysqli_query($conn, $sql);
 						$count = mysqli_num_rows($result);
 						if(!$count>0){
