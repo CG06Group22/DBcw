@@ -17,31 +17,7 @@ session_start();
 </head>
 
 <body>
-<!-- navbar -->
-<nav class="navbar navbar-inverse">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="#">FakeBook</a>
-			</div>			
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="search_test.php">Search</a></li>
-				<li><a href="chat.html">Chat</a></li>
-				
-				
-				
-				<li><a href="profile.php">
-               Welcome, <?php
-                    	if (isset($_SESSION['first'])){
-                        	echo $_SESSION['first'];
-				echo " ";    
-                        	echo $_SESSION['last'];
-                   	 };
-			?>! </a></li>
-           
-            <li><a href="../includes/logout.php">Logout</a></li>
-			</ul>
-		</div>
-</nav>
+<?php include("../header.php"); ?>
 
 <section>
     <div class="container">
@@ -65,12 +41,9 @@ session_start();
         <?php
         mysql_select_db('gc06group22database', $conn);
         if(isset($_POST['submit'])){
-            if(isset($_SESSION['uid'])){
-            $selfid=$_SESSION['uid'];
             $target=$_POST['search'];
-            $sql = "SELECT * FROM users WHERE (firstName LIKE '%$target%' OR lastName LIKE '%$target%') AND uid != '$selfid'";
+            $sql = "SELECT * FROM users WHERE firstName LIKE '%$target%' OR lastName LIKE '%$target%'";
             $result = mysql_query($sql);
-            }
         }
         ?>
     </div>
@@ -93,7 +66,7 @@ session_start();
                         $fullName = $firstName ." ".$lastName;
                         echo "<li class='list-group-item'><a href='others-profile.php?$email'>";
                         echo $fullName;
-                        echo "<a class='btn btn-primary' href='../includes/apply.php?$email'>Apply</a>";
+                        echo "<a href='../includes/apply.php?$email'>Apply</a>";
                     }
                 }
                 ?>

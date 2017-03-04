@@ -3,7 +3,7 @@
 include '../db/dbh.php';
 session_start();
 $guest = $_SERVER['QUERY_STRING'];
-$host = $_SESSION['email'];
+$host = $_SESSION['first'];
 $apply = "apply";
 $request = "request";
 $friend = "friend";

@@ -16,31 +16,7 @@ include '../db/dbh.php';
 </head>
 
 <body>
-	<!-- navbar -->
-	<nav class="navbar navbar-inverse">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="#">FakeBook</a>
-			</div>			
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="search_test.php">Search</a></li>
-				<li><a href="chat.html">Chat</a></li>
-				
-				
-				
-				<li><a href="profile.php">
-               Welcome, <?php
-                    	if (isset($_SESSION['first'])){
-                        	echo $_SESSION['first'];
-				echo " ";    
-                        	echo $_SESSION['last'];
-                   	 };
-			?>! </a></li>
-           
-            <li><a href="../includes/logout.php">Logout</a></li>
-			</ul>
-		</div>
-	</nav>
+	<?php include("../header.php"); ?>
 	<section id="user">
 		<div class="container">
 			<a href="profile.php"><h1 class="page-header">
@@ -100,7 +76,7 @@ include '../db/dbh.php';
 	<section>
 		<div class="container">
 			<a class="btn btn-primary" href="blog.html">Blog</a>
-			<a class="btn btn-primary" href="photo.html">Photo</a>
+			<a class="btn btn-primary" href="photo.php">Photo</a>
 			<hr>
 		</div>
 	</section>
@@ -124,18 +100,9 @@ include '../db/dbh.php';
 						}else{
 							while($row=mysqli_fetch_array($result)){
 								$guestUserID = $row['guestUserID'];
-								$sql2 = "SELECT firstName, lastName FROM users WHERE email = '$guestUserID'";
-								$result2 = mysqli_query($conn, $sql2);
-								if (!$row = mysqli_fetch_assoc($result2)){
-								    echo "Can't find user.";
-								} else{
-									$firstName = $row['firstName'];
-									$lastName = $row['lastName'];
-								}
-								$fullName = $firstName ." ".$lastName;
 								echo "<li class='list-group-item'><a href='others-profile.php?$guestUserID'>";
-								echo $fullName;
-								echo "<a  class='btn btn-danger' href='../includes/deleteF.php?$guestUserID'>Delete</a>";
+								echo $guestUserID;
+								echo "<a href='../includes/deleteF.php?$guestUserID'>Delete</a>";
 							}
 						}
 						?>
@@ -146,7 +113,8 @@ include '../db/dbh.php';
 			<div id="applying">
 				<h3>Applying</h3>
 				<div class="list-group">
-
+<!--					<li class="list-group-item">-->
+<!--						<a href="#">Item 1</a>-->
 
 						<?php
 							$target=$_SESSION['email'];
@@ -155,24 +123,18 @@ include '../db/dbh.php';
 							$result = mysqli_query($conn, $sql);
 							$count = mysqli_num_rows($result);
 							if(!$count>0){
-							echo "No applying";
+							echo "no result for $target";
 							}else{
 							while($row=mysqli_fetch_array($result)){
 								$guestUserID = $row['guestUserID'];
-								$sql2 = "SELECT firstName, lastName FROM users WHERE email = '$guestUserID'";
-								$result2 = mysqli_query($conn, $sql2);
-								if (!$row = mysqli_fetch_assoc($result2)){
-								    echo "Can't find user.";
-								} else{
-									$firstName = $row['firstName'];
-									$lastName = $row['lastName'];
-								}
-								$fullName = $firstName ." ".$lastName;
-								echo "<li class='list-group-item'><a href='others-profile.php?$guestUserID'>$fullName</a>";
+								echo "<li class='list-group-item'><a href='others-profile.php?$guestUserID'>$guestUserID</a>";
 								}
 							}
 
 						?>
+
+
+					</li>
 				</div>
 			</div>
 
@@ -190,22 +152,14 @@ include '../db/dbh.php';
 					}else{
 						while($row=mysqli_fetch_array($result)){
 							$guestUserID = $row['guestUserID'];
-							$sql2 = "SELECT firstName, lastName FROM users WHERE email = '$guestUserID'";
-							$result2 = mysqli_query($conn, $sql2);
-							if (!$row = mysqli_fetch_assoc($result2)){
-							    echo "Can't find user.";
-							} else{
-								$firstName = $row['firstName'];
-								$lastName = $row['lastName'];
-							}
-							$fullName = $firstName ." ".$lastName;
 							echo "<li class='list-group-item'><a href='others-profile.php?$guestUserID'>";
-							echo $fullName;
-							echo "<a class='btn btn-primary' href='../includes/accept.php?$guestUserID'>Accept</a>";
-							echo "<a class='btn btn-danger' href='../includes/refuse.php?$guestUserID'>Refuse</a>";
+							echo $guestUserID;
+							echo "<a href='../includes/accept.php?$guestUserID'>Accept</a>";
+							echo "<a href='../includes/refuse.php?$guestUserID'>Refuse</a>";
 						}
 					}
 					?>
+					</li>
 				</div>
 			</div>
 		</div>
