@@ -56,9 +56,7 @@ session_start();
                             echo "Password change successful, please login again";}
                         ?>
                 </div>
-
-                        <button class="btn btn-default btn-lg" type="submit">Login</button>
-                </div>
+                <button class="btn btn-default btn-lg" type="submit">Login</button>
 
             </form>
 
@@ -85,9 +83,7 @@ session_start();
                                         keyboard: true
                                     })});
                                 </script>
-                                <h4 class="modal-title" id="myModalLabel">
-                                    <style>
-                                    </style>
+                                <h4 class="modal-title" id="myModalLabel">                                  
                                     Success, please check your email inbox.
                                 </h4>
                                 <?php ;}
@@ -99,8 +95,6 @@ session_start();
                                     })});
                                 </script>
                                 <h4 class="modal-title" id="myModalLabel">
-                                    <style>
-                                    </style>
                                     Sorry, we couldn't verify your account, please try again
                                 </h4>
                                 <?php ;}
@@ -153,8 +147,6 @@ session_start();
                                     })});
                                 </script>
                                 <h4 class="modal-title" id="myModalLabel" style="color: red">
-                                    <style>
-                                    </style>
                                     Fill out all fields.
                                 </h4>
                                 <?php ;}
@@ -167,8 +159,6 @@ session_start();
                                     })});
                                 </script>
                                 <h4 class="modal-title" id="myModalLabel" style="color: red">
-                                    <style>
-                                    </style>
                                     The passwords you entered didn't match.
                                 </h4>
                                 <?php ;}
@@ -180,8 +170,6 @@ session_start();
                                     })});
                                 </script>
                                 <h4 class="modal-title" id="myModalLabel" style="color: red">
-                                    <style>
-                                    </style>
                                     Fill out all fields.
                                 </h4>
                                 <?php ;}
@@ -193,8 +181,6 @@ session_start();
                                     })});
                                 </script>
                                 <h4 class="modal-title" id="myModalLabel"  style="color: red">
-                                    <style>
-                                    </style>
                                     Email already exist!
                                 </h4>
                                 <?php ;}
@@ -207,8 +193,6 @@ session_start();
                                     })});
                                 </script>
                                 <h4 class="modal-title" id="myModalLabel" style="color: red">
-                                    <style>
-                                    </style>
                                     Username already exists.
                                 </h4>
                                 <?php ;}
