@@ -146,8 +146,7 @@ include '../db/dbh.php';
 			<div id="applying">
 				<h3>Applying</h3>
 				<div class="list-group">
-<!--					<li class="list-group-item">-->
-<!--						<a href="#">Item 1</a>-->
+
 
 						<?php
 							$target=$_SESSION['email'];
@@ -174,9 +173,6 @@ include '../db/dbh.php';
 							}
 
 						?>
-
-
-					</li>
 				</div>
 			</div>
 
@@ -210,7 +206,6 @@ include '../db/dbh.php';
 						}
 					}
 					?>
-					</li>
 				</div>
 			</div>
 		</div>
