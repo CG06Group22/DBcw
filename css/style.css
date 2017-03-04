@@ -37,3 +37,28 @@ hr{
 	margin-right: 5px;
 }
 
+.error {
+  background: red;
+  color: #ffffff;
+  padding: 5px;
+  margin-bottom: 20px;
+}
+
+#messages {
+  width: 90%;
+  background: #f4f4f4;
+  height: 400px;
+  margin: 20px auto;
+  overflow: auto;
+}
+
+.message {
+  list-style: none;
+  padding: 8px;
+  border-bottom: 1px #cccccc dotted;
+}
+
+.message span {
+  color:#aaaaaa;
+}
+
