@@ -18,7 +18,7 @@ include '../db/dbh.php';
 <body>
 	<!-- navbar -->
 	<?php
-	include ("../header.php");
+	include("../component/header.php");
 	?>
 	<section id="user">
 		<div class="container">
@@ -95,7 +95,7 @@ include '../db/dbh.php';
 						<?php
 						$target=$_SESSION['email'];
 						$friend = "friend";
-						$sql = "SELECT * FROM relationship WHERE relationship = '$friend' AND hostUserID LIKE '%$target%'";
+						$sql = "SELECT * FROM relationship WHERE relationship = '$friend' AND hostUserID = '$target'";
 						$result = mysqli_query($conn, $sql);
 						$count = mysqli_num_rows($result);
 						if(!$count>0){
@@ -114,7 +114,7 @@ include '../db/dbh.php';
 								$fullName = $firstName ." ".$lastName;
 								echo "<li class='list-group-item'><a href='others-profile.php?$guestUserID'>";
 								echo $fullName;
-								echo "<a class="btn btn-danger" href='../includes/deleteF.php?$guestUserID'>Delete</a>";
+								echo "<a href='../includes/deleteF.php?$guestUserID'>Delete</a>";
 							}
 						}
 						?>
@@ -125,6 +125,8 @@ include '../db/dbh.php';
 			<div id="applying">
 				<h3>Applying</h3>
 				<div class="list-group">
+<!--					<li class="list-group-item">-->
+<!--						<a href="#">Item 1</a>-->
 
 						<?php
 							$target=$_SESSION['email'];
@@ -182,8 +184,8 @@ include '../db/dbh.php';
 							$fullName = $firstName ." ".$lastName;
 							echo "<li class='list-group-item'><a href='others-profile.php?$guestUserID'>";
 							echo $fullName;
-							echo "<a class="btn btn-primay" href='../includes/accept.php?$guestUserID'>Accept</a>";
-							echo "<a class="btn btn-danger" href='../includes/refuse.php?$guestUserID'>Refuse</a>";
+							echo "<a href='../includes/accept.php?$guestUserID'>Accept</a>";
+							echo "<a href='../includes/refuse.php?$guestUserID'>Refuse</a>";
 						}
 					}
 					?>

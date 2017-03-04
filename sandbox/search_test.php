@@ -19,7 +19,7 @@ session_start();
 <body>
 <!-- navbar -->
 <?php
-    include ("../header.php");
+    include("../component/header.php");
     ?>
 
 <section>
@@ -72,7 +72,7 @@ session_start();
                         $fullName = $firstName ." ".$lastName;
                         echo "<li class='list-group-item'><a href='others-profile.php?$email'>";
                         echo $fullName;
-                        echo "<a class="btn btn-primary" href='../includes/apply.php?$email'>Apply</a>";
+                        echo "<a href='../includes/apply.php?$email'>Apply</a>";
                     }
                 }
                 ?>
@@ -94,7 +94,9 @@ session_start();
                                             keyboard: true
                                         })});
                                     </script>
-                                    <h4 class="modal-title" id="myModalLabel" style="color: black"> 
+                                    <h4 class="modal-title" id="myModalLabel" style="color: red">
+                                        <style>
+                                        </style>
                                         You have already send the application
                                     </h4>
                                     <?php ;}
@@ -106,7 +108,9 @@ session_start();
                                             keyboard: true
                                         })});
                                     </script>
-                                    <h4 class="modal-title" id="myModalLabel" style="color: blak">
+                                    <h4 class="modal-title" id="myModalLabel" style="color: red">
+                                        <style>
+                                        </style>
                                         You are already friends with this person
                                     </h4>
                                     <?php ;}
@@ -117,7 +121,9 @@ session_start();
                                             keyboard: true
                                         })});
                                     </script>
-                                    <h4 class="modal-title" id="myModalLabel" style="color: black">
+                                    <h4 class="modal-title" id="myModalLabel" style="color: red">
+                                        <style>
+                                        </style>
                                         The application has been submitted
                                     </h4>
                                     <?php ;}

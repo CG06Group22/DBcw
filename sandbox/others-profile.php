@@ -1,5 +1,6 @@
 <?php
 session_start();
+include '../db/dbh.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +18,7 @@ session_start();
 <body>
 	<!-- navbar -->
 	<?php
-	include("../header.php");
+	include("../component/header.php");
 	?>
 	
 	<section id="user">
@@ -33,18 +34,47 @@ session_start();
                 <tbody>
                 <?php
                 $_SERVER['QUERY_STRING'];
-                $conn = mysql_connect("us-cdbr-azure-southcentral-f.cloudapp.net", "bd72ffa33d6f5c", "20d59076");
-                mysql_select_db('gc06group22database', $conn);
+
                 $other=$_SERVER['QUERY_STRING'];
-                $sql = "SELECT * FROM users WHERE email LIKE '%$other%'";
-                $result = mysql_query($sql);
-                $row=mysql_fetch_array($result);
+                $sql = "SELECT * FROM users WHERE email = '$other'";
+                $result = mysqli_query($conn,$sql);
+                $row=mysqli_fetch_array($result);
                 $_SESSION['otherlast'] = $row['lastName'];
-		$_SESSION['otherfirst'] = $row['firstName'];
-		$_SESSION['othergender'] = $row['gender'];
-		$_SESSION['otheremail'] = $row['email'];
-		$_SESSION['otheruid'] = $row['uid'];
-		$_SESSION['otherfullname'] = $_SESSION['otherfirst'] ." ".$_SESSION['otherlast'];
+                $_SESSION['otherfirst'] = $row['firstName'];
+                $_SESSION['othergender'] = $row['gender'];
+                $_SESSION['otheremail'] = $row['email'];
+                $_SESSION['otheruid'] = $row['uid'];
+                $_SESSION['otherfullname'] = $_SESSION['otherfirst'] ." ".$_SESSION['otherlast'];
+
+
+
+//
+//                $target=$_SESSION['email'];
+//                $friend = "friend";
+//                $sql = "SELECT * FROM relationship WHERE relationship = '$friend' AND hostUserID = '$target'";
+//                $result = mysqli_query($conn, $sql);
+//                $count = mysqli_num_rows($result);
+//                if(!$count>0){
+//                    echo "Your friend list is empty";
+//                }else{
+//                    while($row=mysqli_fetch_array($result)){
+//                        $guestUserID = $row['guestUserID'];
+//                        $sql2 = "SELECT firstName, lastName FROM users WHERE email = '$guestUserID'";
+//                        $result2 = mysqli_query($conn, $sql2);
+//                        if (!$row = mysqli_fetch_assoc($result2)){
+//                            echo "Can't find user.";
+//                        } else{
+//                            $firstName = $row['firstName'];
+//                            $lastName = $row['lastName'];
+//                        }
+//                        $fullName = $firstName ." ".$lastName;
+//                        echo "<li class='list-group-item'><a href='others-profile.php?$guestUserID'>";
+//                        echo $fullName;
+//                        echo "<a href='../includes/deleteF.php?$guestUserID'>Delete</a>";
+//                    }
+//                }
+
+
 //                if (strpos($url,'error=incorrect') !==false){
 //                    echo "Your username or password is incorrect!";
 //                }
@@ -102,7 +132,7 @@ session_start();
 						<?php
 						$target = $_SESSION['otheremail'];
 						$friend = "friend";
-						$sql2 = "SELECT * FROM relationship WHERE relationship = '$friend' AND hostUserID LIKE '%$target%'";
+						$sql2 = "SELECT * FROM relationship WHERE relationship = '$friend' AND hostUserID = '$target'";
 						$result2 = mysqli_query($conn, $sql2);
 						$count = mysqli_num_rows($result2);
 						if(!$count>0){
@@ -114,6 +144,8 @@ session_start();
 								$result3 = mysqli_query($conn, $sql3);
 								if (!$row = mysqli_fetch_assoc($result3)){
 								    echo "Can't find user.";
+                                    $firstName = "";
+                                    $lastName = "";
 								} else{
 									$firstName = $row['firstName'];
 									$lastName = $row['lastName'];
@@ -121,7 +153,6 @@ session_start();
 								$fullName = $firstName ." ".$lastName;
 								echo "<li class='list-group-item'><a href='others-profile.php?$guestUserID'>";
 								echo $fullName;
-								echo "<a href='../includes/deleteF.php?$guestUserID'>Delete</a>";
 							}
 						}
 						?>

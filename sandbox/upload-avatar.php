@@ -16,7 +16,7 @@ include '../db/dbh.php';
 </head>
 
 <body>
-<?php include("../header.php"); ?>
+<?php include("../component/header.php"); ?>
 <section id="user">
     <div class="container">
         <a href="profile.php"><h1 class="page-header">

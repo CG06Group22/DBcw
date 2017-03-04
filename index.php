@@ -31,6 +31,9 @@ session_start();
             <h1>Welocom to FakeBook</h1>
             <p class="text-info"><em>Say Hell to World!</em></p>
 
+
+
+
             <form action="includes/loginverify.php" method="post">
                 <div class="form-group">
                     <label for="email">Email address</label>
@@ -53,7 +56,10 @@ session_start();
                             echo "Password change successful, please login again";}
                         ?>
                 </div>
-                <button class="btn btn-default btn-lg" type="submit">Login</button>
+
+                        <button class="btn btn-default btn-lg" type="submit">Login</button>
+                </div>
+
             </form>
 
             <br>
@@ -80,6 +86,8 @@ session_start();
                                     })});
                                 </script>
                                 <h4 class="modal-title" id="myModalLabel">
+                                    <style>
+                                    </style>
                                     Success, please check your email inbox.
                                 </h4>
                                 <?php ;}
@@ -91,6 +99,8 @@ session_start();
                                     })});
                                 </script>
                                 <h4 class="modal-title" id="myModalLabel">
+                                    <style>
+                                    </style>
                                     Sorry, we couldn't verify your account, please try again
                                 </h4>
                                 <?php ;}
@@ -112,10 +122,15 @@ session_start();
             </div>
 
 
+
+
+
+
+
             <br>
 
 
-            
+            <!--            <input type="image" src="img/signup.png" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" width="320" height="191"/>-->
             <p>Not registered yet? Sign up now!</p>
             <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
                 Sign up
@@ -138,6 +153,8 @@ session_start();
                                     })});
                                 </script>
                                 <h4 class="modal-title" id="myModalLabel" style="color: red">
+                                    <style>
+                                    </style>
                                     Fill out all fields.
                                 </h4>
                                 <?php ;}
@@ -150,6 +167,8 @@ session_start();
                                     })});
                                 </script>
                                 <h4 class="modal-title" id="myModalLabel" style="color: red">
+                                    <style>
+                                    </style>
                                     The passwords you entered didn't match.
                                 </h4>
                                 <?php ;}
@@ -161,6 +180,8 @@ session_start();
                                     })});
                                 </script>
                                 <h4 class="modal-title" id="myModalLabel" style="color: red">
+                                    <style>
+                                    </style>
                                     Fill out all fields.
                                 </h4>
                                 <?php ;}
@@ -172,6 +193,8 @@ session_start();
                                     })});
                                 </script>
                                 <h4 class="modal-title" id="myModalLabel"  style="color: red">
+                                    <style>
+                                    </style>
                                     Email already exist!
                                 </h4>
                                 <?php ;}
@@ -184,6 +207,8 @@ session_start();
                                     })});
                                 </script>
                                 <h4 class="modal-title" id="myModalLabel" style="color: red">
+                                    <style>
+                                    </style>
                                     Username already exists.
                                 </h4>
                                 <?php ;}
