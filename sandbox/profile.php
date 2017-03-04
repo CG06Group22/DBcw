@@ -156,7 +156,7 @@ include '../db/dbh.php';
 							$result = mysqli_query($conn, $sql);
 							$count = mysqli_num_rows($result);
 							if(!$count>0){
-							echo "no result for $target";
+							echo "No applying";
 							}else{
 							while($row=mysqli_fetch_array($result)){
 								$guestUserID = $row['guestUserID'];
