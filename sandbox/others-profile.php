@@ -15,7 +15,10 @@ session_start();
 </head>
 
 <body>
-<?php include("../header.php"); ?>
+	<!-- navbar -->
+	<?php
+	include("../header.php");
+	?>
 	
 	<section id="user">
 		<div class="container">
@@ -32,48 +35,46 @@ session_start();
                 $_SERVER['QUERY_STRING'];
                 $conn = mysql_connect("us-cdbr-azure-southcentral-f.cloudapp.net", "bd72ffa33d6f5c", "20d59076");
                 mysql_select_db('gc06group22database', $conn);
-                $target=$_SERVER['QUERY_STRING'];
-                $sql = "SELECT * FROM users WHERE email LIKE '%$target%'";
+                $other=$_SERVER['QUERY_STRING'];
+                $sql = "SELECT * FROM users WHERE email LIKE '%$other%'";
                 $result = mysql_query($sql);
                 $row=mysql_fetch_array($result);
-                $lastName = $row['lastName'];
-                $firstName = $row['firstName'];
-                $gender = $row['gender'];
-                $email = $row['email'];
+                $_SESSION['otherlast'] = $row['lastName'];
+		$_SESSION['otherfirst'] = $row['firstName'];
+		$_SESSION['othergender'] = $row['gender'];
+		$_SESSION['otheremail'] = $row['email'];
+		$_SESSION['otheruid'] = $row['uid'];
+		$_SESSION['otherfullname'] = $_SESSION['otherfirst'] ." ".$_SESSION['otherlast'];
 //                if (strpos($url,'error=incorrect') !==false){
 //                    echo "Your username or password is incorrect!";
 //                }
-
                 ?>
 
 
                 <tr>
                     <th>Firstname: <?php
-
-                            echo $firstName;
+                            echo $_SESSION['otherfirst'];
                          ?></th>
 
                     <td></td>
                 </tr>
                 <tr>
                     <th>Lastname: <?php
-
-                            echo $lastName;
+                            echo $_SESSION['otherlast'] ;
                          ?></th>
 
                     <td></td>
                 </tr>
                 <tr>
                     <th>Gender: <?php
-
-                            echo $gender
+                            echo $_SESSION['othergender'] 
                          ?></th>
 
                     <td></td>
                 </tr>
                 <tr>
                     <th>Email: <?php
-                            echo $email;
+                            echo $_SESSION['otheremail'];
                          ?></th>
 
                     <td></td>
@@ -98,9 +99,32 @@ session_start();
 			<div id="friend">
 				<h3>Friends</h3>
 				<div class="list-group">
-					<li class="list-group-item">
-						<a href="others-profile.php">Item 1</a>
-					</li>
+						<?php
+						$target = $_SESSION['otheremail'];
+						$friend = "friend";
+						$sql2 = "SELECT * FROM relationship WHERE relationship = '$friend' AND hostUserID LIKE '%$target%'";
+						$result2 = mysqli_query($conn, $sql2);
+						$count = mysqli_num_rows($result2);
+						if(!$count>0){
+							echo "Your friend list is empty";
+						}else{
+							while($row=mysqli_fetch_array($result2)){
+								$guestUserID = $row['guestUserID'];
+								$sql3 = "SELECT firstName, lastName FROM users WHERE email = '$guestUserID'";
+								$result3 = mysqli_query($conn, $sql3);
+								if (!$row = mysqli_fetch_assoc($result3)){
+								    echo "Can't find user.";
+								} else{
+									$firstName = $row['firstName'];
+									$lastName = $row['lastName'];
+								}
+								$fullName = $firstName ." ".$lastName;
+								echo "<li class='list-group-item'><a href='others-profile.php?$guestUserID'>";
+								echo $fullName;
+								echo "<a href='../includes/deleteF.php?$guestUserID'>Delete</a>";
+							}
+						}
+						?>
 				</div>
 			</div>
 			
