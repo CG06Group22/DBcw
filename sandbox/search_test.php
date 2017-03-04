@@ -19,27 +19,28 @@ session_start();
 <body>
 <!-- navbar -->
 <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">FakeBook</a>
-        </div>
-        <ul class="nav navbar-nav navbar-right">
-            <li><a href="search_test.php">Search</a></li>
-            <li><a href="chat.html">Chat</a></li>
-            <li id="login-user">
-                <a href="profile.php">
-                    <?php
-                    if(isset($_SESSION['first'])){
-                        echo $_SESSION['first'];
-                        echo " ";
-                        echo $_SESSION['last'];
-                    }
-                    ?>
-                </a>
-            </li>
-            <li><a href="../index.php">Login</a></li>
-        </ul>
-    </div>
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">FakeBook</a>
+			</div>			
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="search_test.php">Search</a></li>
+				<li><a href="chat.html">Chat</a></li>
+				
+				
+				
+				<li><a href="profile.php">
+               Welcome, <?php
+                    	if (isset($_SESSION['first'])){
+                        	echo $_SESSION['first'];
+				echo " ";    
+                        	echo $_SESSION['last'];
+                   	 };
+			?>! </a></li>
+           
+            <li><a href="../includes/logout.php">Logout</a></li>
+			</ul>
+		</div>
 </nav>
 
 <section>
