@@ -117,7 +117,7 @@ session_start();
 						$result = mysqli_query($conn, $sql);
 						$count = mysqli_num_rows($result);
 						if(!$count>0){
-							echo "This friend list is empty";
+							echo "This user has no friend yet.";
 						}else{
 							while($row=mysqli_fetch_array($result)){
 								$guestUserID = $row['guestUserID'];
