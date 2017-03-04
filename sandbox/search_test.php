@@ -95,8 +95,6 @@ session_start();
                                         })});
                                     </script>
                                     <h4 class="modal-title" id="myModalLabel" style="color: red">
-                                        <style>
-                                        </style>
                                         You have already send the application
                                     </h4>
                                     <?php ;}
