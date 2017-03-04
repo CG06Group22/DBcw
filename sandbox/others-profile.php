@@ -66,9 +66,6 @@ session_start();
 		$_SESSION['otheremail'] = $row['email'];
 		$_SESSION['otheruid'] = $row['uid'];
 		$_SESSION['otherfullname'] = $_SESSION['otherfirst'] ." ".$_SESSION['otherlast'];
-//                if (strpos($url,'error=incorrect') !==false){
-//                    echo "Your username or password is incorrect!";
-//                }
                 ?>
 
 
