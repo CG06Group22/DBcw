@@ -121,19 +121,19 @@ session_start();
 				<h3>Friends</h3>
 				<div class="list-group">
 						<?php
-						$target=$_SESSION['otheremail'];
+						$target = $_SESSION['otheremail'];
 						$friend = "friend";
-						$sql = "SELECT * FROM relationship WHERE relationship = '$friend' AND hostUserID LIKE '%$target%'";
-						$result = mysqli_query($conn, $sql);
-						$count = mysqli_num_rows($result);
+						$sql2 = "SELECT * FROM relationship WHERE relationship = '$friend' AND hostUserID LIKE '%$target%'";
+						$result2 = mysqli_query($conn, $sql2);
+						$count = mysqli_num_rows($result2);
 						if(!$count>0){
 							echo "Your friend list is empty";
 						}else{
-							while($row=mysqli_fetch_array($result)){
+							while($row=mysqli_fetch_array($result2)){
 								$guestUserID = $row['guestUserID'];
-								$sql2 = "SELECT firstName, lastName FROM users WHERE email = '$guestUserID'";
-								$result2 = mysqli_query($conn, $sql2);
-								if (!$row = mysqli_fetch_assoc($result2)){
+								$sql3 = "SELECT firstName, lastName FROM users WHERE email = '$guestUserID'";
+								$result3 = mysqli_query($conn, $sql3);
+								if (!$row = mysqli_fetch_assoc($result3)){
 								    echo "Can't find user.";
 								} else{
 									$firstName = $row['firstName'];
