@@ -32,20 +32,7 @@ session_start();
 	
 	<section id="user">
 		<div class="container">
-			<?php
-				if (isset($_SESSION['otheremail'])){
-					$otheremail=$_SESSION['otheremail'];
-					echo "<a href='others-profile.php?$otheremail'>"
-				}
-			?>
-			<h1 class="page-header">
-			<?php
-				if (isset($_SESSION['otherfullname'])){
-					echo $_SESSION['otherfullname'];
-				 };
-			?>
-			</h1></a>
-			
+			<a href="others-profile.php"><h1 class="page-header">User</h1></a>
 		</div>
 	</section>
 
@@ -54,28 +41,28 @@ session_start();
 			<h2 class="text-primary">Profile</h2>
 			<table class="table table-condensed table-striped">
                 <tbody>
-			<?php
-				$_SERVER['QUERY_STRING'];
-				$conn = mysql_connect("us-cdbr-azure-southcentral-f.cloudapp.net", "bd72ffa33d6f5c", "20d59076");
-				mysql_select_db('gc06group22database', $conn);
-				$other=$_SERVER['QUERY_STRING'];
-				$sql = "SELECT * FROM users WHERE email = '$other'";
-				$result = mysql_query($sql);
-				$row=mysql_fetch_array($result);
-				$_SESSION['otherlast'] = $row['lastName'];
-				$_SESSION['otherfirst'] = $row['firstName'];
-				$_SESSION['othergender'] = $row['gender'];
-				$_SESSION['otheremail'] = $row['email'];
-				$_SESSION['otheruid'] = $row['uid'];
-				$_SESSION['otherfullname'] = $_SESSION['otherfirst'] ." ".$_SESSION['otherlast'];				
+                <?php
+                $_SERVER['QUERY_STRING'];
+                $conn = mysql_connect("us-cdbr-azure-southcentral-f.cloudapp.net", "bd72ffa33d6f5c", "20d59076");
+                mysql_select_db('gc06group22database', $conn);
+                $other=$_SERVER['QUERY_STRING'];
+                $sql = "SELECT * FROM users WHERE email LIKE '%$other%'";
+                $result = mysql_query($sql);
+                $row=mysql_fetch_array($result);
+                $_SESSION['otherlast'] = $row['lastName'];
+		$_SESSION['otherfirst'] = $row['firstName'];
+		$_SESSION['othergender'] = $row['gender'];
+		$_SESSION['otheremail'] = $row['email'];
+		$_SESSION['otheruid'] = $row['uid'];
+		$_SESSION['otherfullname'] = $_SESSION['otherfirst'] ." ".$_SESSION['otherlast'];
 //                if (strpos($url,'error=incorrect') !==false){
 //                    echo "Your username or password is incorrect!";
 //                }
-				?>
-                
+                ?>
+
+
                 <tr>
                     <th>Firstname: <?php
-
                             echo $_SESSION['otherfirst'];
                          ?></th>
 
@@ -83,16 +70,14 @@ session_start();
                 </tr>
                 <tr>
                     <th>Lastname: <?php
-
-                            echo $_SESSION['othrtlast'];
+                            echo $_SESSION['otherlast'] ;
                          ?></th>
 
                     <td></td>
                 </tr>
                 <tr>
                     <th>Gender: <?php
-
-                            echo $_SESSION['othergender']
+                            echo $_SESSION['othergender'] 
                          ?></th>
 
                     <td></td>
@@ -124,10 +109,11 @@ session_start();
 			<div id="friend">
 				<h3>Friends</h3>
 				<div class="list-group">
-					<?php
+					<li class="list-group-item">
+						<?php
 						$target=$_SESSION['otheremail'];
 						$friend = "friend";
-						$sql = "SELECT * FROM relationship WHERE relationship = '$friend' AND hostUserID = '%$target%'";
+						$sql = "SELECT * FROM relationship WHERE relationship = '$friend' AND hostUserID LIKE '%$target%'";
 						$result = mysqli_query($conn, $sql);
 						$count = mysqli_num_rows($result);
 						if(!$count>0){
@@ -149,7 +135,8 @@ session_start();
 								echo "<a href='../includes/deleteF.php?$guestUserID'>Delete</a>";
 							}
 						}
-					?>
+						?>
+					</li>
 				</div>
 			</div>
 			
