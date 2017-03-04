@@ -93,7 +93,7 @@ session_start();
                         $fullName = $firstName ." ".$lastName;
                         echo "<li class='list-group-item'><a href='others-profile.php?$email'>";
                         echo $fullName;
-                        echo "<a href='../includes/apply.php?$email'>Apply</a>";
+                        echo "<a class='btn btn-primary' href='../includes/apply.php?$email'>Apply</a>";
                     }
                 }
                 ?>
