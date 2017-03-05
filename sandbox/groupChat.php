@@ -1,13 +1,13 @@
 <?php 
 include '../db/dbh.php'; 
 ?>
-<?php 
+<!-- <?php 
   // session_start();
   $groupid = $_GET['id'];
   $groupName = $_GET['name']
   $query = "SELECT * FROM messages WHERE gid = '$groupid' ORDER BY messageid DESC";
   $messages = mysqli_query($conn, $query);
-?>
+?> -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
