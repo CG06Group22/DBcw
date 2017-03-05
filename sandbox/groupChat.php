@@ -53,9 +53,7 @@ include '../db/dbh.php';
         </ul>
       </div>
       <div id="input">
-        <?php if (isset($_GET['error'])) : ?>
-          <div class="error"><?php echo $_GET['error']; ?></div>
-        <?php endif; ?>
+        
         <form method="post" action="includes/process.php">
           <!-- <input type="text" id="user" name="user" placeholder="Enter Your Name"/> -->
           <input type="text" id="newmessage" name="message" placeholder="Enter A Message"/>
