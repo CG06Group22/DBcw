@@ -1,17 +1,10 @@
 <?php 
 include '../db/dbh.php'; 
 ?>
-<!-- <?php 
-  // session_start();
-  $groupid = $_GET['id'];
-  $groupName = $_GET['name']
-  $query = "SELECT * FROM messages WHERE gid = '$groupid' ORDER BY messageid DESC";
-  $messages = mysqli_query($conn, $query);
-?> -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8"/>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Group Chat</title>
