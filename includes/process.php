@@ -23,7 +23,7 @@
         die('Error: Cannot insert messages' . mysqli_error($conn));
       }
       else {
-        header('Location: groupChat.php');
+        header('Location: ../sandbox/groupChat.php');
         exit();
       }
     }
