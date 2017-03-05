@@ -1,5 +1,6 @@
 <?php 
-include '../db/dbh.php'; 
+include '../db/dbh.php';
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,6 +21,7 @@ include '../db/dbh.php';
     <?php 
       $_SERVER['QUERY_STRING'];
       $groupid = $_SERVER['QUERY_STRING'];
+      $_SESSION['gid'] = $groupid;
       //$groupid = $_GET['id'];
       //$groupName = $_GET['name']
       $groupName = "TestName";
