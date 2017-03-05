@@ -39,17 +39,7 @@ include '../db/dbh.php';
                 echo $row['sendTime']; 
                 $content = $row['content'];
               ?> - </span>
-              <strong>
-              <?php
-                $que = "SELECT firstName, lastName FROM users WHERE uid = '$row['uid']'";
-                $name = mysqli_query($conn, $que);
-                if($nameRow = mysqli_fetch_assoc($name)){
-                $fullName = $nameRow['firstName'] ." ".$nameRow['lastName'];
-                echo $fullName;
-                
-                }
-              ?>                
-              </strong>
+              
               : <?php echo $content; ?>
             </li>     
           <?php } ?>
