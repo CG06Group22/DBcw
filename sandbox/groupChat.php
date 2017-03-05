@@ -1,15 +1,6 @@
 <?php 
 include '../db/dbh.php'; 
 ?>
-<?php 
-  $_SERVER['QUERY_STRING'];
-  $groupid = $_SERVER['QUERY_STRING'];
-  //$groupid = $_GET['id'];
-  //$groupName = $_GET['name']
-  $groupName = "TestName";
-  $query = "SELECT * FROM messages WHERE gid = '$groupid' ORDER BY messageid DESC";
-  $messages = mysqli_query($conn, $query);
-?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -25,6 +16,15 @@ include '../db/dbh.php';
   <body>
     <?php
       include("../component/header.php");
+    ?>
+    <?php 
+      $_SERVER['QUERY_STRING'];
+      $groupid = $_SERVER['QUERY_STRING'];
+      //$groupid = $_GET['id'];
+      //$groupName = $_GET['name']
+      $groupName = "TestName";
+      $query = "SELECT * FROM messages WHERE gid = '$groupid' ORDER BY messageid DESC";
+      $messages = mysqli_query($conn, $query);
     ?>
     <div id="container">
       <header>
@@ -42,10 +42,11 @@ include '../db/dbh.php';
               <?php
                 $que = "SELECT firstName, lastName FROM users WHERE uid = '$row['uid']'";
                 $name = mysqli_query($conn, $que);
-                $nameRow = mysqli_fetch_assoc($name);
+                if($nameRow = mysqli_fetch_assoc($name)){
                 $fullName = $nameRow['firstName'] ." ".$nameRow['lastName'];
                 echo $fullName;
                 $content = $row['content'];
+                }
               ?>                
               </strong>
               : <?php echo $content; ?>
