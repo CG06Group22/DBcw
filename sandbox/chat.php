@@ -56,7 +56,7 @@ include '../db/dbh.php';
             } else{
               $groupName = $row['groupName'];
             }
-            echo "<li class='list-group-item'><a href='groupChat.php?id=$gid&name=$groupName'>";
+            echo "<li class='list-group-item'><a href='groupChat.php?$gid'>";
             echo $groupName;
       ?>
             </a>
