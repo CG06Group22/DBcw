@@ -32,7 +32,28 @@ include '../db/dbh.php';
       </header>
       <a href="../sandbox/chat.php">Back</a>
       <div id="messages" class="container">
-        
+        <ul>
+          <?php while($row = mysqli_fetch_assoc($messages)){ ?>
+            <li class="message">
+              <span><?php 
+                echo $row['sendTime']; 
+                $content = $row['content'];
+              ?> - </span>
+              <strong>
+              <?php
+                $que = "SELECT firstName, lastName FROM users WHERE uid = '$row['uid']'";
+                $name = mysqli_query($conn, $que);
+                if($nameRow = mysqli_fetch_assoc($name)){
+                $fullName = $nameRow['firstName'] ." ".$nameRow['lastName'];
+                echo $fullName;
+                
+                }
+              ?>                
+              </strong>
+              : <?php echo $content; ?>
+            </li>     
+          <?php } ?>
+        </ul>
       </div>
       <div id="input">
         <?php if (isset($_GET['error'])) : ?>
