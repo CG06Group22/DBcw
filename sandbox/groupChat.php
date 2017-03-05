@@ -1,6 +1,10 @@
-<?php include '../db/dbh.php'; ?>
 <?php 
-  session_start();
+error_reporting(E_ALL);
+ini_set('display_errors', 'On');
+include '../db/dbh.php'; 
+?>
+<?php 
+  // session_start();
   $groupid = $_GET['id'];
   $groupName = $_GET['name']
   $query = "SELECT * FROM messages WHERE gid = '$groupid' ORDER BY messageid DESC";
@@ -33,7 +37,7 @@
         <ul>
           <?php while($row = mysqli_fetch_assoc($messages)) : ?>
             <li class="message">
-              <span><?php echo $row['sendTime'] ?> - </span>
+              <span><?php echo $row['sendTime']; ?> - </span>
               <strong>
               <?php
                 $que = "SELECT firstName, lastName FROM users WHERE uid = '$row['uid']'";
