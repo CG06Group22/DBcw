@@ -90,14 +90,14 @@ include '../db/dbh.php';
                 </tr>
                 <tr>
                     <th>Lastname: <?php
-                            echo $_SESSION['otherlast'] ;
+                            echo $_SESSION['otherlast'];
                          ?></th>
 
                     <td></td>
                 </tr>
                 <tr>
                     <th>Gender: <?php
-                            echo $_SESSION['othergender'] 
+                            echo $_SESSION['othergender'];
                          ?></th>
 
                     <td></td>

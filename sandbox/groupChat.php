@@ -4,10 +4,10 @@
   $groupid = $_GET['id'];
   $groupName = $_GET['name']
   $query = "SELECT * FROM messages WHERE gid = '$groupid' ORDER BY messageid DESC";
-  $messages = mysqli_query($connection, $query);
+  $messages = mysqli_query($conn, $query);
 ?>
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,25 +24,27 @@
     ?>
     <div id="container">
       <header>
-        <a href='../sandbox/chat.php'>
+        <a href="../sandbox/chat.php">
         Back
         </a>
-        <h1><?php echo $groupName ?></h1>
+        <h1><?php echo $groupName; ?></h1>
       </header>
       <div id="messages" class="container">
         <ul>
           <?php while($row = mysqli_fetch_assoc($messages)) : ?>
             <li class="message">
-              <span><?php echo $row['sendTime'] ?> - </span><strong>
+              <span><?php echo $row['sendTime'] ?> - </span>
+              <strong>
               <?php
                 $que = "SELECT firstName, lastName FROM users WHERE uid = '$row['uid']'";
-                $name = mysqli_query($connection, $que);
-                $nameRow = mysqli_fetch_assoc($name)
+                $name = mysqli_query($conn, $que);
+                $nameRow = mysqli_fetch_assoc($name);
                 $fullName = $nameRow['firstName'] ." ".$nameRow['lastName'];
-
                 echo $fullName;
-              ?></strong>
-              : <?php echo $row['content'] ?>
+                $content = $row['content'];
+              ?>                
+              </strong>
+              : <?php echo $content; ?>
             </li>     
           <?php endwhile; ?>
         </ul>
@@ -51,7 +53,7 @@
         <?php if (isset($_GET['error'])) : ?>
           <div class="error"><?php echo $_GET['error']; ?></div>
         <?php endif; ?>
-        <form method="post" action="../includes/process.php">
+        <form method="post" action="includes/process.php">
           <!-- <input type="text" id="user" name="user" placeholder="Enter Your Name"/> -->
           <input type="text" id="newmessage" name="message" placeholder="Enter A Message"/>
           <input id="show-btn" type="submit" name="submit" value="Send"/>

@@ -65,6 +65,7 @@ include '../db/dbh.php';
               <button class="btn btn-primary">Detail</button>
               <button class="btn btn-danger">Leave</button>
             </div>
+            </li>
       <?php
           }
         }
