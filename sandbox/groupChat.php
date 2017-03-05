@@ -38,8 +38,18 @@ include '../db/dbh.php';
               <span><?php 
                 echo $row['sendTime']; 
                 $content = $row['content'];
+                $uid = $row['uid'];
               ?> - </span>
-              
+              <strong>
+              <?php
+                $que = "SELECT firstName,lastName FROM users WHERE uid = '$uid'";
+                $name = mysqli_query($conn, $que);
+                if($namerow = mysqli_fetch_assoc($name)){
+                  $fullName2 = $namerow['firstName'] ." ". $namerow['lastName'];
+                  echo $fullName2;
+                }
+              ?>                
+              </strong>
               : <?php echo $content; ?>
             </li>     
           <?php } ?>
@@ -49,7 +59,7 @@ include '../db/dbh.php';
         <?php if (isset($_GET['error'])) : ?>
           <div class="error"><?php echo $_GET['error']; ?></div>
         <?php endif; ?>
-        <form method="post" action="includes/process.php">
+        <form method="post" action="../includes/process.php">
           <!-- <input type="text" id="user" name="user" placeholder="Enter Your Name"/> -->
           <input type="text" id="newmessage" name="message" placeholder="Enter A Message"/>
           <input id="show-btn" type="submit" name="submit" value="Send"/>
