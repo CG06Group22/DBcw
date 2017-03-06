@@ -1,6 +1,18 @@
 <?php
 session_start();
 include '../db/dbh.php';
+$_SERVER['QUERY_STRING'];
+
+$other=$_SERVER['QUERY_STRING'];
+$sql = "SELECT * FROM users WHERE email = '$other'";
+$result = mysqli_query($conn,$sql);
+$row=mysqli_fetch_array($result);
+$_SESSION['otherlast'] = $row['lastName'];
+$_SESSION['otherfirst'] = $row['firstName'];
+$_SESSION['othergender'] = $row['gender'];
+$_SESSION['otheremail'] = $row['email'];
+$_SESSION['otheruid'] = $row['uid'];
+$_SESSION['otherfullname'] = $_SESSION['otherfirst'] ." ".$_SESSION['otherlast'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,26 +35,14 @@ include '../db/dbh.php';
 	
 	<section id="user">
 		<div class="container">
-			<a href="others-profile.php"><h1 class="page-header">
+			<?php 
+			$otherEmail = $_SESSION['otheremail'];
+			echo "<a href='others-profile.php?$otherEmail>";
+			?>
+			<h1 class="page-header">
 			<?php
-                $_SERVER['QUERY_STRING'];
-
-                $other=$_SERVER['QUERY_STRING'];
-                $sql = "SELECT * FROM users WHERE email = '$other'";
-                $result = mysqli_query($conn,$sql);
-                $row=mysqli_fetch_array($result);
-                $_SESSION['otherlast'] = $row['lastName'];
-                $_SESSION['otherfirst'] = $row['firstName'];
-                $_SESSION['othergender'] = $row['gender'];
-                $_SESSION['otheremail'] = $row['email'];
-                $_SESSION['otheruid'] = $row['uid'];
-                $_SESSION['otherfullname'] = $_SESSION['otherfirst'] ." ".$_SESSION['otherlast'];
-
-
-
-
                echo $_SESSION['otherfullname'];
-                ?></h1></a>
+            ?></h1></a>
 		</div>
 	</section>
 
