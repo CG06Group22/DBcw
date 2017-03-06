@@ -37,7 +37,7 @@ $_SESSION['otherfullname'] = $_SESSION['otherfirst'] ." ".$_SESSION['otherlast']
 		<div class="container">
 			<?php 
 				$otherEmail = $_SESSION['otheremail'];
-				echo "<a href='others-profile.php?$otherEmail><h1 class='page-header'>"; 
+				echo "<a href='others-profile.php?$otherEmail'><h1 class='page-header'>"; 
                	echo $_SESSION['otherfullname'];
             	echo "</h1></a>";
             ?>
