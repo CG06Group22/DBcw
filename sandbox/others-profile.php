@@ -23,16 +23,8 @@ include '../db/dbh.php';
 	
 	<section id="user">
 		<div class="container">
-			<a href="others-profile.php"><h1 class="page-header">User</h1></a>
-		</div>
-	</section>
-
-	<section id="profile">
-		<div class="container">
-			<h2 class="text-primary">Profile</h2>
-			<table class="table table-condensed table-striped">
-                <tbody>
-                <?php
+			<a href="others-profile.php"><h1 class="page-header">
+			<?php
                 $_SERVER['QUERY_STRING'];
 
                 $other=$_SERVER['QUERY_STRING'];
@@ -48,37 +40,18 @@ include '../db/dbh.php';
 
 
 
-//
-//                $target=$_SESSION['email'];
-//                $friend = "friend";
-//                $sql = "SELECT * FROM relationship WHERE relationship = '$friend' AND hostUserID = '$target'";
-//                $result = mysqli_query($conn, $sql);
-//                $count = mysqli_num_rows($result);
-//                if(!$count>0){
-//                    echo "Your friend list is empty";
-//                }else{
-//                    while($row=mysqli_fetch_array($result)){
-//                        $guestUserID = $row['guestUserID'];
-//                        $sql2 = "SELECT firstName, lastName FROM users WHERE email = '$guestUserID'";
-//                        $result2 = mysqli_query($conn, $sql2);
-//                        if (!$row = mysqli_fetch_assoc($result2)){
-//                            echo "Can't find user.";
-//                        } else{
-//                            $firstName = $row['firstName'];
-//                            $lastName = $row['lastName'];
-//                        }
-//                        $fullName = $firstName ." ".$lastName;
-//                        echo "<li class='list-group-item'><a href='others-profile.php?$guestUserID'>";
-//                        echo $fullName;
-//                        echo "<a href='../includes/deleteF.php?$guestUserID'>Delete</a>";
-//                    }
-//                }
 
+               echo $_SESSION['otherfullname'];
+                ?></h1></a>
+		</div>
+	</section>
 
-//                if (strpos($url,'error=incorrect') !==false){
-//                    echo "Your username or password is incorrect!";
-//                }
-                ?>
+	<section id="profile">
+		<div class="container">
+			<h2 class="text-primary">Profile</h2>
+			<table class="table table-condensed table-striped">
+                <tbody>
+                
 
 
                 <tr>
