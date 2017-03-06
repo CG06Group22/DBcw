@@ -36,13 +36,11 @@ $_SESSION['otherfullname'] = $_SESSION['otherfirst'] ." ".$_SESSION['otherlast']
 	<section id="user">
 		<div class="container">
 			<?php 
-			$otherEmail = $_SESSION['otheremail'];
-			echo "<a href='others-profile.php?$otherEmail>";
-			?>
-			<h1 class="page-header">
-			<?php
-               echo $_SESSION['otherfullname'];
-            ?></h1></a>
+				$otherEmail = $_SESSION['otheremail'];
+				echo "<a href='others-profile.php?$otherEmail><h1 class='page-header'>"; 
+               	echo $_SESSION['otherfullname'];
+            	echo "</h1></a>";
+            ?>
 		</div>
 	</section>
 
