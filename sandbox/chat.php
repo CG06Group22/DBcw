@@ -78,6 +78,7 @@ include '../db/dbh.php';
                       <div id='friend'>
                         <h3>Friends</h3>
                         <div class='list-group'>
+                        <ul class="list-group">
                         <?php
                           //include("../includes/groupDetail.php");
                           $target=$_SESSION['email'];
@@ -108,9 +109,11 @@ include '../db/dbh.php';
                                   if ($row = mysqli_fetch_assoc($result3)){
                                       echo "<a href='../includes/addToGroup.php?u=$guestUserID&g=$gid'>Add</a>";
                                   }
+                                  echo "</li>";
                               }
                           }
                         ?>
+                        </ul>
                         </div> 
                       </div>
                     </div>
