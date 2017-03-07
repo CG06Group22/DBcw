@@ -65,7 +65,7 @@ include '../db/dbh.php';
                       echo $groupName;
                       echo "</a>";
                       ?>
-                      <hr>
+<!--                       <hr> -->
                       <div class = "panel-heading">
                         <?php echo "<a class='btn btn-primary' data-toggle='collapse' href='#$gid'>Detail
                         </a>"; ?>
