@@ -38,7 +38,7 @@ include '../db/dbh.php';
 <section id="group-list">
   <div class="container">
     <h2 class="text-primary">Group List</h2>
-    <ul class="list-group">
+    <div class="list-group">
       <?php
         $uid=$_SESSION['uid'];
         $sql = "SELECT gid FROM usersgroup WHERE uid = '$uid'";
@@ -56,81 +56,71 @@ include '../db/dbh.php';
             } else{
               $groupName = $row['groupName'];
             }
-            echo "<li class='list-group-item'><a href='groupChat.php?$gid'>";
-            echo $groupName;
       ?>
-            </a>
-            <div id="article-editor">
-              <hr>
-              <!-- <button class="btn btn-primary">Detail</button> -->
-              <?php echo "<button class='btn btn-primary' data-toggle='modal' data-target='#$gid'>Detail
-              </button>"; ?>
-                
-            <!-- （Modal） -->
-            <?php echo "<div class='modal fade' id='$gid' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>"; ?>
-              <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                        </button>
-                        Add members to group
-                        <?php echo $groupName; ?>
-                    </div>
-                    <div class="modal-body">
-                        <div id='friend'>
-                          <h3>Friends</h3>
-                          <ul class="list-group">
-                        <?php
-                          //include("../includes/groupDetail.php");
-                                  
-                          $target=$_SESSION['email'];
-                          $friend = "friend";
-                          $sql = "SELECT guestUserID FROM relationship WHERE relationship = '$friend' AND hostUserID = '$target'";
-                          $result = mysqli_query($conn, $sql);
-                          $count = mysqli_num_rows($result);
-                          if(!$count>0){
-                              echo "Your friend list is empty";
-                          }else{
-                              while($row=mysqli_fetch_array($result)){
-                                  $guestUserID = $row['guestUserID'];
-                                  $sql2 = "SELECT firstName, lastName FROM users WHERE email = '$guestUserID'";
-                                  $result2 = mysqli_query($conn, $sql2);
-                                  if (!$row = mysqli_fetch_assoc($result2)){
-                                      echo "Can't find user.";
-                                  } else {
-                                      $firstName = $row['firstName'];
-                                      $lastName = $row['lastName'];
-                                  }
-                                  $fullName = $firstName ." ".$lastName;
+            <div class='list-group-item'>
+                <?php
+                echo "<a href='groupChat.php?$gid'>";
+                echo $groupName;
+                echo "</a>";
+                ?>
+                <div class = "panel-group" id="buttons-div">
+                    <div class = "panel panel-default">
+                      <hr>
+                      <div class = "panel-heading">
+                      <?php echo "<a class='btn btn-primary' data-toggle='collapse' href='#$gid'>Detail
+                      </a>"; ?>
+                      </div>
+                    <!-- （panel-collapse） -->
+                    <?php echo "<div class='panel-collapse collapse' id='$gid'>"; ?>
+                      <ul class="list-group">
+                      <?php
+                      $target = $_SESSION['email'];
+                      $friend = "friend";
+                      $sql = "SELECT guestUserID FROM relationship WHERE relationship = '$friend' AND hostUserID = '$target'";
+                      $result = mysqli_query($conn, $sql);
+                      $count = mysqli_num_rows($result);
+                      if(!$count>0){
+                        echo "Your friend list is empty";
+                      }else{
+                        while($row = mysqli_fetch_array($result)){
+                            $guestUserID = $row['guestUserID'];
+                            $sql2 = "SELECT firstName, lastName FROM users WHERE email = '$guestUserID'";
+                            $result2 = mysqli_query($conn, $sql2);
+                            if (!$row = mysqli_fetch_assoc($result2)){
+                                echo "Can't find user.";
+                            } else {
+                                $firstName = $row['firstName'];
+                                $lastName = $row['lastName'];
+                                $fullName = $firstName ." ".$lastName;
 
-                                  echo "<li class='list-group-item'><a href='others-profile.php?$guestUserID'>";
-                                  echo $fullName;
+                                echo "<li class='list-group-item'><a href='others-profile.php?$guestUserID'>";
+                                echo $fullName;
 
-                                  $sql3 = "SELECT gid FROM usersgroup WHERE gid = '$gid' AND uid = '$guestUserID'";
-                                  $result3 = mysqli_query($conn, $sql3);
-                                  if (!$rowadd = mysqli_fetch_assoc($result3)){
-                                      echo "<a href='../includes/addToGroup.php?u=$guestUserID&g=$gid'>Add</a>";
-                                  }
-                                  echo "</li>";
-                              }
-                          }
+                                $sql3 = "SELECT gid FROM usersgroup WHERE gid = '$gid' AND uid = '$guestUserID'";
+                                $result3 = mysqli_query($conn, $sql3);
+                                if (!$rowadd = mysqli_fetch_assoc($result3)){
+                                    echo "<a href='../includes/addToGroup.php?u=$guestUserID&g=$gid'>Add</a>";
+                                }
+                                echo "</li>";
+                            }
+                        }
+                      }
+
                       ?>
                       </ul>
-                      </div>
-                    </div>
-                  </div><!-- /.modal-content -->
-              </div><!-- /.modal -->
-            </div>
+                    <?php echo "</div>"; ?>
+                    <!-- （panel-collapse-close） -->
 
-              <button class="btn btn-danger">Leave</button>
-            </div>
-            </li>
+                      <button class="btn btn-danger">Leave</button>
+                    </div> <!-- panel panel-default -->
+                </div> <!-- panel-group -->
+            </div> <!-- list group item -->
       <?php
           }
         }
       ?>
-    </ul>
-  </div>
+    </div> <!-- list group -->
+  </div> <!-- container -->
 </section>
 
 <footer>
