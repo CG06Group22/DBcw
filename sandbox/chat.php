@@ -51,10 +51,10 @@ include '../db/dbh.php';
             $gid = $row['gid'];
             $sql2 = "SELECT groupName FROM groups WHERE gid = '$gid'";
             $result2 = mysqli_query($conn, $sql2);
-            if (!$row = mysqli_fetch_assoc($result2)){
+            if (!$rowGroupNames = mysqli_fetch_assoc($result2)){
                 echo "Can't find group.";
             } else{
-              $groupName = $row['groupName'];
+              $groupName = $rowGroupNames['groupName'];
             }
       ?>
             <div class='list-group-item'>
@@ -77,29 +77,29 @@ include '../db/dbh.php';
                       <?php
                       $target = $_SESSION['email'];
                       $friend = "friend";
-                      $sql = "SELECT guestUserID FROM relationship WHERE relationship = '$friend' AND hostUserID = '$target'";
-                      $result = mysqli_query($conn, $sql);
-                      $count = mysqli_num_rows($result);
-                      if(!$count>0){
+                      $sqlfriends = "SELECT guestUserID FROM relationship WHERE relationship = '$friend' AND hostUserID = '$target'";
+                      $resultfriends = mysqli_query($conn, $sqlfriends);
+                      $countfriends = mysqli_num_rows($resultfriends);
+                      if(!$countfriends>0){
                         echo "Your friend list is empty";
                       }else{
-                        while($row2 = mysqli_fetch_array($result)){
-                            $guestUserID = $row2['guestUserID'];
-                            $sql2 = "SELECT firstName, lastName FROM users WHERE email = '$guestUserID'";
-                            $result2 = mysqli_query($conn, $sql2);
-                            if (!$row3 = mysqli_fetch_assoc($result2)){
+                        while($rowfriends = mysqli_fetch_array($resultfriends)){
+                            $guestUserID = $rowfriends['guestUserID'];
+                            $sqlGuestNames = "SELECT firstName, lastName FROM users WHERE email = '$guestUserID'";
+                            $resultGuestNames = mysqli_query($conn, $sqlGuestNames);
+                            if (!$rowGuestNames = mysqli_fetch_assoc($resultGuestNames)){
                                 echo "Can't find user.";
                             } else {
-                                $firstName = $row3['firstName'];
-                                $lastName = $row3['lastName'];
+                                $firstName = $rowGuestNames['firstName'];
+                                $lastName = $rowGuestNames['lastName'];
                                 $fullName = $firstName ." ".$lastName;
 
                                 echo "<li class='list-group-item'><a href='others-profile.php?$guestUserID'>";
                                 echo $fullName;
 
-                                $sql3 = "SELECT gid FROM usersgroup WHERE gid = '$gid' AND uid = '$guestUserID'";
-                                $result3 = mysqli_query($conn, $sql3);
-                                if (!$rowadd = mysqli_fetch_assoc($result3)){
+                                $sqlIfIn = "SELECT gid FROM usersgroup WHERE gid = '$gid' AND uid = '$guestUserID'";
+                                $resultIfIn = mysqli_query($conn, $sqlIfIn);
+                                if (!$rowadd = mysqli_fetch_assoc($resultIfIn)){
                                     echo "<a href='../includes/addToGroup.php?u=$guestUserID&g=$gid'>Add</a>";
                                 }
                                 echo "</li>";
