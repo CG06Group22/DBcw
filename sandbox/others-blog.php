@@ -35,12 +35,13 @@ include("../component/header.php");
 <section id="user">
     <div class="container">
       <?php
-				$otherEmail = $_SESSION['otheremail'];
-				echo "<a href='others-profile.php?$otherEmail'><h1 class='page-header'>";
+	$otherEmail = $_SESSION['otheremail'];
+	echo "<a href='others-profile.php?$otherEmail'><h1 class='page-header'>";
         echo $_SESSION['otherfullname'];
         echo "</h1></a>";
       ?>
-  </section>
+    </div>	    
+</section>
 
 <section id="article-list">
   <div class="container">
@@ -56,7 +57,7 @@ include("../component/header.php");
         $result1 = mysqli_query($conn, $sql1);
         $count = mysqli_num_rows($result1);
         if(!$count>0){
-            echo "Your articles list is empty";
+            echo "This article list is empty";
         }else{
             while($row=mysqli_fetch_array($result1)){
                 $title=$row['title'];
