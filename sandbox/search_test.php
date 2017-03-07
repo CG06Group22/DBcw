@@ -54,6 +54,7 @@ session_start();
                      $sql = "SELECT * FROM `articles` WHERE title LIKE '%$target%'";
                  }
                  $result = mysql_query($sql);
+
              }
          }
          ?>
@@ -159,7 +160,8 @@ session_start();
                     if ($checkbox=='articles') {
                         while($row=mysql_fetch_array($result)){
                             $title = $row['title'];
-                            echo "<li class='list-group-item'><a href='#$title'>";
+                            $aid = $row['aid'];
+                            echo "<li class='list-group-item'><a href='blog/article.php?$aid'>";
                             echo $title;
                             echo "</a></li>";
                         }
