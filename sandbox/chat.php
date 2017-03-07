@@ -106,7 +106,7 @@ include '../db/dbh.php';
 
                                   $sql3 = "SELECT gid FROM usersgroup WHERE gid = '$gid' AND uid = '$guestUserID'";
                                   $result3 = mysqli_query($conn, $sql3);
-                                  if ($rowadd = mysqli_fetch_assoc($result3)){
+                                  if (!$rowadd = mysqli_fetch_assoc($result3)){
                                       echo "<a href='../includes/addToGroup.php?u=$guestUserID&g=$gid'>Add</a>";
                                   }
                               }
