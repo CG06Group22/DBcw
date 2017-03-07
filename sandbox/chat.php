@@ -58,13 +58,13 @@ include '../db/dbh.php';
             }
       ?>
             <div class='list-group-item'>
-                <?php
-                echo "<a href='groupChat.php?$gid'>";
-                echo $groupName;
-                echo "</a>";
-                ?>
                 <div class = "panel-group" id="buttons-div">
                     <div class = "panel panel-default">
+                      <?php
+                      echo "<a href='groupChat.php?$gid'>";
+                      echo $groupName;
+                      echo "</a>";
+                      ?>
                       <hr>
                       <div class = "panel-heading">
                         <?php echo "<a class='btn btn-primary' data-toggle='collapse' href='#$gid'>Detail
