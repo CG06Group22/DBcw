@@ -63,7 +63,7 @@ include '../db/dbh.php';
             <div id="article-editor">
               <hr>
               <!-- <button class="btn btn-primary">Detail</button> -->
-              <?php echo "<button class='btn btn-primary btn-lg' data-toggle='modal' data-target='#$gid'>Detail
+              <?php echo "<button class='btn btn-primary' data-toggle='modal' data-target='#$gid'>Detail
               </button>"; ?>
                 
             <!-- （Modal） -->
@@ -71,6 +71,8 @@ include '../db/dbh.php';
               <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        </button>
                         Add members to group
                         <?php echo $groupName; ?>
                     </div>
