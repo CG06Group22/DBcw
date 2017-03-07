@@ -47,7 +47,7 @@ session_start();
             if(isset($_SESSION['uid'])){
                 $selfid=$_SESSION['uid'];
                 $target=$_POST['search'];
-                $checkbox = $_POST['search'];
+                $checkbox = $_POST['checkbox'];
                 if ($checkbox=='friends'){
                     $sql = "SELECT * FROM users WHERE (firstName LIKE '%$target%' OR lastName LIKE '%$target%') AND uid != '$selfid'";}
                     if ($checkbox=='articles') {
