@@ -27,7 +27,7 @@ session_start();
       $namerow = mysqli_fetch_assoc($names);
       $groupName = $namerow['groupName'];
 
-      $query = "SELECT * FROM messages WHERE gid = '$groupid' ORDER BY messageid DESC";
+      $query = "SELECT * FROM messages WHERE gid = '$groupid' ORDER BY messageid ASC";
       $messages = mysqli_query($conn, $query);
     ?>
     <div id="container">
