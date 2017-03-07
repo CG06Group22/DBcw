@@ -84,7 +84,7 @@ session_start();
                     if ($checkbox=='articles') {
                         while($row=mysql_fetch_array($result)){
                             $title = $row['title'];
-                            echo "<li class='list-group-item'><a href='others-profile.php?$title'>";
+                            echo "<li class='list-group-item'><a href='#$title'>";
                             echo $title;
                         }
                     }
