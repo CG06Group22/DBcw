@@ -5,9 +5,9 @@
             <a class="navbar-brand" href="#">FakeBook</a>
         </div>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="../sandbox/profile.php">Homepage</a></li>
-            <li><a href="../sandbox/search_test.php">Search</a></li>
-            <li><a href="../sandbox/chat.html">Chat</a></li>
+            <li><a href="../../sandbox/profile.php">Homepage</a></li>
+            <li><a href="../../sandbox/search_test.php">Search</a></li>
+            <li><a href="../../sandbox/chat.html">Chat</a></li>
 
 
 
@@ -21,7 +21,7 @@
                     ?>!<strong class="caret"></strong></a>
                 <ul class="dropdown-menu">
                     <li>
-                        <a href="../sandbox/upload-avatar.php">Upload my avatar</a>
+                        <a href="../../sandbox/upload-avatar.php">Upload my avatar</a>
                     </li>
 
                     <li class="divider">
@@ -47,7 +47,7 @@
 
 
 
-            <li><a href="../includes/logout.php">Logout</a></li>
+            <li><a href="../../includes/logout.php">Logout</a></li>
         </ul>
     </div>
 </nav>
