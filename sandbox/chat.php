@@ -75,11 +75,11 @@ include '../db/dbh.php';
                         <?php echo $groupName; ?>
                     </div>
                     <div class="modal-body">
+                        <div id='friend'>
+                          <h3>Friends</h3>
+                          <ul class="list-group">
                         <?php
                           //include("../includes/groupDetail.php");
-                        echo "<div id='friend'>
-                          <h3>Friends</h3>
-                          <div class='list-group'>";
                                   
                           $target=$_SESSION['email'];
                           $friend = "friend";
@@ -109,11 +109,12 @@ include '../db/dbh.php';
                                   if (!$rowadd = mysqli_fetch_assoc($result3)){
                                       echo "<a href='../includes/addToGroup.php?u=$guestUserID&g=$gid'>Add</a>";
                                   }
+                                  echo "</li>";
                               }
                           }
-
-                      echo "</div> </div>";
                       ?>
+                      </ul>
+                      </div>
                     </div>
                   </div><!-- /.modal-content -->
               </div><!-- /.modal -->
