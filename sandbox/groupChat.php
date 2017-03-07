@@ -24,9 +24,9 @@ session_start();
       $_SESSION['gid'] = $groupid;
       $querynames = "SELECT groupName FROM groups WHERE gid = '$groupid'";
       $names = mysqli_query($conn, $querynames);
-      $namerow = mysqli_fetch_assoc($names)
+      $namerow = mysqli_fetch_assoc($names);
       $groupName = $namerow['groupName'];
-      
+
       $query = "SELECT * FROM messages WHERE gid = '$groupid' ORDER BY messageid DESC";
       $messages = mysqli_query($conn, $query);
     ?>
