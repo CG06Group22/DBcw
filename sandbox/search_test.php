@@ -41,17 +41,22 @@ session_start();
             <button class="btn btn-primary" type="submit" name="submit">Search</button>
         </form>
         <hr>
-        <?php
-        mysql_select_db('gc06group22database', $conn);
-        if(isset($_POST['submit'])){
+         <?php
+         mysql_select_db('gc06group22database', $conn);
+         if(isset($_POST['submit'])){
             if(isset($_SESSION['uid'])){
-            $selfid=$_SESSION['uid'];
-            $target=$_POST['search'];
-            $sql = "SELECT * FROM users WHERE (firstName LIKE '%$target%' OR lastName LIKE '%$target%') AND uid != '$selfid'";
-            $result = mysql_query($sql);
-            }
-        }
-        ?>
+                $selfid=$_SESSION['uid'];
+                $target=$_POST['search'];
+                $checkbox = $_POST['search'];
+                if ($checkbox=='friends'){
+                    $sql = "SELECT * FROM users WHERE (firstName LIKE '%$target%' OR lastName LIKE '%$target%') AND uid != '$selfid'";}
+                    if ($checkbox=='articles') {
+                     $sql = "SELECT * FROM `articles` WHERE title LIKE '%$target%'";
+                 }
+                 $result = mysql_query($sql);
+             }
+         }
+         ?>
     </div>
 </section>
 
@@ -61,18 +66,27 @@ session_start();
             <h3>Friends Results</h3>
             <div class="list-group">
                 <?php
-                $count = mysql_num_rows($result);
-                if(!$count>0){
+                 $count = mysql_num_rows($result);
+                 if(!$count>0){
                     echo "no result for $target";
                 }else{
-                    while($row=mysql_fetch_array($result)){
-                        $firstName = $row['firstName'];
-                        $lastName = $row['lastName'];
-                        $email = $row['email'];
-                        $fullName = $firstName ." ".$lastName;
-                        echo "<li class='list-group-item'><a href='others-profile.php?$email'>";
-                        echo $fullName;
-                        echo "<a class='btn btn-primary' href='../includes/apply.php?$email'>Apply</a>";
+                    if($checkbox=='friends'){
+                        while($row=mysql_fetch_array($result)){
+                            $firstName = $row['firstName'];
+                            $lastName = $row['lastName'];
+                            $email = $row['email'];
+                            $fullName = $firstName ." ".$lastName;
+                            echo "<li class='list-group-item'><a href='others-profile.php?$email'>";
+                            echo $fullName;
+                            echo "<a class='btn btn-primary' href='../includes/apply.php?$email'>Apply</a>";
+                        }
+                    }
+                    if ($checkbox=='articles') {
+                        while($row=mysql_fetch_array($result)){
+                            $title = $row['title'];
+                            echo "<li class='list-group-item'><a href='others-profile.php?$title'>";
+                            echo $title;
+                        }
                     }
                 }
                 ?>
