@@ -62,7 +62,27 @@ include '../db/dbh.php';
             </a>
             <div id="article-editor">
               <hr>
-              <button class="btn btn-primary">Detail</button>
+              <!-- <button class="btn btn-primary">Detail</button> -->
+              <?php echo "<button class='btn btn-primary btn-lg' data-toggle='modal' data-target='#$gid'>"; ?>
+                Detail
+              </button>
+            <!-- （Modal） -->
+            <?php echo "<div class='modal fade' id='$gid' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>"; ?>
+              <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                        Add members to group
+                        <?php echo $groupName; ?>
+                    </div>
+                    <div class="modal-body">
+                        <?php
+                          include("../includes/groupDetail.php");
+                        ?>
+                    </div>
+                  </div><!-- /.modal-content -->
+              </div><!-- /.modal -->
+            </div>
+
               <button class="btn btn-danger">Leave</button>
             </div>
             </li>
