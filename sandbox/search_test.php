@@ -78,15 +78,12 @@ session_start();
                             $fullName = $firstName ." ".$lastName;
                             echo "<li class='list-group-item'><a href='others-profile.php?$email'>";
                             echo $fullName;
+                            echo "</a></li>";
                             echo "<a class='btn btn-primary' href='../includes/apply.php?$email'>Apply</a>";
                         }
                     }
                     if ($checkbox=='articles') {
-                        while($row=mysql_fetch_array($result)){
-                            $title = $row['title'];
-                            echo "<li class='list-group-item'><a href='#$title'>";
-                            echo $title;
-                        }
+                            echo "No results for friends.";
                     }
                 }
                 ?>
@@ -147,6 +144,28 @@ session_start();
                         </div><!-- /.modal-content -->
                     </div><!-- /.modal -->
                 </div>
+            </div>
+            <hr>
+            <h3>Article List</h3>
+            <div class="list-group">
+                <?php
+                 $count = mysql_num_rows($result);
+                 if(!$count>0){
+                    echo "no result for $target";
+                }else{
+                    if($checkbox=='friends'){
+                        echo "No results for articles.";
+                    }
+                    if ($checkbox=='articles') {
+                        while($row=mysql_fetch_array($result)){
+                            $title = $row['title'];
+                            echo "<li class='list-group-item'><a href='#$title'>";
+                            echo $title;
+                            echo "</a></li>";
+                        }
+                    }
+                }
+                ?>
             </div>
         </div>
     </div>
