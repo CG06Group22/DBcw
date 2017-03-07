@@ -67,8 +67,9 @@ include '../db/dbh.php';
                     <div class = "panel panel-default">
                       <hr>
                       <div class = "panel-heading">
-                      <?php echo "<a class='btn btn-primary' data-toggle='collapse' href='#$gid'>Detail
-                      </a>"; ?>
+                        <?php echo "<a class='btn btn-primary' data-toggle='collapse' href='#$gid'>Detail
+                        </a>"; ?>
+                        <button class="btn btn-danger">Leave</button>
                       </div>
                     <!-- （panel-collapse） -->
                     <?php echo "<div class='panel-collapse collapse' id='$gid'>"; ?>
@@ -82,15 +83,15 @@ include '../db/dbh.php';
                       if(!$count>0){
                         echo "Your friend list is empty";
                       }else{
-                        while($row = mysqli_fetch_array($result)){
-                            $guestUserID = $row['guestUserID'];
+                        while($row2 = mysqli_fetch_array($result)){
+                            $guestUserID = $row2['guestUserID'];
                             $sql2 = "SELECT firstName, lastName FROM users WHERE email = '$guestUserID'";
                             $result2 = mysqli_query($conn, $sql2);
-                            if (!$row = mysqli_fetch_assoc($result2)){
+                            if (!$row3 = mysqli_fetch_assoc($result2)){
                                 echo "Can't find user.";
                             } else {
-                                $firstName = $row['firstName'];
-                                $lastName = $row['lastName'];
+                                $firstName = $row3['firstName'];
+                                $lastName = $row3['lastName'];
                                 $fullName = $firstName ." ".$lastName;
 
                                 echo "<li class='list-group-item'><a href='others-profile.php?$guestUserID'>";
@@ -111,7 +112,7 @@ include '../db/dbh.php';
                     <?php echo "</div>"; ?>
                     <!-- （panel-collapse-close） -->
 
-                      <button class="btn btn-danger">Leave</button>
+                      
                     </div> <!-- panel panel-default -->
                 </div> <!-- panel-group -->
             </div> <!-- list group item -->
