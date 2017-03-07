@@ -7,7 +7,7 @@
         <ul class="nav navbar-nav navbar-right">
             <li><a href="../../sandbox/profile.php">Homepage</a></li>
             <li><a href="../../sandbox/search_test.php">Search</a></li>
-            <li><a href="../../sandbox/chat.html">Chat</a></li>
+            <li><a href="../../sandbox/chat.php">Chat</a></li>
 
 
 
