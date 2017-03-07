@@ -35,7 +35,7 @@ session_start();
                 <input type="text" name="search" class="form-control" placeholder="Search for friends/blogs">
             </div>
             <div class="form-group">
-                <input type="radio" name="checkbox" value="friends"> Friends
+                <input type="radio" name="checkbox" value="friends" checked> Friends
                 <input type="radio" name="checkbox" value="articles"> Articles
             </div>
             <button class="btn btn-primary" type="submit" name="submit">Search</button>
