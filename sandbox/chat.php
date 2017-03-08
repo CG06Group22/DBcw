@@ -50,15 +50,7 @@ include '../db/dbh.php';
                         
                     </div>
                     <div class="modal-body">
-                        <form action="includes/newGroup.php" method="POST">
-                            <!--                                <input type="text" name="uid" placeholder="Username"><br>-->
-                            <div class="form-group">
-                            <input  class="form-control" type="text" name="groupName" placeholder="Group name"><br>
-                            </div>
-
-                            <button  type="button" class="btn btn-default" data-dismiss="modal">Back</button>
-                            <button  type="submit" class="btn btn-primary">Create</button>
-                        </form>
+                        
                     </div>
                 </div><!-- /.modal-content -->
             </div><!-- /.modal -->
