@@ -102,11 +102,11 @@ include '../db/dbh.php';
                                 // $uidresult = mysqli_query($conn, $sqlid);
                                 // if ($uidrow = mysqli_fetch_assoc($uidresult)){
                                     // $uid = $uidrow['uid'];
-                                    $uid = $rowGuestNames['uid'];
-                                    $sqlIfIn = "SELECT gid FROM usersgroup WHERE gid = '$gid' AND uid = '$uid'";
+                                    $guid = $rowGuestNames['uid'];
+                                    $sqlIfIn = "SELECT gid FROM usersgroup WHERE gid = '$gid' AND uid = '$guid'";
                                     $resultIfIn = mysqli_query($conn, $sqlIfIn);
                                     if (!$rowadd = mysqli_fetch_assoc($resultIfIn)){
-                                      echo "<a href='../includes/addToGroup.php?u=$guestUserID&g=$gid'>Add</a>";
+                                      echo "<a href='../includes/addToGroup.php?u=$guid&g=$gid'>Add</a>";
                                     } else {
                                       echo "This user is already in the group.";
                                     }
