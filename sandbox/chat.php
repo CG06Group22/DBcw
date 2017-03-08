@@ -47,7 +47,7 @@ include '../db/dbh.php';
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <?php
+                        <!-- <?php
                             $url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
                             if (strpos($url,'error=nameempty') !==false){
                                 ?>
@@ -59,7 +59,7 @@ include '../db/dbh.php';
                                 <h4 class="modal-title" id="myModalLabel" style="color: red">
                                     Please give group name.
                                 </h4>
-                          <?php ;} ?>
+                          <?php ;} ?> -->
                         <button type="button" class="close" data-dismiss="modal"
                                 aria-hidden="true">
                         </button>
@@ -70,10 +70,11 @@ include '../db/dbh.php';
                             <!--                                <input type="text" name="uid" placeholder="Username"><br>-->
                             <div class="form-group">
                             <input  class="form-control" type="text" name="groupName" placeholder="Group name"><br>
+                            </div>
                             
                             <button  type="button" class="btn btn-default" data-dismiss="modal">Back</button>
                             <button  type="submit" class="btn btn-primary">Create</button>
-                            </div>
+                            
                         </form>
                     </div>
                 </div><!-- /.modal-content -->

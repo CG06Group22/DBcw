@@ -6,7 +6,7 @@ $groupName = $_POST['groupName'];
 $uid = $_SESSION['uid'];
 
 if (empty($groupName)){
-    header("Location: ../index.php?error=nameempty");
+    header("Location: ../sandbox/chat.php?error=nameempty");
     exit();
 } else {
     $sql = "INSERT INTO groups ( groupName ) VALUES ('$groupName')";
