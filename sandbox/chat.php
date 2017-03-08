@@ -107,7 +107,7 @@ include '../db/dbh.php';
                                     if (!$rowadd = mysqli_fetch_assoc($resultIfIn)){
                                       echo "<a href='../includes/addToGroup.php?u=$guestUserID&g=$gid'>Add</a>";
                                     } else {
-                                      echo "This user is already in the group."
+                                      echo "This user is already in the group.";
                                     }
                                 }
                                 echo "</li>";
