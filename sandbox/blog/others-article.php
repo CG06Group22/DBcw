@@ -2,6 +2,17 @@
 session_start();
 include '../../db/dbh.php';
 $aid=$_SERVER['QUERY_STRING'];
+$sql = "SELECT * FROM articles WHERE aid = '$aid'";
+$result = mysqli_query($conn,$sql);
+$row=mysqli_fetch_array($result);
+$uid = $row['uid'];
+$sql2 = "SELECT * FROM users WHERE uid = '$uid'";
+$result2 = mysqli_query($conn,$sql2);
+$row=mysqli_fetch_array($result2);
+$email = $row['email'];
+$firstname = $row['firstName'];
+$lastname = $row['lastName'];
+$fullname = $firstname ." ".$lastname;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,17 +36,7 @@ include("../../component/blogheader/header2.php");
   <section id="user">
     <div class="container">
     <?php
-                echo "<a href='../others-profile.php?$aid'><h1 class='page-header'>";
-                $sql = "SELECT * FROM articles WHERE aid = '$aid'";
-                $result = mysqli_query($conn,$sql);
-                $row=mysqli_fetch_array($result);
-                $uid = $row['uid'];
-                $sql2 = "SELECT * FROM users WHERE uid = '$uid'";
-                $result2 = mysqli_query($conn,$sql2);
-                $row=mysqli_fetch_array($result2);
-                $firstname = $row['firstName'];
-                $lastname = $row['lastName'];
-                $fullname = $firstname ." ".$lastname;
+                echo "<a href='../others-profile.php?$email'><h1 class='page-header'>";
                 echo $fullname;
                 echo "</h1></a>";
                 ?>
@@ -45,7 +46,7 @@ include("../../component/blogheader/header2.php");
   <section id="backblog">
     <div class="container">
       <?php
-      echo"<a href='../others-blog.php?$aid' class='btn btn-warning btn-lg'>Back to Blog</a>"
+      echo"<a href='../others-blog.php?$email' class='btn btn-warning btn-lg'>Back to Blog</a>"
         ?>
       <hr>
     </div>
