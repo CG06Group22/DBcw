@@ -38,7 +38,7 @@ session_start();
 
       <section>
         <div class="container">
-          <a href="../sandbox/chat.php">Back</a>
+          <a class="btn btn-primary" href="../sandbox/chat.php">Back</a>
         </div>
       </section>
 
@@ -81,6 +81,14 @@ session_start();
         </form>
       </div>
     </section>
+    
+    <footer>
+			<div class="container-fluid">
+				<hr>
+				<p class="text-center">FakeBook, Copyright &copy; 2017
+				</p>
+			</div> 
+		</footer>
 
 
 
