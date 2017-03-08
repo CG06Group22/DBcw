@@ -43,7 +43,7 @@ session_start();
       </section>
 
       <section>
-        <div id="messages" class="container">
+        <div id="messages" class="container well">
           <ul>
             <?php while($row = mysqli_fetch_assoc($messages)){ ?>
               <li class="message">
