@@ -48,11 +48,24 @@ include '../db/dbh.php';
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
+                    <?php
+                      $url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+                      if (strpos($url,'error=nameempty') !==false){
+                          ?>
+                          <script>
+                              $(function () { $('#myModal').modal({
+                                  keyboard: true
+                              })});
+                          </script>
+                          <h4 class="modal-title" id="myModalLabel" style="color: red">
+                              Please give group name.
+                          </h4>
+                    <?php ;} ?>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="myModalLabel">Create new group</h4>
                   </div>
                   <div class="modal-body">
-                    <form action="includes/newGroup.php" method="POST">
+                    <form action="../includes/newGroup.php" method="POST">
                       <div class="form-group">
                         <input  class="form-control" type="text" name="groupName" placeholder="Group name"><br>
                       </div>
