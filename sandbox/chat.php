@@ -8,13 +8,12 @@ include '../db/dbh.php';
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>FakeBook | Chat</title>
-
   <!-- Bootstrap core CSS -->
   <link href="../css/bootstrap.min.css" rel="stylesheet">
   <link href="../css/style.css" rel="stylesheet">
-
-
+  <script src="http://code.jquery.com/jquery-3.1.1.js"></script>
+  <script src="../js/bootstrap.min.js"></script>
+  <title>FakeBook | Chat</title>
 </head>
 
 <body>
@@ -39,23 +38,29 @@ include '../db/dbh.php';
 
 <section id="newGroup">
         <div class="container">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newGroup">
-            Create new group
-        </button>
-        <!-- （Modal） -->
-        <div class="modal fade" id="newGroup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
+        <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+              Launch demo modal
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        
-                    </div>
-                    <div class="modal-body">
-                        
-                    </div>
-                </div><!-- /.modal-content -->
-            </div><!-- /.modal -->
-        </div>
-        <!-- （Modal-close） -->
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                  </div>
+                  <div class="modal-body">
+                    ...
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                  </div>
+                </div>
+              </div>
+            </div>
         </div>
 </section>
 
@@ -165,9 +170,6 @@ include '../db/dbh.php';
   </div> 
 </footer>
 
-
-<script src="http://code.jquery.com/jquery-3.1.1.js"></script>
-<script src="../js/bootstrap.min.js"></script>
 <script src="../js/main.js"></script>
 </body>
 </html>
