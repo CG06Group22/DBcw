@@ -13,8 +13,9 @@ if(isset($_REQUEST['u']) && !empty($_REQUEST['u']) AND isset($_REQUEST['g']) && 
 
 	$sql = "INSERT INTO usersgroup ( uid, gid ) VALUES ('$uid', '$gid')";
 	$result = mysqli_query($conn, $sql);
+	header("Location: ../sandbox/chat.php");
+} else {
+	echo "requested nothing";
 }
-
-header("Location: ../sandbox/chat.php");
 
 ?>
