@@ -13,8 +13,6 @@ include '../db/dbh.php';
   <!-- Bootstrap core CSS -->
   <link href="../css/bootstrap.min.css" rel="stylesheet">
   <link href="../css/style.css" rel="stylesheet">
-  <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
-  <script type="text/javascript" src="js/bootstrap.fix.js"></script>
 
 
 </head>
@@ -192,8 +190,8 @@ include '../db/dbh.php';
 </footer>
 
 
-<!-- <script src="http://code.jquery.com/jquery-3.1.1.js"></script>
-<script src="../js/bootstrap.min.js"></script> -->
+<script src="http://code.jquery.com/jquery-3.1.1.js"></script>
+<script src="../js/bootstrap.min.js"></script>
 <script src="../js/main.js"></script>
 </body>
 </html>
