@@ -85,7 +85,7 @@ include '../db/dbh.php';
                       }else{
                         while($rowfriends = mysqli_fetch_array($resultfriends)){
                             $guestUserID = $rowfriends['guestUserID'];
-                            $sqlGuestNames = "SELECT firstName, lastName FROM users WHERE email = '$guestUserID'";
+                            $sqlGuestNames = "SELECT firstName, lastName, uid FROM users WHERE email = '$guestUserID'";
                             $resultGuestNames = mysqli_query($conn, $sqlGuestNames);
                             if (!$rowGuestNames = mysqli_fetch_assoc($resultGuestNames)){
                                 echo "Can't find user.";
@@ -98,10 +98,11 @@ include '../db/dbh.php';
                                 echo $fullName;
                                 echo "</a>";
 
-                                $sqlid = "SELECT uid FROM users WHERE email = $guestUserID";
-                                $uidresult = mysqli_query($conn, $sqlid);
-                                if ($uidrow = mysqli_fetch_assoc($uidresult)){
-                                    $uid = $uidrow['uid'];
+                                // $sqlid = "SELECT uid FROM users WHERE email = $guestUserID";
+                                // $uidresult = mysqli_query($conn, $sqlid);
+                                // if ($uidrow = mysqli_fetch_assoc($uidresult)){
+                                    // $uid = $uidrow['uid'];
+                                    $uid = $rowGuestNames['uid'];
                                     $sqlIfIn = "SELECT gid FROM usersgroup WHERE gid = '$gid' AND uid = '$uid'";
                                     $resultIfIn = mysqli_query($conn, $sqlIfIn);
                                     if (!$rowadd = mysqli_fetch_assoc($resultIfIn)){
@@ -109,7 +110,7 @@ include '../db/dbh.php';
                                     } else {
                                       echo "This user is already in the group.";
                                     }
-                                }
+                                // }
                                 echo "</li>";
                             }
                         }
