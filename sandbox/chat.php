@@ -39,7 +39,7 @@ include '../db/dbh.php';
 
 <section id="newGroup">
         <div class="container">
-        <button class="btn btn-primary" data-toggle="modal" data-target="#newGroup">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newGroup">
             Create new group
         </button>
         <!-- （Modal） -->
@@ -47,24 +47,7 @@ include '../db/dbh.php';
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal"
-                                aria-label="Close">
-                        </button>
-                        <?php
-                            // $url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
-                            // if (strpos($url,'error=nameempty') !==false){
-                                ?>
-                                <!-- <script>
-                                    $(function () { $('#myModal').modal({
-                                        keyboard: true
-                                    })});
-                                </script>
-                                <h4 class="modal-title" id="myModalLabel" style="color: red">
-                                    Please give group name.
-                                </h4> -->
-                          <?php //;} ?>
                         
-                        <h2 class="modal-title" id="myModalLabel">Create new group</h2>
                     </div>
                     <div class="modal-body">
                         <form action="includes/newGroup.php" method="POST">
@@ -75,7 +58,6 @@ include '../db/dbh.php';
 
                             <button  type="button" class="btn btn-default" data-dismiss="modal">Back</button>
                             <button  type="submit" class="btn btn-primary">Create</button>
-                            
                         </form>
                     </div>
                 </div><!-- /.modal-content -->
