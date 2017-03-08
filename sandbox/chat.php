@@ -35,6 +35,50 @@ include '../db/dbh.php';
     </div>
 </section>
 
+<section id="newGroup">
+        <button class="btn btn-primary" data-toggle="modal" data-target="#newGroup">
+            Create new group
+        </button>
+        <!-- （Modal） -->
+        <div class="modal fade" id="newGroup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <?php
+                            $url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+                            if (strpos($url,'error=nameempty') !==false){
+                                ?>
+                                <script>
+                                    $(function () { $('#myModal').modal({
+                                        keyboard: true
+                                    })});
+                                </script>
+                                <h4 class="modal-title" id="myModalLabel" style="color: red">
+                                    Please give group name.
+                                </h4>
+                          <?php ;} ?>
+                        <button type="button" class="close" data-dismiss="modal"
+                                aria-hidden="true">
+                        </button>
+                        <h2 class="text-primary">Create new group</h2>
+                    </div>
+                    <div class="modal-body">
+                        <form action="includes/newGroup.php" method="POST">
+                            <!--                                <input type="text" name="uid" placeholder="Username"><br>-->
+                            <div class="form-group">
+                            <input  class="form-control" type="text" name="groupName" placeholder="Group name"><br>
+                            
+                            <button  type="button" class="btn btn-default" data-dismiss="modal">Back</button>
+                            <button  type="submit" class="btn btn-primary">Create</button>
+                            </div>
+                        </form>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal -->
+        </div>
+        <!-- （Modal-close） -->
+</section>
+
 <section id="group-list">
   <div class="container">
     <h2 class="text-primary">Group List</h2>
