@@ -40,7 +40,7 @@ include '../db/dbh.php';
         <div class="container">
         <!-- Button trigger modal -->
             <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-              Launch demo modal
+              Create new group
             </button>
 
             <!-- Modal -->
@@ -49,14 +49,20 @@ include '../db/dbh.php';
                 <div class="modal-content">
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                    <h4 class="modal-title" id="myModalLabel">Create new group</h4>
                   </div>
                   <div class="modal-body">
-                    ...
+                    <form action="includes/newGroup.php" method="POST">
+                      <div class="form-group">
+                        <input  class="form-control" type="text" name="groupName" placeholder="Group name"><br>
+                      </div>
+
+                      <button  type="button" class="btn btn-default" data-dismiss="modal">Back</button>
+                      <button  type="submit" class="btn btn-primary">Create</button>
+                    </form>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    ...
                   </div>
                 </div>
               </div>
