@@ -47,22 +47,23 @@ include '../db/dbh.php';
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <!-- <?php
-                            $url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
-                            if (strpos($url,'error=nameempty') !==false){
+                        <button type="button" class="close" data-dismiss="modal"
+                                aria-hidden="true">
+                        </button>
+                        <?php
+                            // $url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+                            // if (strpos($url,'error=nameempty') !==false){
                                 ?>
-                                <script>
+                                <!-- <script>
                                     $(function () { $('#myModal').modal({
                                         keyboard: true
                                     })});
                                 </script>
                                 <h4 class="modal-title" id="myModalLabel" style="color: red">
                                     Please give group name.
-                                </h4>
-                          <?php ;} ?> -->
-                        <button type="button" class="close" data-dismiss="modal"
-                                aria-hidden="true">
-                        </button>
+                                </h4> -->
+                          <?php //;} ?>
+                        
                         <h2 class="text-primary">Create new group</h2>
                     </div>
                     <div class="modal-body">
@@ -71,7 +72,7 @@ include '../db/dbh.php';
                             <div class="form-group">
                             <input  class="form-control" type="text" name="groupName" placeholder="Group name"><br>
                             </div>
-                            
+
                             <button  type="button" class="btn btn-default" data-dismiss="modal">Back</button>
                             <button  type="submit" class="btn btn-primary">Create</button>
                             
