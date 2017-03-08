@@ -32,7 +32,7 @@ session_start();
 
       <header>
         <div class="container">
-                <h1><?php echo $groupName; ?></h1>
+                <h1 class="page-header"><?php echo $groupName; ?></h1>
         </div>
       </header>
 
