@@ -97,10 +97,15 @@ include '../db/dbh.php';
                                 echo "<li class='list-group-item'><a href='others-profile.php?$guestUserID'>";
                                 echo $fullName;
 
-                                $sqlIfIn = "SELECT gid FROM usersgroup WHERE gid = '$gid' AND uid = '$guestUserID'";
-                                $resultIfIn = mysqli_query($conn, $sqlIfIn);
-                                if (!$rowadd = mysqli_fetch_assoc($resultIfIn)){
-                                    echo "<a href='../includes/addToGroup.php?u=$guestUserID&g=$gid'>Add</a>";
+                                $sqlid = "SELECT uid FROM users WHERE email = $guestUserID";
+                                $uidresult = mysqli_query($conn, $sqlid);
+                                if ($uidrow = mysqli_fetch_assoc($uidresult)){
+                                    $uid = $uidrow['uid'];
+                                    $sqlIfIn = "SELECT gid FROM usersgroup WHERE gid = '$gid' AND uid = '$uid'";
+                                    $resultIfIn = mysqli_query($conn, $sqlIfIn);
+                                    if (!$rowadd = mysqli_fetch_assoc($resultIfIn)){
+                                      echo "<a href='../includes/addToGroup.php?u=$guestUserID&g=$gid'>Add</a>";
+                                    }
                                 }
                                 echo "</li>";
                             }
