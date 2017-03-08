@@ -28,7 +28,7 @@ include("../component/header.php");
 <section id="user">
     <div class="container">
       <?php
-	      echo "<a href='others-profile.php?$target'><h1 class='page-header'>";
+	echo "<a href='profile.php?$target'><h1 class='page-header'>";
         echo $fullName;
         echo "</h1></a>";
       ?>
