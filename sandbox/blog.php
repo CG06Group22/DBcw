@@ -1,6 +1,11 @@
 <?php
 session_start();
 include '../db/dbh.php';
+$target=$_SESSION['email'];
+$firstName= $_SESSION['first'];
+$lastName= $_SESSION['last'];
+$uid= $_SESSION['uid'];
+$fullName = $firstName ." ".$lastName;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,7 +27,11 @@ include("../component/header.php");
 
 <section id="user">
     <div class="container">
-      <a href="profile.php"><h1 class="page-header">User</h1></a>
+      <?php
+	      echo "<a href='others-profile.php?$target'><h1 class='page-header'>";
+        echo $fullName;
+        echo "</h1></a>";
+      ?>
     </div>
   </section>
 
@@ -38,11 +47,7 @@ include("../component/header.php");
     <h2 class="text-primary">Aritcle List</h2>
     <ul class="list-group">
         <?php
-        $target=$_SESSION['email'];
-        $firstName= $_SESSION['first'];
-        $lastName= $_SESSION['last'];
-        $uid= $_SESSION['uid'];
-        $fullName = $firstName ." ".$lastName;
+
         $sql = "SELECT aid, postTime, title FROM articles WHERE uid = '$uid'";
         $result = mysqli_query($conn, $sql);
         $count = mysqli_num_rows($result);
@@ -68,13 +73,9 @@ include("../component/header.php");
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <?php
                 echo "<a class='btn btn-danger' href='../includes/delete-arti.php?$aid'>Delete</a>";
-
-
                 echo "</li>";
-
             }
         }
-
         ?>
     </ul>
   </div>
@@ -85,7 +86,7 @@ include("../component/header.php");
     <hr>
     <p class="text-center">FakeBook, Copyright &copy; 2017
     </p>
-  </div> 
+  </div>
 </footer>
 
 
