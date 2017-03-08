@@ -192,10 +192,8 @@ include '../db/dbh.php';
 </footer>
 
 
-<script
-src="http://code.jquery.com/jquery-3.1.1.js"
-></script>
-<script src="../js/bootstrap.min.js"></script>
+<!-- <script src="http://code.jquery.com/jquery-3.1.1.js"></script>
+<script src="../js/bootstrap.min.js"></script> -->
 <script src="../js/main.js"></script>
 </body>
 </html>
