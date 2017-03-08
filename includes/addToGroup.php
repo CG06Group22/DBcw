@@ -2,9 +2,10 @@
 // from: <a href='../includes/addToGroup.php?u=$guestUserID&g=$gid'>
 include '../db/dbh.php';
 
-if(isset($_REQUEST['u']) && !empty($_REQUEST['u']) AND isset($_REQUEST['g']) && !empty($_REQUEST['g'])){
-	$uemail = $_REQUEST['u'];
-	$gid = $_REQUEST['g'];
+if(isset($_SERVER['QUERY_STRING']) && !empty($_SERVER['QUERY_STRING'])){
+	$query_String = $_SERVER['QUERY_STRING'];
+	$uemail = $query_String['u'];
+	$gid = $query_String['g'];
 	$sqlid = "SELECT uid FROM users WHERE email = $uemail";
 	$uidresult = mysqli_query($conn, $sqlid);
 	if (!$uidrow = mysqli_fetch_assoc($uidresult)){
@@ -13,9 +14,8 @@ if(isset($_REQUEST['u']) && !empty($_REQUEST['u']) AND isset($_REQUEST['g']) && 
 
 	$sql = "INSERT INTO usersgroup ( uid, gid ) VALUES ('$uid', '$gid')";
 	$result = mysqli_query($conn, $sql);
-	header("Location: ../sandbox/chat.php");
-} else {
-	echo "requested nothing";
 }
+
+header("Location: ../sandbox/chat.php");
 
 ?>
