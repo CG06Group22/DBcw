@@ -64,7 +64,7 @@ include("../component/header.php");
                 $time = $row['postTime'];
                 $aid = $row['aid'];
                 $fullName = $firstName ." ".$lastName;
-                echo "<li class='list-group-item'><a href='blog/article.php?$aid'>";
+                echo "<li class='list-group-item'><a href='blog/others-article.php?$aid'>";
                 echo $title;
                 echo "</a>";
                 ?>
