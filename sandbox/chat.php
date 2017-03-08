@@ -40,6 +40,7 @@ include '../db/dbh.php';
 </section>
 
 <section id="newGroup">
+        <div class="container">
         <button class="btn btn-primary" data-toggle="modal" data-target="#newGroup">
             Create new group
         </button>
@@ -81,6 +82,7 @@ include '../db/dbh.php';
             </div><!-- /.modal -->
         </div>
         <!-- （Modal-close） -->
+        </div>
 </section>
 
 <section id="group-list">
