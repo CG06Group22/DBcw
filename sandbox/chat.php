@@ -96,6 +96,7 @@ include '../db/dbh.php';
 
                                 echo "<li class='list-group-item'><a href='others-profile.php?$guestUserID'>";
                                 echo $fullName;
+                                echo "</a>";
 
                                 $sqlid = "SELECT uid FROM users WHERE email = $guestUserID";
                                 $uidresult = mysqli_query($conn, $sqlid);
