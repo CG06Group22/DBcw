@@ -25,7 +25,7 @@ include("../../component/blogheader/header2.php");
   <section id="user">
     <div class="container">
     <?php
-                echo "<a href='others-profile.php?$aid'><h1 class='page-header'>";
+                echo "<a href='../others-profile.php?$aid'><h1 class='page-header'>";
                 $sql = "SELECT * FROM articles WHERE aid = '$aid'";
                 $result = mysqli_query($conn,$sql);
                 $row=mysqli_fetch_array($result);
@@ -39,13 +39,14 @@ include("../../component/blogheader/header2.php");
                 echo $fullname;
                 echo "</h1></a>";
                 ?>
-            </h1></a>
     </div>
   </section>
 
   <section id="backblog">
     <div class="container">
-      <a href="../others-blog.php" class="btn btn-warning btn-lg">Back to Blog</a>
+      <?php
+      echo"<a href='../others-blog.php?$aid' class='btn btn-warning btn-lg'>Back to Blog</a>"
+        ?>
       <hr>
     </div>
   </section>
