@@ -43,12 +43,12 @@ include '../db/dbh.php';
             Create new group
         </button>
         <!-- （Modal） -->
-        <div class="modal fade" id="newGroup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
+        <div class="modal fade" id="newGroup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal"
-                                aria-hidden="true">
+                                aria-label="Close">
                         </button>
                         <?php
                             // $url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
@@ -64,7 +64,7 @@ include '../db/dbh.php';
                                 </h4> -->
                           <?php //;} ?>
                         
-                        <h2 class="text-primary">Create new group</h2>
+                        <h2 class="modal-title" id="myModalLabel">Create new group</h2>
                     </div>
                     <div class="modal-body">
                         <form action="includes/newGroup.php" method="POST">
