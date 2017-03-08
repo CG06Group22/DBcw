@@ -1,4 +1,4 @@
-<?php 
+<?php
 include '../db/dbh.php';
 session_start();
 ?>
@@ -18,7 +18,7 @@ session_start();
     <?php
       include("../component/header.php");
     ?>
-    <?php 
+    <?php
       $_SERVER['QUERY_STRING'];
       $groupid = $_SERVER['QUERY_STRING'];
       $_SESSION['gid'] = $groupid;
@@ -26,40 +26,51 @@ session_start();
       $names = mysqli_query($conn, $querynames);
       $namerow = mysqli_fetch_assoc($names);
       $groupName = $namerow['groupName'];
-
       $query = "SELECT * FROM messages WHERE gid = '$groupid' ORDER BY messageid ASC";
       $messages = mysqli_query($conn, $query);
     ?>
-    <div id="container">
+
       <header>
-        <h1><?php echo $groupName; ?></h1>
+        <div class="container">
+                <h1><?php echo $groupName; ?></h1>
+        </div>
       </header>
-      <a href="../sandbox/chat.php">Back</a>
-      <div id="messages" class="container">
-        <ul>
-          <?php while($row = mysqli_fetch_assoc($messages)){ ?>
-            <li class="message">
-              <span><?php 
-                echo $row['sendTime']; 
-                $content = $row['content'];
-                $uid = $row['uid'];
-              ?> - </span>
-              <strong>
-              <?php
-                $que = "SELECT firstName,lastName FROM users WHERE uid = '$uid'";
-                $name = mysqli_query($conn, $que);
-                if($namerow = mysqli_fetch_assoc($name)){
-                  $fullName2 = $namerow['firstName'] ." ". $namerow['lastName'];
-                  echo $fullName2;
-                }
-              ?>                
-              </strong>
-              : <?php echo $content; ?>
-            </li>     
-          <?php } ?>
-        </ul>
-      </div>
-      <div id="input">
+
+      <section>
+        <div class="container">
+          <a href="../sandbox/chat.php">Back</a>
+        </div>
+      </section>
+
+      <section>
+        <div id="messages" class="container">
+          <ul>
+            <?php while($row = mysqli_fetch_assoc($messages)){ ?>
+              <li class="message">
+                <span><?php
+                  echo $row['sendTime'];
+                  $content = $row['content'];
+                  $uid = $row['uid'];
+                ?> - </span>
+                <strong>
+                <?php
+                  $que = "SELECT firstName,lastName FROM users WHERE uid = '$uid'";
+                  $name = mysqli_query($conn, $que);
+                  if($namerow = mysqli_fetch_assoc($name)){
+                    $fullName2 = $namerow['firstName'] ." ". $namerow['lastName'];
+                    echo $fullName2;
+                  }
+                ?>
+                </strong>
+                : <?php echo $content; ?>
+              </li>
+            <?php } ?>
+          </ul>
+        </div>
+      </section>
+
+  <section>
+      <div id="input" class="container">
         <?php if (isset($_GET['error'])) : ?>
           <div class="error"><?php echo $_GET['error']; ?></div>
         <?php endif; ?>
@@ -69,6 +80,9 @@ session_start();
           <input id="show-btn" type="submit" name="submit" value="Send"/>
         </form>
       </div>
-    </div>
+    </section>
+
+
+
   </body>
 </html>
