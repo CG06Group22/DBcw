@@ -3,12 +3,12 @@
 include '../db/dbh.php';
 
 if(isset($_SERVER['QUERY_STRING']) && !empty($_SERVER['QUERY_STRING'])){
-	$query_String = $_SERVER['QUERY_STRING'];
-	$uemail = $query_String['u'];
-	$gid = $query_String['g'];
+	//$query_String = $_SERVER['QUERY_STRING'];
+	$uemail = $_GET['u'];
+	$gid = $_GET['g'];
 	$sqlid = "SELECT uid FROM users WHERE email = $uemail";
 	$uidresult = mysqli_query($conn, $sqlid);
-	if (!$uidrow = mysqli_fetch_assoc($uidresult)){
+	if ($uidrow = mysqli_fetch_assoc($uidresult)){
         $uid = $uidrow['uid'];
     }
 
@@ -16,6 +16,6 @@ if(isset($_SERVER['QUERY_STRING']) && !empty($_SERVER['QUERY_STRING'])){
 	$result = mysqli_query($conn, $sql);
 }
 
-header("Location: ../sandbox/chat.php");
+header("Location: ../sandbox/chat.php?lalala");
 
 ?>
