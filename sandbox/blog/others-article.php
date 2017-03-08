@@ -1,6 +1,7 @@
 <?php
 session_start();
 include '../../db/dbh.php';
+$aid=$_SERVER['QUERY_STRING'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,13 +17,29 @@ include '../../db/dbh.php';
 </head>
 
 <body>
+
 <?php
 include("../../component/blogheader/header2.php");
 ?>
 
   <section id="user">
     <div class="container">
-      <a href="../others-profile.php"><h1 class="page-header">User</h1></a>
+    <?php
+                echo "<a href='others-profile.php?$aid'><h1 class='page-header'>";
+                $sql = "SELECT * FROM articles WHERE aid = '$aid'";
+                $result = mysqli_query($conn,$sql);
+                $row=mysqli_fetch_array($result);
+                $uid = $row['uid'];
+                $sql2 = "SELECT * FROM users WHERE uid = '$uid'";
+                $result2 = mysqli_query($conn,$sql2);
+                $row=mysqli_fetch_array($result2);
+                $firstname = $row['firstName'];
+                $lastname = $row['lastName'];
+                $fullname = $firstname ." ".$lastname;
+                echo $fullname;
+                echo "</h1></a>";
+                ?>
+            </h1></a>
     </div>
   </section>
 
@@ -35,8 +52,31 @@ include("../../component/blogheader/header2.php");
 
   <article id="article">
     <div class="container">
-      <h2 class="page-header">Article Title <small>Author</small></h2>
-      <p>Article Content</p>
+      <h2 class="page-header">
+        <?php
+          $aid=$_SERVER['QUERY_STRING'];
+          $sql = "SELECT * FROM articles WHERE aid = '$aid'";
+          $result = mysqli_query($conn,$sql);
+          $row=mysqli_fetch_array($result);
+          $title = $row['title'];
+          echo $title;
+          ?>
+           <small>
+             <?php
+              echo $fullname;
+              ?>
+            </small>
+      </h2>
+      <p>
+        <?php
+          $aid=$_SERVER['QUERY_STRING'];
+          $sql = "SELECT * FROM articles WHERE aid = '$aid'";
+          $result = mysqli_query($conn,$sql);
+          $row=mysqli_fetch_array($result);
+          $content = $row['content'];
+          echo $content;
+          ?>
+      </p>
     </div>
   </article>
 
@@ -45,7 +85,7 @@ include("../../component/blogheader/header2.php");
       <hr>
       <p class="text-center">FakeBook, Copyright &copy; 2017
       </p>
-    </div> 
+    </div>
   </footer>
 
 
