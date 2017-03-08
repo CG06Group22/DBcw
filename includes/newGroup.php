@@ -13,14 +13,14 @@ if (empty($groupName)){
     $insertGroup = mysqli_query($conn, $sql);
 
 
-    $sqlGetId = "SELECT max(gid) FROM groups";
+    $sqlGetId = "SELECT MAX(gid) FROM groups";
     $resultGetId = mysqli_query($conn, $sqlGetId);
 
-    if ($row = mysqli_fetch_assoc($resultGetId)){
-        $gid = $row['gid'];
-        $sql1 = "INSERT INTO usersgroup ( uid, gid ) VALUES ('$uid', '$gid')";
-        $result = mysqli_query($conn, $sql1);
-    }
+    $row = mysqli_fetch_assoc($resultGetId)
+    $gid = $row['gid'];
+    $sql1 = "INSERT INTO usersgroup ( uid, gid ) VALUES ('$uid', '$gid')";
+    $result = mysqli_query($conn, $sql1);
+    header("Location: ../sandbox/chat.php");
 }
 
 ?>
