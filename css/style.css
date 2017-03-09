@@ -47,7 +47,7 @@ hr{
 #messages {
   width: 90%;
   background: #f4f4f4;
-  height: 30%;
+  height: 400px;
   margin: 20px auto;
   overflow: auto;
 }
