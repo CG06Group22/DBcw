@@ -113,11 +113,11 @@ include '../db/dbh.php';
                       echo $groupName;
                       echo "</a>";
                       ?>
-<!--                       <hr> -->
                       <div class = "panel-heading">
                         <?php echo "<a class='btn btn-primary' data-toggle='collapse' href='#$gid'>Add friends
                         </a>"; ?>
-                        <button class="btn btn-danger">Leave</button>
+                        <!-- <button class="btn btn-danger">Leave</button> -->
+                        <?php echo "<a class='btn btn-danger' href='../includes/leaveGroup.php?g=$gid'>Leave</a>"; ?>
                       </div>
                     <!-- （panel-collapse） -->
                     <?php echo "<div class='panel-collapse collapse' id='$gid'>"; ?>
@@ -146,10 +146,6 @@ include '../db/dbh.php';
                                 echo $fullName;
                                 echo "</a>";
 
-                                // $sqlid = "SELECT uid FROM users WHERE email = $guestUserID";
-                                // $uidresult = mysqli_query($conn, $sqlid);
-                                // if ($uidrow = mysqli_fetch_assoc($uidresult)){
-                                    // $uid = $uidrow['uid'];
                                     $guid = $rowGuestNames['uid'];
                                     $sqlIfIn = "SELECT gid FROM usersgroup WHERE gid = '$gid' AND uid = '$guid'";
                                     $resultIfIn = mysqli_query($conn, $sqlIfIn);
