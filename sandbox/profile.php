@@ -217,7 +217,7 @@ include '../db/dbh.php';
   							$fullName = $firstName ." ".$lastName;
   							echo "<li class='list-group-item'><a href='others-profile.php?$guestUserID_2'>";
   							echo $fullName;
-  							echo "<a class='btn btn-primary' href='../includes/apply.php?$guestUserID_2'>Apply</a>";
+  							echo "<a class='btn btn-primary' href='../includes/apply-recommend.php?$guestUserID_2'>Apply</a>";
   							}
   					}
   				}
