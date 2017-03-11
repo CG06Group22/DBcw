@@ -18,18 +18,18 @@ include '../db/dbh.php';
 <body>
 	<!-- navbar -->
 	<?php
-	include("../component/header.php");
-	?>
+    include("../component/header.php");
+    ?>
 	<section id="user">
 		<div class="container">
 			<a href="profile.php"><h1 class="page-header">
 			<?php
-                    	if (isset($_SESSION['first'])){
-                        	echo $_SESSION['first'];
-				echo " ";    
-                        	echo $_SESSION['last'];
-                   	 };
-			?>
+                        if (isset($_SESSION['first'])) {
+                            echo $_SESSION['first'];
+                            echo " ";
+                            echo $_SESSION['last'];
+                        };
+            ?>
 			</h1></a>
 		</div>
 	</section>
@@ -40,7 +40,7 @@ include '../db/dbh.php';
 				<tbody>
 					<tr>
 						<th>Firstname: <?php
-                            if (isset($_SESSION['first'])){
+                            if (isset($_SESSION['first'])) {
                                 echo $_SESSION['first'];
                             } ?></th>
 
@@ -48,7 +48,7 @@ include '../db/dbh.php';
 					</tr>
 					<tr>
 						<th>Lastname: <?php
-                            if (isset($_SESSION['first'])){
+                            if (isset($_SESSION['first'])) {
                                 echo $_SESSION['last'];
                             } ?></th>
 
@@ -56,7 +56,7 @@ include '../db/dbh.php';
 					</tr>
 					<tr>
 						<th>Gender: <?php
-                            if (isset($_SESSION['first'])){
+                            if (isset($_SESSION['first'])) {
                                 echo $_SESSION['gender'];
                             } ?></th>
 
@@ -64,7 +64,7 @@ include '../db/dbh.php';
 					</tr>
 					<tr>
 						<th>Email: <?php
-                            if (isset($_SESSION['first'])){
+                            if (isset($_SESSION['first'])) {
                                 echo $_SESSION['email'];
                             } ?></th>
 
@@ -91,31 +91,31 @@ include '../db/dbh.php';
 				<h3>Friends</h3>
 				<div class="list-group">
 						<?php
-						$target=$_SESSION['email'];
-						$friend = "friend";
-						$sql = "SELECT * FROM relationship WHERE relationship = '$friend' AND hostUserID = '$target'";
-						$result = mysqli_query($conn, $sql);
-						$count = mysqli_num_rows($result);
-						if(!$count>0){
-							echo "Your friend list is empty";
-						}else{
-							while($row=mysqli_fetch_array($result)){
-								$guestUserID = $row['guestUserID'];
-								$sql2 = "SELECT firstName, lastName FROM users WHERE email = '$guestUserID'";
-								$result2 = mysqli_query($conn, $sql2);
-								if (!$row = mysqli_fetch_assoc($result2)){
-								    echo "Can't find user.";
-								} else{
-									$firstName = $row['firstName'];
-									$lastName = $row['lastName'];
-								}
-								$fullName = $firstName ." ".$lastName;
-								echo "<li class='list-group-item'><a href='others-profile.php?$guestUserID'>";
-								echo $fullName;
-								echo "<a class='btn btn-danger' href='../includes/deleteF.php?$guestUserID'>Delete</a>";
-							}
-						}
-						?>
+                        $target=$_SESSION['email'];
+                        $friend = "friend";
+                        $sql = "SELECT * FROM relationship WHERE relationship = '$friend' AND hostUserID = '$target'";
+                        $result = mysqli_query($conn, $sql);
+                        $count = mysqli_num_rows($result);
+                        if (!$count>0) {
+                            echo "Your friend list is empty";
+                        } else {
+                            while ($row=mysqli_fetch_array($result)) {
+                                $guestUserID = $row['guestUserID'];
+                                $sql2 = "SELECT firstName, lastName FROM users WHERE email = '$guestUserID'";
+                                $result2 = mysqli_query($conn, $sql2);
+                                if (!$row = mysqli_fetch_assoc($result2)) {
+                                    echo "Can't find user.";
+                                } else {
+                                    $firstName = $row['firstName'];
+                                    $lastName = $row['lastName'];
+                                }
+                                $fullName = $firstName ." ".$lastName;
+                                echo "<li class='list-group-item'><a href='others-profile.php?$guestUserID'>";
+                                echo $fullName;
+                                echo "<a class='btn btn-danger' href='../includes/deleteF.php?$guestUserID'>Delete</a>";
+                            }
+                        }
+                        ?>
 
 				</div>
 			</div>
@@ -124,30 +124,29 @@ include '../db/dbh.php';
 				<h3>Applying</h3>
 				<div class="list-group">
 						<?php
-							$target=$_SESSION['email'];
-							$apply = "apply";
-							$sql = "SELECT * FROM relationship WHERE relationship = '$apply' AND hostUserID LIKE '%$target%'";
-							$result = mysqli_query($conn, $sql);
-							$count = mysqli_num_rows($result);
-							if(!$count>0){
-							echo "No applying";
-							}else{
-							while($row=mysqli_fetch_array($result)){
-								$guestUserID = $row['guestUserID'];
-								$sql2 = "SELECT firstName, lastName FROM users WHERE email = '$guestUserID'";
-								$result2 = mysqli_query($conn, $sql2);
-								if (!$row = mysqli_fetch_assoc($result2)){
-								    echo "Can't find user.";
-								} else{
-									$firstName = $row['firstName'];
-									$lastName = $row['lastName'];
-								}
-								$fullName = $firstName ." ".$lastName;
-								echo "<li class='list-group-item'><a href='others-profile.php?$guestUserID'>$fullName</a>";
-								}
-							}
-
-						?>
+                            $target=$_SESSION['email'];
+                            $apply = "apply";
+                            $sql = "SELECT * FROM relationship WHERE relationship = '$apply' AND hostUserID LIKE '%$target%'";
+                            $result = mysqli_query($conn, $sql);
+                            $count = mysqli_num_rows($result);
+                            if (!$count>0) {
+                                echo "No applying";
+                            } else {
+                                while ($row=mysqli_fetch_array($result)) {
+                                    $guestUserID = $row['guestUserID'];
+                                    $sql2 = "SELECT firstName, lastName FROM users WHERE email = '$guestUserID'";
+                                    $result2 = mysqli_query($conn, $sql2);
+                                    if (!$row = mysqli_fetch_assoc($result2)) {
+                                        echo "Can't find user.";
+                                    } else {
+                                        $firstName = $row['firstName'];
+                                        $lastName = $row['lastName'];
+                                    }
+                                    $fullName = $firstName ." ".$lastName;
+                                    echo "<li class='list-group-item'><a href='others-profile.php?$guestUserID'>$fullName</a>";
+                                }
+                            }
+                        ?>
 				</div>
 			</div>
 
@@ -155,94 +154,82 @@ include '../db/dbh.php';
 				<h3>Requested</h3>
 				<div class="list-group">
 					<?php
-					$target=$_SESSION['email'];
-					$request = "request";
-					$sql = "SELECT * FROM relationship WHERE relationship = '$request' AND hostUserID LIKE '%$target%'";
-					$result = mysqli_query($conn, $sql);
-					$count = mysqli_num_rows($result);
-					if(!$count>0){
-						echo "No request";
-					}else{
-						while($row=mysqli_fetch_array($result)){
-							$guestUserID = $row['guestUserID'];
-							$sql2 = "SELECT firstName, lastName FROM users WHERE email = '$guestUserID'";
-							$result2 = mysqli_query($conn, $sql2);
-							if (!$row = mysqli_fetch_assoc($result2)){
-							    echo "Can't find user.";
-							} else{
-								$firstName = $row['firstName'];
-								$lastName = $row['lastName'];
-							}
-							$fullName = $firstName ." ".$lastName;
-							echo "<li class='list-group-item'><a href='others-profile.php?$guestUserID'>";
-							echo $fullName;
-							echo "<a class='btn btn-primary' href='../includes/accept.php?$guestUserID'>Accept</a>";
-							echo "<a class='btn btn-danger' href='../includes/refuse.php?$guestUserID'>Refuse</a>";
-						}
-					}
-					?>
+                    $target=$_SESSION['email'];
+                    $request = "request";
+                    $sql = "SELECT * FROM relationship WHERE relationship = '$request' AND hostUserID LIKE '%$target%'";
+                    $result = mysqli_query($conn, $sql);
+                    $count = mysqli_num_rows($result);
+                    if (!$count>0) {
+                        echo "No request";
+                    } else {
+                        while ($row=mysqli_fetch_array($result)) {
+                            $guestUserID = $row['guestUserID'];
+                            $sql2 = "SELECT firstName, lastName FROM users WHERE email = '$guestUserID'";
+                            $result2 = mysqli_query($conn, $sql2);
+                            if (!$row = mysqli_fetch_assoc($result2)) {
+                                echo "Can't find user.";
+                            } else {
+                                $firstName = $row['firstName'];
+                                $lastName = $row['lastName'];
+                            }
+                            $fullName = $firstName ." ".$lastName;
+                            echo "<li class='list-group-item'><a href='others-profile.php?$guestUserID'>";
+                            echo $fullName;
+                            echo "<a class='btn btn-primary' href='../includes/accept.php?$guestUserID'>Accept</a>";
+                            echo "<a class='btn btn-danger' href='../includes/refuse.php?$guestUserID'>Refuse</a>";
+                        }
+                    }
+                    ?>
 				</div>
 			</div>
-		
+
 		<div id="recommend">
   <h3>Recommend</h3>
   <div class="list-group">
   		<?php
         $target=$_SESSION['email'];
-  			$friend = "friend";
-  			$sql = "SELECT * FROM relationship WHERE relationship = '$friend' AND hostUserID = '$target'";
-  			$result = mysqli_query($conn, $sql);
-  			$count = mysqli_num_rows($result);
-  			if(!$count>0){
-  			echo "Your friend list is empty.";
-  			}else{
-  			while($row=mysqli_fetch_array($result)){
-  					$guestUserID = $row['guestUserID'];
-  					$sql2 = "SELECT * FROM relationship WHERE ID = ( SELECT MAX(ID) FROM relationship WHERE relationship = '$friend' AND hostUserID = '$guestUserID')";
-  					$result2 = mysqli_query($conn, $sql2);
+            $friend = "friend";
+            $sql = "SELECT * FROM relationship WHERE relationship = '$friend' AND hostUserID = '$target'";
+            $result = mysqli_query($conn, $sql);
+            $count = mysqli_num_rows($result);
+            if (!$count>0) {
+                echo "Your friend list is empty.";
+            } else {
+                while ($row=mysqli_fetch_array($result)) {
+                    $guestUserID = $row['guestUserID'];
+                    $sql2 = "SELECT * FROM relationship WHERE ID = ( SELECT MAX(ID) FROM relationship WHERE relationship = '$friend' AND hostUserID = '$guestUserID')";
+                    $result2 = mysqli_query($conn, $sql2);
                     $count2 = mysqli_num_rows($result2);
-  					if (!$count>0){
-  					    echo "Can't find users.";
-  					} else{
-  						while ($row=mysqli_fetch_array($result2) ){
+                    if (!$count>0) {
+                        echo "Can't find users.";
+                    } else {
+                        while ($row=mysqli_fetch_array($result2)) {
                             $guestUserID_2 = $row['guestUserID'];
-  							$sql3 = "SELECT firstName, lastName FROM users WHERE email = '$guestUserID_2'";
-  							$result3 = mysqli_query($conn, $sql3);
-  							if (!$row = mysqli_fetch_assoc($result3)){
-  							    echo "Can't find user.";
-  							} else{
-			  								
-
-								$firstName = $row['firstName'];
-  								$lastName = $row['lastName'];
-								  $fullName = $firstName ." ".$lastName;
-								  $userName = $_SESSION['first'] ." " .$_SESSION['last'];
-								  $sql4 = "SELECT COUNT(*) AS 'count' FROM relationship WHERE guestUserID=$guestUserID_2 AND hostUserID=$_SESSION['email']''
-								  $result4 = mysqli_query($conn, $sql4);
-								  $row = mysqli_fetch_assoc($result4);
-								  $checkNumber = $row['count'];
-								  if ($userName == $fullName){
-								    break;
-								  }
-								  elseif(!$checkNumber==0){
-								    break;
-								  }
-								  else {
-								    echo "<li class='list-group-item'><a href='others-profile.php?$guestUserID_2'>";
-								    echo $fullName;
-								    echo "<a class='btn btn-primary' href='../includes/apply-recommend.php?$guestUserID_2'>Apply</a>";
-								  }
-  							}
-  							
-  							}
-  					}
-  				}
-  			}
-  		?>
+                            $sql3 = "SELECT firstName, lastName FROM users WHERE email = '$guestUserID_2'";
+                            $result3 = mysqli_query($conn, $sql3);
+                            if (!$row = mysqli_fetch_assoc($result3)) {
+                                echo "Can't find user.";
+                            } else {
+                                $firstName = $row['firstName'];
+                                $lastName = $row['lastName'];
+                                $fullName = $firstName ." ".$lastName;
+                                $userName = $_SESSION['first'] ." " .$_SESSION['last'];
+                                if ($userName == $fullName) {
+                                    break;
+                                } else {
+                                    echo "<li class='list-group-item'><a href='others-profile.php?$guestUserID_2'>";
+                                    echo $fullName;
+                                    echo "<a class='btn btn-primary' href='../includes/apply-recommend.php?$guestUserID_2'>Apply</a>";
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        ?>
   </div>
 </div>
 
-		
 		</div>
 	</section>
 
@@ -252,7 +239,7 @@ include '../db/dbh.php';
 			<hr>
 			<p class="text-center">FakeBook, Copyright &copy; 2017
 			</p>
-		</div> 
+		</div>
 	</footer>
 
 
