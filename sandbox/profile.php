@@ -198,14 +198,14 @@ include '../db/dbh.php';
   			}else{
   			while($row=mysqli_fetch_array($result)){
   					$guestUserID = $row['guestUserID'];
-  					$sql2 = "SELECT LAST(ID) FROM relationship WHERE relationship = '$friend' AND hostUserID = '$guestUserID'";
+  					$sql2 = "SELECT * FROM relationship WHERE ID = ( SELECT MAX(ID) FROM relationship WHERE relationship = '$friend' AND hostUserID = '$guestUserID')";
   					$result2 = mysqli_query($conn, $sql2);
-            $count2 = mysqli_num_rows($result2);
+                    $count2 = mysqli_num_rows($result2);
   					if (!$count>0){
   					    echo "Can't find users.";
   					} else{
   						while ($row=mysqli_fetch_array($result2) ){
-                $guestUserID_2 = $row['guestUserID'];
+                            $guestUserID_2 = $row['guestUserID'];
   							$sql3 = "SELECT firstName, lastName FROM users WHERE email = '$guestUserID_2'";
   							$result3 = mysqli_query($conn, $sql3);
   							if (!$row = mysqli_fetch_assoc($result3)){
@@ -215,7 +215,7 @@ include '../db/dbh.php';
   								$lastName = $row['lastName'];
   							}
   							$fullName = $firstName ." ".$lastName;
-  							echo "<li class='list-group-item'><a href='others-profile.php?$guestUserID_2>";
+  							echo "<li class='list-group-item'><a href='others-profile.php?$guestUserID_2'>";
   							echo $fullName;
   							echo "<a class='btn btn-primary' href='../includes/apply.php?$guestUserID_2'>Apply</a>";
   							}
