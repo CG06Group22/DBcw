@@ -102,8 +102,20 @@ if(isset($_POST['upload'])){
                   $countLike = mysqli_query($conn, $sqlLike);
                   $data = mysqli_fetch_array($countLike);
                   $count = $data['likes'];
+
                   echo "<h4 class='text-primary'>".$count." Likes</h4>";
-                  echo "<a class='btn btn-primary' href='../includes/like.php?".$pid."''>Like</a>";
+
+                  $sqlIfLiked = "SELECT COUNT(uid) AS ifliked FROM photoanotations WHERE pid='$pid' AND uid='$uid'";
+                  $if = mysqli_query($conn, $sqlIfLiked);
+                  $ifData = mysqli_fetch_array($if);
+                  $ifliked = $ifData['ifliked'];
+                  if ($ifliked <= 0){
+                    echo "<a class='btn btn-primary' href='../includes/like.php?".$pid."''>Like</a>";
+                  } else {
+                    echo "<a class='btn btn-info' href='../includes/unlike.php?".$pid."''>Unlike</a>";
+                  }
+                  
+                  
                   ?>
 
 
