@@ -39,7 +39,7 @@
                     <li class="divider">
                     </li>
                     <li>
-                        <a href="#">More privacy settings</a>
+                        <a href="../sandbox/profile-privacy.php">More privacy settings</a>
                     </li>
                 </ul>
             </li>
