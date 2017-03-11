@@ -214,7 +214,12 @@ include '../db/dbh.php';
                                 $lastName = $row['lastName'];
                                 $fullName = $firstName ." ".$lastName;
                                 $userName = $_SESSION['first'] ." " .$_SESSION['last'];
-                                if ($userName == $fullName) {
+                                $userID = $_SESSION['email'];
+                                $sql4="SELECT COUNT(*) AS 'count' FROM relationship WHERE guestUserID='$guestUserID_2' AND hostUserID='$userID'";
+                                $result4=mysqli_query($conn, $sql4);
+                                $row4 = mysqli_fetch_assoc($result4);
+                                $checkNumber = $row4['count'];
+                                if ($userName == $fullName || !$checkNumber==0) {
                                     break;
                                 } else {
                                     echo "<li class='list-group-item'><a href='others-profile.php?$guestUserID_2'>";
@@ -250,3 +255,4 @@ include '../db/dbh.php';
 	<script src="../js/main.js"></script>
 </body>
 </html>
+
