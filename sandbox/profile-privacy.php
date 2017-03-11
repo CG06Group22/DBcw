@@ -34,6 +34,7 @@ session_start();
                         <input type="radio" name="checkbox" value="public" checked="checked"> Public
                         <input type="radio" name="checkbox" value="friends"> Friends
                         <input type="radio" name="checkbox" value="circles"> Circles
+                        <input type="radio" name="checkbox" value="close"> Close
                     </div>
                     <button class="btn btn-primary" type="submit" name="submit">Submit</button>
                 </form>
