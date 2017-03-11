@@ -198,7 +198,7 @@ include '../db/dbh.php';
   			}else{
   			while($row=mysqli_fetch_array($result)){
   					$guestUserID = $row['guestUserID'];
-  					$sql2 = "SELECT LAST(ID) FROM relationship WHERE relationship = '$friend' AND hostUserID = '$guestUserID'";
+  					$sql2 = "SELECT * FROM relationship WHERE ID =( SELECT MAX(ID) FROM relationship WHERE relationship = '$friend' AND hostUserID = '$guestUserID' )";
   					$result2 = mysqli_query($conn, $sql2);
             $count2 = mysqli_num_rows($result2);
   					if (!$count>0){
