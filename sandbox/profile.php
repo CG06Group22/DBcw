@@ -211,13 +211,22 @@ include '../db/dbh.php';
   							if (!$row = mysqli_fetch_assoc($result3)){
   							    echo "Can't find user.";
   							} else{
-  								$firstName = $row['firstName'];
+			  								
+
+								$firstName = $row['firstName'];
   								$lastName = $row['lastName'];
+								  $fullName = $firstName ." ".$lastName;
+								  $userName = $_SESSION['first'] ." " .$_SESSION['last'];
+								  if ($userName == $fullName){
+								    break;
+								  }
+								  else {
+								    echo "<li class='list-group-item'><a href='others-profile.php?$guestUserID_2'>";
+								    echo $fullName;
+								    echo "<a class='btn btn-primary' href='../includes/apply-recommend.php?$guestUserID_2'>Apply</a>";
+								  }
   							}
-  							$fullName = $firstName ." ".$lastName;
-  							echo "<li class='list-group-item'><a href='others-profile.php?$guestUserID_2'>";
-  							echo $fullName;
-  							echo "<a class='btn btn-primary' href='../includes/apply-recommend.php?$guestUserID_2'>Apply</a>";
+  							
   							}
   					}
   				}
