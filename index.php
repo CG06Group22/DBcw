@@ -28,7 +28,7 @@ session_start();
 <section id="welcome">
     <div class="jumbotron text-center">
         <div class="container">
-            <h1>Welocom to FakeBook</h1>
+            <h1>Welocome to FakeBook</h1>
             <p class="text-info"><em>Say Hell to World!</em></p>
 
 
