@@ -32,6 +32,7 @@ session_start();
                     
                     <div class="form-group">
                         <label>Your current privacy setting is: </label>
+                        <br>
                         <input type="radio" name="checkbox" value="public" checked="checked"> Public
                         <input type="radio" name="checkbox" value="friends"> Friends
                         <input type="radio" name="checkbox" value="circles"> Circles
