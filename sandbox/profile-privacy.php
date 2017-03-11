@@ -37,7 +37,6 @@ session_start();
                     </div>
                     <button class="btn btn-primary" type="submit" name="submit">Submit</button>
                 </form>
-                <hr>
             </div>
         </section>
 
