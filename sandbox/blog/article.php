@@ -25,13 +25,10 @@ include("../../component/blogheader/header2.php");
     <div class="container">
       <a href="../profile.php"><h1 class="page-header"><?php
               $aid=$_SERVER['QUERY_STRING'];
-              $sql = "SELECT * FROM articles WHERE aid = '$aid'";
-              $result = mysqli_query($conn,$sql);
+              $sql = "SELECT u.firstName, u.lastName FROM users AS u JOIN articles AS a
+                      ON u.uid = a.uid WHERE aid = '$aid'";
+              $result = mysqli_query($conn, $sql);
               $row=mysqli_fetch_array($result);
-              $uid = $row['uid'];
-              $sql2 = "SELECT * FROM users WHERE uid = '$uid'";
-              $result2 = mysqli_query($conn,$sql2);
-              $row=mysqli_fetch_array($result2);
               $firstname = $row['firstName'];
               $lastname = $row['lastName'];
               $fullname = $firstname ." ".$lastname;
