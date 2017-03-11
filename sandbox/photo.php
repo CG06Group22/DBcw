@@ -97,10 +97,10 @@ if(isset($_POST['upload'])){
 
                   $pid = $row['pid'];
                   
-                  //likes (Anotations)
+//likes (Anotations)
                   $sqlLike = "SELECT COUNT(uid) AS likes FROM photoanotations WHERE pid='$pid'";
                   $countLike = mysqli_query($conn, $sqlLike);
-                  $data = mysqli_fetch_array($result);
+                  $data = mysqli_fetch_array($countLike);
                   $count = $data['likes'];
                   echo $count."Likes";
                   echo "<br> <a class='btn btn-primary' href='../includes/like.php?".$pid."''>Like</a>";
@@ -139,11 +139,6 @@ if(isset($_POST['upload'])){
                     } 
                   ?>
                   </ul>
-
-                <!-- <div class="panel-footer">
-                    <input type="text" placeholder=" Leave your comment ">
-                    <button class="btn btn-primary" type="submit">Submit</button>
-                </div> -->
 
                 <div id="input" class="panel-footer">
                   <?php if (isset($_GET['error'])) : ?>
