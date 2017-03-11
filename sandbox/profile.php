@@ -79,7 +79,7 @@ include '../db/dbh.php';
 	<section>
 		<div class="container">
 			<a class="btn btn-primary" href="blog.php">Blog</a>
-			<a class="btn btn-primary" href="photo.html">Photo</a>
+			<a class="btn btn-primary" href="photo.php">Photo</a>
 			<hr>
 		</div>
 	</section>

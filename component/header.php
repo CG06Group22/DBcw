@@ -17,6 +17,8 @@
                         echo $_SESSION['first'];
                         echo " ";
                         echo $_SESSION['last'];
+                    } else {
+                        header("Location: ../index.php");
                     };
                     ?>!<strong class="caret"></strong></a>
                 <ul class="dropdown-menu">
