@@ -102,8 +102,8 @@ if(isset($_POST['upload'])){
                   $countLike = mysqli_query($conn, $sqlLike);
                   $data = mysqli_fetch_array($countLike);
                   $count = $data['likes'];
-                  echo "<h5 class='text-primary'>".$count." Likes</h5>";
-                  echo "<br> <a class='btn btn-primary' href='../includes/like.php?".$pid."''>Like</a>";
+                  echo "<br> <h4 class='text-primary'>".$count." Likes</h4>";
+                  echo "<a class='btn btn-primary' href='../includes/like.php?".$pid."''>Like</a>";
                   ?>
 
 
