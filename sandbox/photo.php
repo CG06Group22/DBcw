@@ -94,6 +94,8 @@ if(isset($_POST['upload'])){
                   echo "<p>$fullName: ";
                   echo "".$row['discription']."</p>";
                   echo "</div>";
+
+                  $pid = $row['pid']
                   ?>
 
 
@@ -101,16 +103,56 @@ if(isset($_POST['upload'])){
             </div>
               <div class="panel-footer">
                   <ul class="list-group">
-                      <li class="list-group-item">First Comment</li>
+                  <?php
+                    $queryComments = "SELECT * FROM photocomments WHERE pid = '$pid' ORDER BY commentid ASC";
+                    $comments = mysqli_query($conn, $queryComments);
+                    while ($rowComments = mysqli_fetch_array($comments)){
+                  ?>
+                    <li class="list-group-item">
+                      <span><?php
+                        echo $rowComments['postTime'];
+                        $content = $rowComments['content'];
+                        $senderID = $rowComments['uid'];
+                      ?> - </span>
+                      <strong>
+                      <?php
+                        $que = "SELECT firstName,lastName FROM users WHERE uid = '$senderID'";
+                        $name = mysqli_query($conn, $que);
+                        if($namerow = mysqli_fetch_assoc($name)){
+                          $fullName2 = $namerow['firstName'] ." ". $namerow['lastName'];
+                          echo $fullName2;
+                        }
+                      ?>
+                      </strong>
+                      : <?php echo $content; ?>
+                    </li>
+
+                  <?php 
+                    } 
+                  ?>
                   </ul>
 
-              <div class="panel-footer">
-                  <input type="text" placeholder=" Leave your comment ">
-                  <button class="btn btn-primary" type="submit">Submit</button>
-              </div>
+                <!-- <div class="panel-footer">
+                    <input type="text" placeholder=" Leave your comment ">
+                    <button class="btn btn-primary" type="submit">Submit</button>
+                </div> -->
+
+                <div id="input" class="panel-footer">
+                  <?php if (isset($_GET['error'])) : ?>
+                    <div class="error"><?php echo $_GET['error']; ?></div>
+                  <?php endif; ?>
+                  
+                  <form method="post" action="../includes/comment.php">
+                    <?php
+                    echo "<input type='hidden' name='pid' value='$pid' />";
+                    ?>
+                    <input type="text" id="newcomment" name="comment" placeholder="Enter A Comment"/>
+                    <input id="show-btn" type="submit" name="submit" value="Send"/>
+                  </form>
+                </div>
               </div>
     </div>
-                  <?php
+              <?php
               }
               ?>
 

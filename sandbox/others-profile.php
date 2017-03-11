@@ -91,7 +91,9 @@ $_SESSION['otherfullname'] = $_SESSION['otherfirst'] ." ".$_SESSION['otherlast']
 			<?php
 			echo "<a class='btn btn-primary' href='others-blog.php?$otherEmail'>Blog</a>"
 			?>
-			<a class="btn btn-primary" href="others-photo.html">Photo</a>
+			<?php
+			echo "<a class='btn btn-primary' href='others-photo.php?$otherEmail'>Photo</a>"
+			?>
 			<hr>
 		</div>
 	</section>

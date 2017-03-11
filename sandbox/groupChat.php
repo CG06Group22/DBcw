@@ -75,7 +75,6 @@ session_start();
           <div class="error"><?php echo $_GET['error']; ?></div>
         <?php endif; ?>
         <form method="post" action="../includes/process.php">
-          <!-- <input type="text" id="user" name="user" placeholder="Enter Your Name"/> -->
           <input type="text" id="newmessage" name="message" placeholder="Enter A Message"/>
           <input id="show-btn" type="submit" name="submit" value="Send"/>
         </form>
