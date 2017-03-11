@@ -88,18 +88,26 @@ if(isset($_POST['upload'])){
               $result = mysqli_query($conn, $sql1);
               while ($row = mysqli_fetch_array($result)){
 
-               echo "<div class=\"panel-body\">";
+                  echo "<div class=\"panel-body\">";
                   echo "<div id = 'img_div'>";
                   echo "<img src = '../uimage/".$row['url']."' style='width: 100%'>";
                   echo "<p>$fullName: ";
                   echo "".$row['discription']."</p>";
                   echo "</div>";
 
-                  $pid = $row['pid']
+                  $pid = $row['pid'];
+                  
+                  //likes (Anotations)
+                  $sqlLike = "SELECT COUNT(uid) AS likes FROM photoanotations WHERE pid='$pid'";
+                  $countLike = mysqli_query($conn, $sqlLike);
+                  $data = mysqli_fetch_array($result);
+                  $count = $data['likes'];
+                  echo $count."Likes";
+                  echo "<br> <a class='btn btn-primary' href='../includes/like.php?".$pid."''>Like</a>";
                   ?>
 
 
-<!--              comment-->
+<!--comment-->
             </div>
               <div class="panel-footer">
                   <ul class="list-group">
