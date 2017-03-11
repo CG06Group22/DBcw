@@ -28,11 +28,9 @@ session_start();
 
         <section>
             <div class="container">
-                <form method="post" action="search_test.php" class="form-inline">
-                    
+                <h3>Your current privacy setting is: </h3>
+                <form method="post" action="search_test.php" class="form-inline"> 
                     <div class="form-group">
-                        <label>Your current privacy setting is: </label>
-                        <br>
                         <input type="radio" name="checkbox" value="public" checked="checked"> Public
                         <input type="radio" name="checkbox" value="friends"> Friends
                         <input type="radio" name="checkbox" value="circles"> Circles
