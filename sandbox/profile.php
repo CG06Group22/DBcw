@@ -217,7 +217,14 @@ include '../db/dbh.php';
   								$lastName = $row['lastName'];
 								  $fullName = $firstName ." ".$lastName;
 								  $userName = $_SESSION['first'] ." " .$_SESSION['last'];
+								  $sql4 = "SELECT COUNT(*) AS 'count' FROM relationship WHERE guestUserID=$guestUserID_2 AND hostUserID=$_SESSION['email']''
+								  $result4 = mysqli_query($conn, $sql4);
+								  $row = mysqli_fetch_assoc($result4);
+								  $checkNumber = $row['count'];
 								  if ($userName == $fullName){
+								    break;
+								  }
+								  elseif(!$checkNumber==0){
 								    break;
 								  }
 								  else {
