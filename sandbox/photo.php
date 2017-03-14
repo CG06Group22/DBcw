@@ -62,16 +62,15 @@ if(isset($_POST['upload'])){
 
   <section id="post">
     <div class="container">
-      <button class="btn btn-warning btn-lg">Post</button>
-      <br>
+      <button class="btn btn-warning btn-lg" style="margin-bottom:5px">Post</button>
+  
         <form method = "post" action = "photo.php" enctype="multipart/form-data">
             <input type="hidden" name="size" value="1000000">
             <div>
-                <input type="file" name="image">
+                <input type="file" name="image" style="margin-bottom:5px">
             </div>
             <div>
-                <textarea name="text" cols="40" rows="4"
-                          placeholder="Say something about this image....."></textarea>
+                <textarea name="text" cols="40" rows="4" placeholder="Say something about this image....."></textarea>
             </div>
             <div>
                 <input type="submit" name="upload" value="upload Image">
