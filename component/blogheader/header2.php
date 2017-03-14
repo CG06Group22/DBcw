@@ -5,7 +5,7 @@
             <a class="navbar-brand" href="#">FakeBook</a>
         </div>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="../../sandbox/profile.php">Homepage</a></li>
+            <li><a href="../../sandbox/profile.php">Home</a></li>
             <li><a href="../../sandbox/search_test.php">Search</a></li>
             <li><a href="../../sandbox/chat.php">Chat</a></li>
 
