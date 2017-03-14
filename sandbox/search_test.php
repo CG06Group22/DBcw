@@ -106,7 +106,7 @@ session_start();
                                             keyboard: true
                                         })});
                                     </script>
-                                    <h4 class="modal-title" id="myModalLabel" style="color: red">
+                                    <h4 class="modal-title" id="myModalLabel" style="color: black">
                                         You have already send the application
                                     </h4>
                                     <?php ;}
@@ -118,7 +118,7 @@ session_start();
                                             keyboard: true
                                         })});
                                     </script>
-                                    <h4 class="modal-title" id="myModalLabel" style="color: red">
+                                    <h4 class="modal-title" id="myModalLabel" style="color: black">
                                         You are already friends with this person
                                     </h4>
                                     <?php ;}
@@ -129,7 +129,7 @@ session_start();
                                             keyboard: true
                                         })});
                                     </script>
-                                    <h4 class="modal-title" id="myModalLabel" style="color: red">
+                                    <h4 class="modal-title" id="myModalLabel" style="color: black">
                                         The application has been submitted
                                     </h4>
                                     <?php ;}
