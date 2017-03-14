@@ -11,6 +11,7 @@ $_SESSION['otherfirst'] = $row['firstName'];
 $_SESSION['othergender'] = $row['gender'];
 $_SESSION['otheremail'] = $row['email'];
 $_SESSION['otheruid'] = $row['uid'];
+$_SESSION['otherprivacy']=$row['privacy'];
 $_SESSION['otherfullname'] = $_SESSION['otherfirst'] ." ".$_SESSION['otherlast'];
 ?>
 <!DOCTYPE html>
@@ -35,6 +36,7 @@ include("../component/header.php");
 <section id="user">
     <div class="container">
       <?php
+
 	$otherEmail = $_SESSION['otheremail'];
 	echo "<a href='others-profile.php?$otherEmail'><h1 class='page-header'>";
         echo $_SESSION['otherfullname'];
@@ -48,6 +50,8 @@ include("../component/header.php");
     <h2 class="text-primary">Aritcle List</h2>
     <ul class="list-group">
         <?php
+
+
         $target=$_SESSION['otheremail'];
         $firstName= $_SESSION['otherfirst'];
         $lastName= $_SESSION['otherlast'];
@@ -60,6 +64,7 @@ include("../component/header.php");
             echo "This article list is empty";
         }else{
             while($row=mysqli_fetch_array($result1)){
+
                 $title=$row['title'];
                 $time = $row['postTime'];
                 $aid = $row['aid'];
@@ -68,7 +73,6 @@ include("../component/header.php");
                 echo $title;
                 echo "</a>";
                 ?>
-
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <?php
                 echo $time;

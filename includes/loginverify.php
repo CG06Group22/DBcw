@@ -20,7 +20,7 @@ if (!$row = mysqli_fetch_assoc($result)){
     $_SESSION['gender'] = $row['gender'];
     $_SESSION['email'] = $row['email'];
     $_SESSION['uid'] = $row['uid'];
-
+    $_SESSION['privacy'] = $row['privacy'];
     $result = mysqli_query("SELECT * FROM users");
 
 

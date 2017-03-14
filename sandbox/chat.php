@@ -165,7 +165,7 @@ include '../db/dbh.php';
                     <?php echo "</div>"; ?>
                     <!-- （panel-collapse-close） -->
 
-                      
+
                     </div> <!-- panel panel-default -->
                 </div> <!-- panel-group -->
             </div> <!-- list group item -->

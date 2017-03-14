@@ -11,6 +11,7 @@ $_SESSION['otherlast'] = $row['lastName'];
 $_SESSION['otherfirst'] = $row['firstName'];
 $_SESSION['othergender'] = $row['gender'];
 $_SESSION['otheremail'] = $row['email'];
+$_SESSION['otherprivacy']=$row['privacy'];
 $_SESSION['otheruid'] = $row['uid'];
 $_SESSION['otherfullname'] = $_SESSION['otherfirst'] ." ".$_SESSION['otherlast'];
 ?>
