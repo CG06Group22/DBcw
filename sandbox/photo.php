@@ -20,7 +20,15 @@ session_start();
 
   <section id="user">
     <div class="container">
-      <a href="profile.php"><h1 class="page-header">User</h1></a>
+      <a href="profile.php"><h1 class="page-header">
+        <?php
+          $uid = $_SESSION['uid'];
+          $firstName = $_SESSION['first'];
+          $lastName = $_SESSION['last'];
+          $fullName = $firstName ." ".$lastName;
+          echo $fullName;
+        ?>
+       </h1></a>
     </div>
   </section>
 
