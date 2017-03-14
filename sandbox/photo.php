@@ -63,6 +63,7 @@ if(isset($_POST['upload'])){
   <section id="post">
     <div class="container">
       <button class="btn btn-warning btn-lg">Post</button>
+      <br>
         <form method = "post" action = "photo.php" enctype="multipart/form-data">
             <input type="hidden" name="size" value="1000000">
             <div>
@@ -174,13 +175,10 @@ if(isset($_POST['upload'])){
                   </form>
                 </div>
               </div>
-    </div>
+
               <?php
               }
               ?>
-
-
-          </div>
         </li>
       </ul>
     </div>
