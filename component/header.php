@@ -2,7 +2,7 @@
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
-            <h3 style="color:#fff">FakeBook</h3>
+            <h6 style="color:#fff">FakeBook</h6>
         </div>
         <ul class="nav navbar-nav navbar-right">
             <li><a href="../sandbox/profile.php">Home</a></li>
