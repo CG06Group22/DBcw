@@ -45,18 +45,15 @@ $other=$_SERVER['QUERY_STRING'];
                   $circle = 1;
               }else if($uidcheck == "close"){
                   $circle = 0;
-              }else{
+              }else if($uidcheck == "circles"){
+                  //for circles
+                  $uid=$_SESSION['uid'];
+                  $sql7 = "SELECT gid FROM usersgroup WHERE uid = '$otheruid'";
+                  $result7 = mysqli_query($conn, $sql7);
+                  $count = mysqli_num_rows($result7);
                   $circle = 0;
-              }
-
-              //for circle
-              $uid=$_SESSION['uid'];
-              $sql7 = "SELECT gid FROM usersgroup WHERE uid = '$otheruid'";
-              $result7 = mysqli_query($conn, $sql7);
-              $count = mysqli_num_rows($result7);
-
-              while($row=mysqli_fetch_array($result7)){
-                  $gid = $row['gid'];
+                  while($row=mysqli_fetch_array($result7)){
+                      $gid = $row['gid'];
                       $sql6 = "SELECT * FROM usersgroup WHERE uid = '$uid' AND gid = '$gid'";
                       $result6 = mysqli_query($conn, $sql6);
                       $count2 = mysqli_num_rows($result6);
@@ -65,9 +62,15 @@ $other=$_SERVER['QUERY_STRING'];
 //                          break;
                       }else{
                           $circle = 1;
-                            break;
+                          break;
                       }
+                  }
               }
+              else{
+                  $circle = 0;
+              }
+
+
               ?>
           </h1></a>
     </div>
