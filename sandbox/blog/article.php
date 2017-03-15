@@ -40,7 +40,7 @@ include("../../component/blogheader/header2.php");
 
   <section id="backblog">
     <div class="container">
-      <a href="../blog.php" class="btn btn-warning btn-lg">Back to Blog</a>
+      <a href="../blog.php" class="btn btn-primary btn-lg">Back to Blog</a>
       <hr>
     </div>
   </section>
