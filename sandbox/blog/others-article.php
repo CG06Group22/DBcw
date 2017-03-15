@@ -46,7 +46,7 @@ include("../../component/blogheader/header2.php");
   <section id="backblog">
     <div class="container">
       <?php
-      echo"<a href='../others-blog.php?$email' class='btn btn-warning btn-lg'>Back to Blog</a>"
+      echo"<a href='../others-blog.php?$email' class='btn btn-primary btn-lg'>Back to Blog</a>"
         ?>
       <hr>
     </div>
