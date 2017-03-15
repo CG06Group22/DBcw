@@ -5,7 +5,7 @@
   $_SERVER['QUERY_STRING'];
   $pid = $_SERVER['QUERY_STRING'];
 
-  $uid = $_SESSION['otheruid'];
+  $uid = $_SESSION['uid'];
       
       $query = "DELETE FROM photoanotations WHERE uid='$uid' AND pid='$pid'";
       if (!mysqli_query($conn, $query)) {

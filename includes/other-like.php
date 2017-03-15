@@ -5,7 +5,7 @@
   $_SERVER['QUERY_STRING'];
   $pid = $_SERVER['QUERY_STRING'];
 
-  $uid = $_SESSION['otheruid'];
+  $uid = $_SESSION['uid'];
       
       $query = "INSERT INTO photoanotations (uid, pid) 
                 VALUES ('$uid', '$pid')";
