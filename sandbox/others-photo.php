@@ -39,13 +39,22 @@ $other=$_SERVER['QUERY_STRING'];
               $sql8 = "SELECT * FROM relationship WHERE relationship = '$friend' AND hostUserID = '$hostUserID' AND guestUserID = '$guestUserID'";
               $result8 = mysqli_query($conn, $sql8);
               $count8 = mysqli_num_rows($result8);
+              if($uidcheck == "public"){
+                $circle = 1;
+              }else if($uidcheck == "friends" && $count8>0){
+                  $circle = 1;
+              }else if($uidcheck == "close"){
+                  $circle = 0;
+              }else{
+                  $circle = 0;
+              }
 
               //for circle
               $uid=$_SESSION['uid'];
               $sql7 = "SELECT gid FROM usersgroup WHERE uid = '$otheruid'";
               $result7 = mysqli_query($conn, $sql7);
               $count = mysqli_num_rows($result7);
-              $circle = 0;
+
               while($row=mysqli_fetch_array($result7)){
                   $gid = $row['gid'];
                       $sql6 = "SELECT * FROM usersgroup WHERE uid = '$uid' AND gid = '$gid'";
@@ -66,192 +75,7 @@ $other=$_SERVER['QUERY_STRING'];
 
   <section id="photo-list">
       <?php
-      if($uidcheck == "public"){
-          ?>
-          <div class="container">
-              <h2 class="text-primary">Photo List</h2>
-              <ul class="list-group">
-                  <li class="list-group-item" style="width: 80%">
-                      <div class="panel panel-default">
-                          <?php
-                          $sql1 = "SELECT * FROM photos WHERE uid = '$otheruid'";
-                          $result = mysqli_query($conn, $sql1);
-                          while ($row = mysqli_fetch_array($result)){
-
-                          echo "<div class=\"panel-body\">";
-                          echo "<div id = 'img_div'>";
-                          echo "<img src = '../uimage/".$row['url']."' style='width: 100%'>";
-                          echo "<p>$fullName: ";
-                          echo "".$row['discription']."</p>";
-                          echo "</div>";
-                          $pid = $row['pid'];
-
-                          //likes (Anotations)
-                          $sqlLike = "SELECT COUNT(uid) AS likes FROM photoanotations WHERE pid='$pid'";
-                          $countLike = mysqli_query($conn, $sqlLike);
-                          $data = mysqli_fetch_array($countLike);
-                          $count = $data['likes'];
-
-                          echo "<h4 class='text-primary'>".$count." Likes</h4>";
-
-                          $sqlIfLiked = "SELECT COUNT(uid) AS ifliked FROM photoanotations WHERE pid='$pid' AND uid='$otheruid'";
-                          $if = mysqli_query($conn, $sqlIfLiked);
-                          $ifData = mysqli_fetch_array($if);
-                          $ifliked = $ifData['ifliked'];
-                          if ($ifliked <= 0){
-                              echo "<a class='btn btn-primary' href='../includes/other-like.php?".$pid."''>Like</a>";
-                          } else {
-                              echo "<a class='btn btn-info' href='../includes/other-unlike.php?".$pid."''>Unlike</a>";
-                          }
-
-
-                          ?>
-
-                          <!--comment-->
-                      </div>
-                      <div class="panel-footer">
-                          <ul class="list-group">
-                              <?php
-                              $queryComments = "SELECT * FROM photocomments WHERE pid = '$pid' ORDER BY commentid ASC";
-                              $comments = mysqli_query($conn, $queryComments);
-                              while ($rowComments = mysqli_fetch_array($comments)){
-                                  ?>
-                                  <li class="list-group-item">
-                      <span><?php
-                          echo $rowComments['postTime'];
-                          $content = $rowComments['content'];
-                          $senderID = $rowComments['uid'];
-                          ?> - </span>
-                                      <strong>
-                                          <?php
-                                          $que = "SELECT firstName,lastName FROM users WHERE uid = '$senderID'";
-                                          $name = mysqli_query($conn, $que);
-                                          if($namerow = mysqli_fetch_assoc($name)){
-                                              $fullName2 = $namerow['firstName'] ." ". $namerow['lastName'];
-                                              echo $fullName2;
-                                          }
-                                          ?>
-                                      </strong>
-                                      : <?php echo $content; ?>
-                                  </li>
-
-                                  <?php
-                              }
-                              ?>
-                          </ul>
-
-                          <div id="input" class="panel-footer">
-                              <?php if (isset($_GET['error'])) : ?>
-                                  <div class="error"><?php echo $_GET['error']; ?></div>
-                              <?php endif; ?>
-
-                              <form method="post" action="../includes/other-comment.php">
-                                  <?php
-                                  echo "<input type='hidden' name='pid' value='$pid' />";
-                                  ?>
-                                  <input type="text" id="newcomment" name="comment" placeholder="Enter A Comment"/>
-                                  <input id="show-btn" type="submit" name="submit" value="Send"/>
-                              </form>
-                          </div>
-                      </div>
-                      <?php
-                      }
-                      ?>
-          </div>
-          <?php
-      }
-      else if($uidcheck == "friends" && $count8>0){
-
-          ?>
-          <div class="container">
-              <h2 class="text-primary">Photo List</h2>
-              <ul class="list-group">
-                  <li class="list-group-item" style="width: 80%">
-                      <div class="panel panel-default">
-
-                          <?php
-
-                          $sql1 = "SELECT * FROM photos WHERE uid = '$otheruid'";
-                          $result = mysqli_query($conn, $sql1);
-                          while ($row = mysqli_fetch_array($result)){
-                          echo "<div class=\"panel-body\">";
-                          echo "<div id = 'img_div'>";
-                          echo "<img src = '../uimage/".$row['url']."' style='width: 100%'>";
-                          echo "<p>$fullName: ";
-                          echo "".$row['discription']."</p>";
-                          echo "</div>";
-                          $pid = $row['pid'];
-
-                          //likes (Anotations)
-                          $sqlLike = "SELECT COUNT(uid) AS likes FROM photoanotations WHERE pid='$pid'";
-                          $countLike = mysqli_query($conn, $sqlLike);
-                          $data = mysqli_fetch_array($countLike);
-                          $count = $data['likes'];
-                          echo "<h4 class='text-primary'>".$count." Likes</h4>";
-                          $sqlIfLiked = "SELECT COUNT(uid) AS ifliked FROM photoanotations WHERE pid='$pid' AND uid='$otheruid'";
-                          $if = mysqli_query($conn, $sqlIfLiked);
-                          $ifData = mysqli_fetch_array($if);
-                          $ifliked = $ifData['ifliked'];
-                          if ($ifliked <= 0){
-                              echo "<a class='btn btn-primary' href='../includes/other-like.php?".$pid."''>Like</a>";
-                          } else {
-                              echo "<a class='btn btn-info' href='../includes/other-unlike.php?".$pid."''>Unlike</a>";
-                          }
-                          ?>
-
-                          <!--comment-->
-                      </div>
-                      <div class="panel-footer">
-                          <ul class="list-group">
-                              <?php
-                              $queryComments = "SELECT * FROM photocomments WHERE pid = '$pid' ORDER BY commentid ASC";
-                              $comments = mysqli_query($conn, $queryComments);
-                              while ($rowComments = mysqli_fetch_array($comments)){
-                                  ?>
-                                  <li class="list-group-item">
-                      <span><?php
-                          echo $rowComments['postTime'];
-                          $content = $rowComments['content'];
-                          $senderID = $rowComments['uid'];
-                          ?> - </span>
-                                      <strong>
-                                          <?php
-                                          $que = "SELECT firstName,lastName FROM users WHERE uid = '$senderID'";
-                                          $name = mysqli_query($conn, $que);
-                                          if($namerow = mysqli_fetch_assoc($name)){
-                                              $fullName2 = $namerow['firstName'] ." ". $namerow['lastName'];
-                                              echo $fullName2;
-                                          }
-                                          ?>
-                                      </strong>
-                                      : <?php echo $content; ?>
-                                  </li>
-                                  <?php
-                              }
-                              ?>
-                          </ul>
-
-                          <div id="input" class="panel-footer">
-                              <?php if (isset($_GET['error'])) : ?>
-                                  <div class="error"><?php echo $_GET['error']; ?></div>
-                              <?php endif; ?>
-
-                              <form method="post" action="../includes/other-comment.php">
-                                  <?php
-                                  echo "<input type='hidden' name='pid' value='$pid' />";
-                                  ?>
-                                  <input type="text" id="newcomment" name="comment" placeholder="Enter A Comment"/>
-                                  <input id="show-btn" type="submit" name="submit" value="Send"/>
-                              </form>
-                          </div>
-                      </div>
-                      <?php
-                      }
-                      ?>
-          </div>
-          <?php
-      }
-      else if($circle == 1){
+      if($circle == 1){
           ?>
 
           <div class="container">
