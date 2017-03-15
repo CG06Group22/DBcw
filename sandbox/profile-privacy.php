@@ -29,23 +29,43 @@ include '../db/dbh.php';
         <section>
             <div class="container">
                 <h3>Your current privacy setting is:
-                <?php
-                $uid = $_SESSION['uid'];
-                $sql = "SELECT privacy FROM users WHERE uid = '$uid'";
-                $result = mysqli_query($conn, $sql);
-                $row=mysqli_fetch_array($result);
-                $privacy = $row['privacy'];
-                echo $privacy;
-                ?>
+                
                 </h3>
 
 
                 <form method="post" action="../includes/privacy-setting.php" class="form-inline">
                     <div class="form-group">
-                        <input class="form-control" type="radio" name="checkbox" value="public" checked="checked"> Public
-                        <input class="form-control" type="radio" name="checkbox" value="friends"> Friends
-                        <input class="form-control" type="radio" name="checkbox" value="circles"> Circles
-                        <input class="form-control" type="radio" name="checkbox" value="close"> Close
+                        <?php
+                        $uid = $_SESSION['uid'];
+                        $sql = "SELECT privacy FROM users WHERE uid = '$uid'";
+                        $result = mysqli_query($conn, $sql);
+                        $row=mysqli_fetch_array($result);
+                        $privacy = $row['privacy'];
+                        if ($privacy=="public"){
+                        echo "<input class='form-control' type='radio' name='checkbox' value='public' checked='checked'> Public";
+                        echo "<input class='form-control' type='radio' name='checkbox' value='friends'> Friends";
+                        echo "<input class='form-control' type='radio' name='checkbox' value='circles'> Circles";
+                        echo "<input class='form-control' type='radio' name='checkbox' value='close'> Close";    
+                        }
+                        elseif($privacy=="friends"){
+                        echo "<input class='form-control' type='radio' name='checkbox' value='public'> Public";
+                        echo "<input class='form-control' type='radio' name='checkbox' value='friends' checked='checked'> Friends";
+                        echo "<input class='form-control' type='radio' name='checkbox' value='circles'> Circles";
+                        echo "<input class='form-control' type='radio' name='checkbox' value='close'> Close"; 
+                        }
+                        elseif($privacy=="circles"){
+                        echo "<input class='form-control' type='radio' name='checkbox' value='public'> Public";
+                        echo "<input class='form-control' type='radio' name='checkbox' value='friends'> Friends";
+                        echo "<input class='form-control' type='radio' name='checkbox' value='circles' checked='checked'> Circles";
+                        echo "<input class='form-control' type='radio' name='checkbox' value='close'> Close"; 
+                        }
+                        elseif($privacy=="close"){
+                        echo "<input class='form-control' type='radio' name='checkbox' value='public'> Public";
+                        echo "<input class='form-control' type='radio' name='checkbox' value='friends'> Friends";
+                        echo "<input class='form-control' type='radio' name='checkbox' value='circles'> Circles";
+                        echo "<input class='form-control' type='radio' name='checkbox' value='close' checked='checked'> Close"; 
+                        }
+                        ?>
                     </div>
                     <button class="btn btn-primary" type="submit" name="submit">Submit</button>
                 </form>
