@@ -20,7 +20,7 @@ session_start();
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
-            <h6 style="color:#fff">FakeBook</h6>
+            <h4 style="color:#fff">FakeBook</h4>
         </div>
     </div>
 </nav>
