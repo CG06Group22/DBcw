@@ -71,7 +71,7 @@ if(isset($_POST['upload'])){
                 <textarea name="text" cols="40" rows="4" placeholder="Say something about this image....."></textarea>
             </div>
             <div>
-                <input class="btn btn-warning btn-lg" type="submit" name="upload" value="Upload">
+                <input class="btn btn-primary btn-lg" type="submit" name="upload" value="Upload">
             </div>
         </form>
       <hr>
