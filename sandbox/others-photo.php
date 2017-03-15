@@ -45,24 +45,19 @@ $other=$_SERVER['QUERY_STRING'];
               $sql7 = "SELECT gid FROM usersgroup WHERE uid = '$otheruid'";
               $result7 = mysqli_query($conn, $sql7);
               $count = mysqli_num_rows($result7);
+              $circle = 0;
               while($row=mysqli_fetch_array($result7)){
                   $gid = $row['gid'];
-                  if (!$rowGroupNames = mysqli_fetch_assoc($result7)){
-                      $circle = 0;
-                      break;
-                  } else{
-                      $gid = $row['gid'];
                       $sql6 = "SELECT * FROM usersgroup WHERE uid = '$uid' AND gid = '$gid'";
                       $result6 = mysqli_query($conn, $sql6);
                       $count2 = mysqli_num_rows($result6);
                       if(!$count2>0){
                           $circle = 0;
-                          break;
+//                          break;
                       }else{
                           $circle = 1;
                             break;
                       }
-                  }
               }
               ?>
           </h1></a>
@@ -71,8 +66,6 @@ $other=$_SERVER['QUERY_STRING'];
 
   <section id="photo-list">
       <?php
-echo $circle;
-      echo $uidcheck;
       if($uidcheck == "public"){
           ?>
           <div class="container">
@@ -101,7 +94,7 @@ echo $circle;
 
                           echo "<h4 class='text-primary'>".$count." Likes</h4>";
 
-                          $sqlIfLiked = "SELECT COUNT(uid) AS ifliked FROM photoanotations WHERE pid='$pid' AND uid='$uid'";
+                          $sqlIfLiked = "SELECT COUNT(uid) AS ifliked FROM photoanotations WHERE pid='$pid' AND uid='$otheruid'";
                           $if = mysqli_query($conn, $sqlIfLiked);
                           $ifData = mysqli_fetch_array($if);
                           $ifliked = $ifData['ifliked'];
@@ -195,7 +188,7 @@ echo $circle;
                           $data = mysqli_fetch_array($countLike);
                           $count = $data['likes'];
                           echo "<h4 class='text-primary'>".$count." Likes</h4>";
-                          $sqlIfLiked = "SELECT COUNT(uid) AS ifliked FROM photoanotations WHERE pid='$pid' AND uid='$uid'";
+                          $sqlIfLiked = "SELECT COUNT(uid) AS ifliked FROM photoanotations WHERE pid='$pid' AND uid='$otheruid'";
                           $if = mysqli_query($conn, $sqlIfLiked);
                           $ifData = mysqli_fetch_array($if);
                           $ifliked = $ifData['ifliked'];
@@ -289,7 +282,7 @@ echo $circle;
 
                           echo "<h4 class='text-primary'>".$count." Likes</h4>";
 
-                          $sqlIfLiked = "SELECT COUNT(uid) AS ifliked FROM photoanotations WHERE pid='$pid' AND uid='$uid'";
+                          $sqlIfLiked = "SELECT COUNT(uid) AS ifliked FROM photoanotations WHERE pid='$pid' AND uid='$otheruid'";
                           $if = mysqli_query($conn, $sqlIfLiked);
                           $ifData = mysqli_fetch_array($if);
                           $ifliked = $ifData['ifliked'];
