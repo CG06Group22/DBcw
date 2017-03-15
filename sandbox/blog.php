@@ -37,7 +37,7 @@ include("../component/header.php");
 
 <section id="wirte">
   <div class="container">
-    <a class="btn btn-warning btn-lg" href='blog/write.php'>Write</a>
+    <a class="btn btn-primary btn-lg" href='blog/write.php'>Write</a>
     <hr>
   </div>
 </section>
