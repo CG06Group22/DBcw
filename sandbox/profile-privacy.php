@@ -1,6 +1,6 @@
 <?php
-$conn = mysql_connect("us-cdbr-azure-southcentral-f.cloudapp.net", "bd72ffa33d6f5c", "20d59076");
 session_start();
+include '../db/dbh.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,13 +28,24 @@ session_start();
 
         <section>
             <div class="container">
-                <h3>Your current privacy setting is: </h3>
-                <form method="post" action="profile-privacy.php" class="form-inline"> 
+                <h3>Your current privacy setting is:
+                <?php
+                $uid = $_SESSION['uid'];
+                $sql = "SELECT privacy FROM users WHERE uid = '$uid'";
+                $result = mysqli_query($conn, $sql);
+                $row=mysqli_fetch_array($result);
+                $privacy = $row['privacy'];
+                echo $privacy;
+                ?>
+                </h3>
+
+
+                <form method="post" action="../includes/privacy-setting.php" class="form-inline">
                     <div class="form-group">
-                        <input type="radio" name="checkbox" value="public" checked="checked"> Public
-                        <input type="radio" name="checkbox" value="friends"> Friends
-                        <input type="radio" name="checkbox" value="circles"> Circles
-                        <input type="radio" name="checkbox" value="close"> Close
+                        <input class="form-control" type="radio" name="checkbox" value="public" checked="checked"> Public
+                        <input class="form-control" type="radio" name="checkbox" value="friends"> Friends
+                        <input class="form-control" type="radio" name="checkbox" value="circles"> Circles
+                        <input class="form-control" type="radio" name="checkbox" value="close"> Close
                     </div>
                     <button class="btn btn-primary" type="submit" name="submit">Submit</button>
                 </form>
