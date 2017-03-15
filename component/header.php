@@ -1,5 +1,5 @@
 <!-- navbar -->
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
             <h3 style="color:#337ab7">FakeBook</h3>
