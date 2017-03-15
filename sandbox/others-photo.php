@@ -106,7 +106,7 @@ $other=$_SERVER['QUERY_STRING'];
 
                           echo "<h4 class='text-primary'>".$count." Likes</h4>";
 
-                          $sqlIfLiked = "SELECT COUNT(uid) AS ifliked FROM photoanotations WHERE pid='$pid' AND uid='$otheruid'";
+                          $sqlIfLiked = "SELECT COUNT(uid) AS ifliked FROM photoanotations WHERE pid='$pid' AND uid='$uid'";
                           $if = mysqli_query($conn, $sqlIfLiked);
                           $ifData = mysqli_fetch_array($if);
                           $ifliked = $ifData['ifliked'];
