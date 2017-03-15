@@ -126,7 +126,7 @@ include '../db/dbh.php';
 						<?php
                             $target=$_SESSION['email'];
                             $apply = "apply";
-                            $sql = "SELECT * FROM relationship WHERE relationship = '$apply' AND hostUserID LIKE '%$target%'";
+                            $sql = "SELECT * FROM relationship WHERE relationship = '$apply' AND hostUserID = '$target'";
                             $result = mysqli_query($conn, $sql);
                             $count = mysqli_num_rows($result);
                             if (!$count>0) {
@@ -156,7 +156,7 @@ include '../db/dbh.php';
 					<?php
                     $target=$_SESSION['email'];
                     $request = "request";
-                    $sql = "SELECT * FROM relationship WHERE relationship = '$request' AND hostUserID LIKE '%$target%'";
+                    $sql = "SELECT * FROM relationship WHERE relationship = '$request' AND hostUserID = '$target'";
                     $result = mysqli_query($conn, $sql);
                     $count = mysqli_num_rows($result);
                     if (!$count>0) {
