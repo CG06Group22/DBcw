@@ -17,7 +17,7 @@ session_start();
 
 
 <!-- Navbar -->
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-primary">
     <div class="container-fluid">
         <div class="navbar-header">
             <h3 style="color:#fff">FakeBook</h3>
