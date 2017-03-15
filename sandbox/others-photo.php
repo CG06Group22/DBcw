@@ -195,7 +195,7 @@ echo $circle;
                           $data = mysqli_fetch_array($countLike);
                           $count = $data['likes'];
                           echo "<h4 class='text-primary'>".$count." Likes</h4>";
-                          $sqlIfLiked = "SELECT COUNT(uid) AS ifliked FROM photoanotations WHERE pid='$pid' AND uid='$otheruid'";
+                          $sqlIfLiked = "SELECT COUNT(uid) AS ifliked FROM photoanotations WHERE pid='$pid' AND uid='$uid'";
                           $if = mysqli_query($conn, $sqlIfLiked);
                           $ifData = mysqli_fetch_array($if);
                           $ifliked = $ifData['ifliked'];
@@ -289,7 +289,7 @@ echo $circle;
 
                           echo "<h4 class='text-primary'>".$count." Likes</h4>";
 
-                          $sqlIfLiked = "SELECT COUNT(uid) AS ifliked FROM photoanotations WHERE pid='$pid' AND uid='$otheruid'";
+                          $sqlIfLiked = "SELECT COUNT(uid) AS ifliked FROM photoanotations WHERE pid='$pid' AND uid='$uid'";
                           $if = mysqli_query($conn, $sqlIfLiked);
                           $ifData = mysqli_fetch_array($if);
                           $ifliked = $ifData['ifliked'];
