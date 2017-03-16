@@ -229,7 +229,7 @@ include '../db/dbh.php';
                                     break;
                                 } else {
                                     echo "<li class='list-group-item'><a href='others-profile.php?$guestUserID_2'>";
-                                    echo $fullName .' (is friend of ' .$fullName_2 .' )';
+                                    echo $fullName .' (friend of ' .$fullName_2 .')';
                                     echo "<a class='btn btn-primary' href='../includes/apply-recommend.php?$guestUserID_2'>Apply</a>";
                                 }
                             }
