@@ -187,7 +187,7 @@ include '../db/dbh.php';
   <h3>Recommend</h3>
   <div class="list-group">
   		<?php
-        $target=$_SESSION['email'];
+            $target=$_SESSION['email'];
             $friend = "friend";
             $sql = "SELECT * FROM relationship WHERE relationship = '$friend' AND hostUserID = '$target'";
             $result = mysqli_query($conn, $sql);
@@ -219,11 +219,17 @@ include '../db/dbh.php';
                                 $result4=mysqli_query($conn, $sql4);
                                 $row4 = mysqli_fetch_assoc($result4);
                                 $checkNumber = $row4['count'];
+				$sql5="SELECT * FROM users WHERE email = '$guestUserID'";
+				$result5=mysqli_query($conn, $sql5);
+				$row5 = mysqli_fetch_assoc($result5);
+				$firstName_2=$row5['firstName'];
+				$lastName_2=$row5['lastName'];
+				$fullName_2=$firstName_2 ." ".$lastName_2;   
                                 if ($userName == $fullName || !$checkNumber==0) {
                                     break;
                                 } else {
                                     echo "<li class='list-group-item'><a href='others-profile.php?$guestUserID_2'>";
-                                    echo $fullName .' recommended by ' .$guestUserID;
+                                    echo $fullName .' (is friend of ' .$fullName_2 .' )';
                                     echo "<a class='btn btn-primary' href='../includes/apply-recommend.php?$guestUserID_2'>Apply</a>";
                                 }
                             }
