@@ -29,7 +29,7 @@ session_start();
     <div class="jumbotron text-center">
         <div class="container">
             <h1>Welocome to FakeBook</h1>
-            <p class="text-info"><em>Say Hell to World!</em></p>
+         
 
 
 
