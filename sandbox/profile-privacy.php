@@ -48,22 +48,22 @@ include '../db/dbh.php';
                         echo "<input type='radio' name='checkbox' value='close' style='margin-left:5px'> Close";    
                         }
                         elseif($privacy=="friends"){
-                        echo "<input class='form-control' type='radio' name='checkbox' value='public'> Public";
-                        echo "<input class='form-control' type='radio' name='checkbox' value='friends' checked='checked'> Friends";
-                        echo "<input class='form-control' type='radio' name='checkbox' value='circles'> Circles";
-                        echo "<input class='form-control' type='radio' name='checkbox' value='close'> Close"; 
+                        echo "<input type='radio' name='checkbox' value='public' style='margin-left:5px'> Public";
+                        echo "<input type='radio' name='checkbox' value='friends' checked='checked' style='margin-left:5px'> Friends";
+                        echo "<input type='radio' name='checkbox' value='circles' style='margin-left:5px'> Circles";
+                        echo "<input type='radio' name='checkbox' value='close' style='margin-left:5px'> Close"; 
                         }
                         elseif($privacy=="circles"){
-                        echo "<input class='form-control' type='radio' name='checkbox' value='public'> Public";
-                        echo "<input class='form-control' type='radio' name='checkbox' value='friends'> Friends";
-                        echo "<input class='form-control' type='radio' name='checkbox' value='circles' checked='checked'> Circles";
-                        echo "<input class='form-control' type='radio' name='checkbox' value='close'> Close"; 
+                        echo "<input type='radio' name='checkbox' value='public' style='margin-left:5px'> Public";
+                        echo "<input type='radio' name='checkbox' value='friends' style='margin-left:5px'> Friends";
+                        echo "<input type='radio' name='checkbox' value='circles' checked='checked' style='margin-left:5px'> Circles";
+                        echo "<input type='radio' name='checkbox' value='close' style='margin-left:5px'> Close"; 
                         }
                         elseif($privacy=="close"){
-                        echo "<input class='form-control' type='radio' name='checkbox' value='public'> Public";
-                        echo "<input class='form-control' type='radio' name='checkbox' value='friends'> Friends";
-                        echo "<input class='form-control' type='radio' name='checkbox' value='circles'> Circles";
-                        echo "<input class='form-control' type='radio' name='checkbox' value='close' checked='checked'> Close"; 
+                        echo "<input type='radio' name='checkbox' value='public' style='margin-left:5px'> Public";
+                        echo "<input type='radio' name='checkbox' value='friends'style='margin-left:5px'> Friends";
+                        echo "<input type='radio' name='checkbox' value='circles' style='margin-left:5px'> Circles";
+                        echo "<input type='radio' name='checkbox' value='close' checked='checked' style='margin-left:5px'> Close"; 
                         }
                         ?>
                     </div>
