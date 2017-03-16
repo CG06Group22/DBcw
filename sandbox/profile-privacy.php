@@ -42,10 +42,10 @@ include '../db/dbh.php';
                         $row=mysqli_fetch_array($result);
                         $privacy = $row['privacy'];
                         if ($privacy=="public"){
-                        echo "<input type='radio' name='checkbox' value='public' checked='checked'style='margin-right:5px'> Public";
-                        echo "<input type='radio' name='checkbox' value='friends' style='margin-right:5px'> Friends";
-                        echo "<input type='radio' name='checkbox' value='circles' style='margin-right:5px'> Circles";
-                        echo "<input type='radio' name='checkbox' value='close' style='margin-right:5px'> Close";    
+                        echo "<input type='radio' name='checkbox' value='public' checked='checked'style='margin-left:5px'> Public";
+                        echo "<input type='radio' name='checkbox' value='friends' style='margin-left:5px'> Friends";
+                        echo "<input type='radio' name='checkbox' value='circles' style='margin-left:5px'> Circles";
+                        echo "<input type='radio' name='checkbox' value='close' style='margin-left:5px'> Close";    
                         }
                         elseif($privacy=="friends"){
                         echo "<input class='form-control' type='radio' name='checkbox' value='public'> Public";
