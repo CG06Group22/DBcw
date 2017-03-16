@@ -19,8 +19,8 @@ session_start();
 <body>
 <!-- navbar -->
 <?php
-    include("../component/header.php");
-    ?>
+include("../component/header.php");
+?>
 
 <section>
     <div class="container">
@@ -39,25 +39,37 @@ session_start();
                 <input type="radio" name="checkbox" value="articles"> Articles
             </div>
             <button class="btn btn-primary" type="submit" name="submit">Search</button>
+            <br>
+            <?php
+            $url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+            if (strpos($url,'error=empty') !==false){
+                echo "Please fill out the fields!";
+            }?>
         </form>
         <hr>
-         <?php
-         mysql_select_db('gc06group22database', $conn);
-         if(isset($_POST['submit'])){
+        <?php
+        mysql_select_db('gc06group22database', $conn);
+
+        $selfid=$_SESSION['uid'];
+        $target=$_POST['search'];
+        $checkbox = $_POST['checkbox'];
+
+        if (empty($target)){
+            header("Location: ../sandbox/search_test.php?error=empty");
+            exit();
+        }else if(isset($_POST['submit'])){
             if(isset($_SESSION['uid'])){
-                $selfid=$_SESSION['uid'];
-                $target=$_POST['search'];
-                $checkbox = $_POST['checkbox'];
+
                 if ($checkbox=='friends'){
                     $sql = "SELECT * FROM users WHERE (firstName LIKE '%$target%' OR lastName LIKE '%$target%') AND uid != '$selfid'";}
-                    if ($checkbox=='articles') {
-                     $sql = "SELECT * FROM `articles` WHERE title LIKE '%$target%'";
-                 }
-                 $result = mysql_query($sql);
+                if ($checkbox=='articles') {
+                    $sql = "SELECT * FROM `articles` WHERE title LIKE '%$target%'";
+                }
+                $result = mysql_query($sql);
 
-             }
-         }
-         ?>
+            }
+        }
+        ?>
     </div>
 </section>
 
@@ -67,8 +79,8 @@ session_start();
             <h3>Friends Results</h3>
             <div class="list-group">
                 <?php
-                 $count = mysql_num_rows($result);
-                 if(!$count>0){
+                $count = mysql_num_rows($result);
+                if(!$count>0){
                     echo "no result for $target";
                 }else{
                     if($checkbox=='friends'){
@@ -84,7 +96,7 @@ session_start();
                         }
                     }
                     if ($checkbox=='articles') {
-                            echo "No results for friends.";
+                        echo "No results for friends.";
                     }
                 }
                 ?>
@@ -150,8 +162,8 @@ session_start();
             <h3>Article List</h3>
             <div class="list-group">
                 <?php
-                 $count = mysql_num_rows($result);
-                 if(!$count>0){
+                $count = mysql_num_rows($result);
+                if(!$count>0){
                     echo "no result for $target";
                 }else{
                     if($checkbox=='friends'){
