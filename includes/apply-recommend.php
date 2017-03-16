@@ -30,7 +30,7 @@ if($resultnum > 0) {
     $result = mysqli_query($conn, $sql);
     $sql1 = "INSERT INTO relationship ( hostUserID, relationship, guestUserID) VALUES ( '$guest', '$request','$host')";
     $result = mysqli_query($conn, $sql1);
-    header("Location: ../sandbox/profile?applysuc");
+    header("Location: ../sandbox/profile.php?applysuc");
 }
 
 
