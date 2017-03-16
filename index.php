@@ -61,60 +61,6 @@ session_start();
             </form>
 
             <br>
-            <a data-toggle="modal" data-target="#myModal2">
-                Forgot password?
-            </a>
-            <!-- （Modal） -->
-            <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal"
-                                    aria-hidden="true">
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <?php
-                            $url = "http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
-                            if (strpos($url,'error=messagesent') !==false){
-                                ?>
-                                <script>
-                                    $(function () { $('#myModal2').modal({
-                                        keyboard: true
-                                    })});
-                                </script>
-                                <h4 class="modal-title" id="myModalLabel">                                  
-                                    Success, please check your email inbox.
-                                </h4>
-                                <?php ;}
-                            if (strpos($url,'error=checkemail') !==false){
-                                ?>
-                                <script>
-                                    $(function () { $('#myModal2').modal({
-                                        keyboard: true
-                                    })});
-                                </script>
-                                <h4 class="modal-title" id="myModalLabel">
-                                    Sorry, we couldn't verify your account, please try again
-                                </h4>
-                                <?php ;}
-                            ?>
-                            <form action="includes/sendemail.php" method="post">
-
-                                <div class="form-group">
-                                    <label> Please enter your email address</label>
-                                <input class="form-control" type="text" name="email" placeholder="Email"><br>
-                                </div>
-
-                                <button type="submit" class="btn btn-primary" name="forgotPass" value="Request Password">Send message</button> &#160&#160&#160&#160
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Back</button>
-
-                            </form>
-                        </div>
-                    </div><!-- /.modal-content -->
-                </div><!-- /.modal -->
-            </div>
-
             <br>
           
             <p>Not registered yet? Sign up now!</p>
