@@ -8,7 +8,7 @@
             <li><a href="../../sandbox/profile.php">Home</a></li>
             <li><a href="../../sandbox/search_test.php">Search</a></li>
             <li><a href="../../sandbox/chat.php">Chat</a></li>
-            <li><a href="#">More privacy settings</a></li>
+            <li><a href="#">Privacy Setting</a></li>
             <li><a href="../../includes/logout.php">Logout</a></li>
         </ul>
     </div>
