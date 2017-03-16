@@ -56,7 +56,7 @@ session_start();
                             echo "Password change successful, please login again";}
                         ?>
                 </div>
-                <button class="btn btn-default btn-lg" type="submit">Login</button>
+                <button class="btn btn-default btn-lg" type="submit">Log In</button>
 
             </form>
 
@@ -115,16 +115,8 @@ session_start();
                 </div><!-- /.modal -->
             </div>
 
-
-
-
-
-
-
             <br>
-
-
-            <!--            <input type="image" src="img/signup.png" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" width="320" height="191"/>-->
+          
             <p>Not registered yet? Sign up now!</p>
             <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
                 Sign up
@@ -200,7 +192,6 @@ session_start();
                         </div>
                         <div class="modal-body">
                             <form action="includes/signup.php" method="POST">
-                                <!--                                <input type="text" name="uid" placeholder="Username"><br>-->
                                 <div class="form-group">
                                 <input  class="form-control" type="text" name="email" placeholder="Email"><br>
                                 <input class="form-control" type="text" name="firstName" placeholder="Firstname"><br>
