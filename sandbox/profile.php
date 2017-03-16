@@ -223,7 +223,7 @@ include '../db/dbh.php';
                                     break;
                                 } else {
                                     echo "<li class='list-group-item'><a href='others-profile.php?$guestUserID_2'>";
-                                    echo $fullName;
+                                    echo $fullName .' recommended by ' .$guestUserID
                                     echo "<a class='btn btn-primary' href='../includes/apply-recommend.php?$guestUserID_2'>Apply</a>";
                                 }
                             }
