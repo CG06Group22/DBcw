@@ -54,11 +54,12 @@ include("../component/header.php");
         $target=$_POST['search'];
         $checkbox = $_POST['checkbox'];
 
-        if (empty($target)){
-            header("Location: ../sandbox/search_test.php?error=empty");
-            exit();
-        }else if(isset($_POST['submit'])){
-            if(isset($_SESSION['uid'])){
+        if(isset($_POST['submit'])){
+
+            if (empty($target)){
+                header("Location: ../sandbox/search_test.php?error=empty");
+                exit();
+            }else if(isset($_SESSION['uid'])){
 
                 if ($checkbox=='friends'){
                     $sql = "SELECT * FROM users WHERE (firstName LIKE '%$target%' OR lastName LIKE '%$target%') AND uid != '$selfid'";}
